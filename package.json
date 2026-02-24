@@ -223,6 +223,13 @@
     "win": {
       "target": "nsis"
     },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "shortcutName": "QuadDown",
+      "uninstallDisplayName": "QuadDown"
+    },
     "mac": {
       "target": "dmg"
     },

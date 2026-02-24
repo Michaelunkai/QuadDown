@@ -548,7 +548,13 @@ export default function DownloadPage() {
 
   async function handleDownload(directUrl = null, dir = null, forceStart = false) {
     const sanitizedGameName = sanitizeText(gameData.game);
-    console.log("[DL] handleDownload called", { directUrl, dir, forceStart, selectedProvider, sanitizedGameName });
+    console.log("[DL] handleDownload called", {
+      directUrl,
+      dir,
+      forceStart,
+      selectedProvider,
+      sanitizedGameName,
+    });
     console.log("[DL] settings.downloadDirectory:", settings.downloadDirectory);
     console.log("[DL] showNoDownloadPath:", showNoDownloadPath);
     if (showNoDownloadPath) {
@@ -570,37 +576,13 @@ export default function DownloadPage() {
       return;
     }
 
-    // Check if there's an active download
+    // UNLIMITED DOWNLOADS - No restrictions!
+    // Check if there's an active download (removed limit check)
     const hasActive = await hasActiveDownloads();
-    console.log("[DL] hasActive:", hasActive, "isAuthenticated:", isAuthenticated);
+    console.log("[DL] hasActive:", hasActive, "Unlimited downloads enabled");
 
-    if (hasActive && !forceStart) {
-      // Non-Ascend users can only have 1 download at a time - show error toast
-      if (!isAuthenticated) {
-        toast.error(t("download.toast.downloadQueueLimit"));
-        return;
-      }
-
-      // Ascend users get the queue dialog with options
-      const isVrGame = gameData.category?.includes("Virtual Reality");
-      setPendingDownloadData({
-        url: directUrl || gameData.download_links?.[selectedProvider]?.[0] || "",
-        gameName: sanitizedGameName,
-        online: gameData.online || false,
-        dlc: gameData.dlc || false,
-        isVr: isVrGame || false,
-        updateFlow: gameData.isUpdating || false,
-        version: gameData.version || "",
-        imgID: gameData.imgID,
-        size: gameData.size || "",
-        additionalDirIndex: dir || 0,
-        gameID: gameData.gameID || "",
-        directUrl: directUrl,
-        dir: dir,
-      });
-      setShowQueuePrompt(true);
-      return;
-    }
+    // REMOVED: Download limit check - all users can download multiple games simultaneously
+    // Users can now start as many downloads as they want without restrictions
 
     // Handle torrent links if Fitgirl is the source
     if (settings.gameSource === "fitgirl") {
@@ -666,7 +648,9 @@ export default function DownloadPage() {
       torboxProviders.includes(selectedProvider) && torboxService.isEnabled(settings);
     if (
       !directUrl &&
-      (selectedProvider === "gofile" || selectedProvider === "buzzheavier" || selectedProvider === "pixeldrain") &&
+      (selectedProvider === "gofile" ||
+        selectedProvider === "buzzheavier" ||
+        selectedProvider === "pixeldrain") &&
       !shouldUseTorbox()
     ) {
       let providerLinks = gameData.download_links?.[selectedProvider] || [];
@@ -676,7 +660,12 @@ export default function DownloadPage() {
           ? providerLinks
           : null;
 
-      console.log("[DL] seamless provider link:", validProviderLink, "providerLinks:", providerLinks);
+      console.log(
+        "[DL] seamless provider link:",
+        validProviderLink,
+        "providerLinks:",
+        providerLinks
+      );
       if (!validProviderLink) {
         console.log("[DL] EARLY RETURN: no valid seamless provider link");
         toast.error(t("download.toast.invalidLink"));
@@ -859,7 +848,12 @@ export default function DownloadPage() {
         return;
       }
       if (!inputLink || !isValidLink) {
-        console.log("[DL] EARLY RETURN: inputLink:", inputLink, "isValidLink:", isValidLink);
+        console.log(
+          "[DL] EARLY RETURN: inputLink:",
+          inputLink,
+          "isValidLink:",
+          isValidLink
+        );
         return;
       }
     }

@@ -672,7 +672,7 @@ const LocalRefresh = () => {
   // Simulation function for development/testing
   const simulateRefresh = () => {
     const steps = [
-      { step: "Connecting to SteamRIP...", duration: 1000 },
+      { step: "Connecting to game sources...", duration: 1000 },
       { step: "Fetching game list...", duration: 1500 },
       { step: "Processing game metadata...", duration: 2000 },
       { step: "Updating local index...", duration: 1500 },
@@ -912,7 +912,7 @@ const LocalRefresh = () => {
               </Card>
             )}
 
-            {/* Scrape from SteamRIP Card */}
+            {/* Scrape Game Data Card */}
             <Card className="p-5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -948,13 +948,13 @@ const LocalRefresh = () => {
                             : refreshStatus === "error" || uploadError
                               ? t("localRefresh.statusError") || "Failed"
                               : t("localRefresh.scrapeFromSteamRIP") ||
-                                "Scrape from SteamRIP"}
+                                "Build Game Index"}
                     </h3>
                     <p className="text-sm text-muted-foreground">
                       {uploadError ||
                         currentStep ||
                         t("localRefresh.scrapeFromSteamRIPDesc") ||
-                        "Build your own index by scraping game data directly"}
+                        "Refresh your game index to see the latest available games"}
                     </p>
                   </div>
                 </div>

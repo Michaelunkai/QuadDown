@@ -204,7 +204,7 @@ const RefreshIndexDialog = ({
                     </span>
                     <span className="block text-sm text-muted-foreground">
                       {t("refreshDialog.detectingDesc") ||
-                        "Checking if Cloudflare protection is active on SteamRIP"}
+                        "Checking if Cloudflare protection is active on game index"}
                     </span>
                   </div>
                 </div>
@@ -281,14 +281,14 @@ const RefreshIndexDialog = ({
                   <p>
                     {isCookieRefresh
                       ? t("refreshDialog.cookieRefreshDescription") ||
-                        "Open SteamRIP again and complete the Cloudflare verification to get a new cookie."
+                        "Open the game index site again and complete the Cloudflare verification to get a new cookie."
                       : t("refreshDialog.step1Description") ||
-                        "First, you need to open the SteamRIP posts link and complete Cloudflare's verification challenge."}
+                        "First, you need to open the game index posts link and complete Cloudflare's verification challenge."}
                   </p>
                   <div className="rounded-lg border bg-muted/50 p-4">
                     <p className="mb-3 text-sm font-medium text-foreground">
                       {t("refreshDialog.clickToOpen") ||
-                        "Click the button below to open SteamRIP:"}
+                        "Click the button below to open the game index:"}
                     </p>
                     <div className="flex items-center gap-2">
                       <Button
@@ -298,7 +298,7 @@ const RefreshIndexDialog = ({
                         onClick={handleOpenSteamRIP}
                       >
                         <ExternalLink className="h-4 w-4" />
-                        {t("refreshDialog.openSteamRIP") || "Open SteamRIP"}
+                        {t("refreshDialog.openSteamRIP") || "Open Game Index"}
                       </Button>
                       <Button
                         variant="outline"
