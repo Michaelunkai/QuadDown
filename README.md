@@ -1,19 +1,22 @@
 <div align="center">
     <img align="center" width="128" height="128" src="./src/public/icon.png" alt="QuadDown Logo">
     <h1>QuadDown</h1>
-    <p><em>The best way to test games before you buy them.</em></p>
+    <p><em>The ultimate game downloader and manager.</em></p>
+    
+## 📥 Download
+
+**[⬇️ Download Latest Release (Windows Installer)](https://github.com/Michaelunkai/QuadDown/releases/latest)**
+
     <p>
-        <a href="https://discord.gg/ap6W3xMTKW"><img src="https://img.shields.io/discord/939249162887766139?color=7289da&label=discord&logo=discord&logoColor=white" alt="Discord"></a>
-        <a href="https://github.com/tagoWorks/QuadDown/releases/latest"><img src="https://img.shields.io/github/v/release/tagoWorks/QuadDown?include_prereleases&label=latest%20release" alt="Latest Release"></a>
-         <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Flfs.QuadDown.app%2Fcount%2Fdownloads&query=downloads&style=flat&label=download%20count" alt="Download Count">
+        <a href="https://github.com/Michaelunkai/QuadDown/releases/latest"><img src="https://img.shields.io/github/v/release/Michaelunkai/QuadDown?include_prereleases&label=latest%20release" alt="Latest Release"></a>
+        <a href="https://github.com/Michaelunkai/QuadDown/releases"><img src="https://img.shields.io/github/downloads/Michaelunkai/QuadDown/total?label=downloads" alt="Download Count"></a>
         <a href="./LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC%201.0-green" alt="License"></a>
     </p>
     <p>
-        <a href="https://github.com/tagoWorks/QuadDown/issues"><img src="https://img.shields.io/github/issues-raw/tagoWorks/QuadDown" alt="Issues"></a>
-        <img src="https://img.shields.io/github/last-commit/tagoWorks/QuadDown" alt="Last Commit">
-        <img src="https://img.shields.io/github/actions/workflow/status/QuadDown/QuadDown/build.yml" alt="Build Status">
-        <a href="https://github.com/tagoWorks/QuadDown/network/members"><img src="https://img.shields.io/github/forks/tagoWorks/QuadDown?style=flat&logo=github&logoColor=white" alt="Forks"></a>
-        <a href="https://github.com/tagoWorks/QuadDown/stargazers"><img src="https://img.shields.io/github/stars/tagoWorks/QuadDown?style=social" alt="GitHub Stars"></a>
+        <a href="https://github.com/Michaelunkai/QuadDown/issues"><img src="https://img.shields.io/github/issues-raw/Michaelunkai/QuadDown" alt="Issues"></a>
+        <img src="https://img.shields.io/github/last-commit/Michaelunkai/QuadDown" alt="Last Commit">
+        <a href="https://github.com/Michaelunkai/QuadDown/network/members"><img src="https://img.shields.io/github/forks/Michaelunkai/QuadDown?style=flat&logo=github&logoColor=white" alt="Forks"></a>
+        <a href="https://github.com/Michaelunkai/QuadDown/stargazers"><img src="https://img.shields.io/github/stars/Michaelunkai/QuadDown?style=social" alt="GitHub Stars"></a>
     </p>
 </div>
 
