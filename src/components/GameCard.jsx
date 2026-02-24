@@ -666,19 +666,19 @@ const GameCard = memo(function GameCard({ game, compact }) {
               <p className="text-base leading-relaxed">
                 {
                   t("gameCard.verified.dialogDescription").split(
-                    "verified by the Ascendara community"
+                    "verified by the QuadDown community"
                   )[0]
                 }
                 <span className="font-semibold text-primary">
                   {
                     t("gameCard.verified.dialogDescription").match(
-                      /verified by the Ascendara community/
+                      /verified by the QuadDown community/
                     )?.[0]
                   }
                 </span>
                 {
                   t("gameCard.verified.dialogDescription").split(
-                    "verified by the Ascendara community"
+                    "verified by the QuadDown community"
                   )[1]
                 }
               </p>

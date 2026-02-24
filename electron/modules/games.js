@@ -64,7 +64,7 @@ async function createGameShortcut(game) {
       throw new Error(`Game executable not found: ${exePath}`);
     }
 
-    const handlerPath = path.join(appDirectory, "/resources/AscendaraGameHandler.exe");
+    const handlerPath = path.join(appDirectory, "/resources/QuadDownGameHandler.exe");
 
     if (!fs.existsSync(handlerPath)) {
       throw new Error(`Game handler not found at: ${handlerPath}`);
@@ -137,7 +137,7 @@ function registerGameHandlers() {
 
           const dirGames = await Promise.all(
             gameDirectories.map(async dir => {
-              const gameInfoPath = path.join(downloadDir, dir, `${dir}.ascendara.json`);
+              const gameInfoPath = path.join(downloadDir, dir, `${dir}.QuadDown.json`);
               try {
                 const gameInfoData = await fs.promises.readFile(gameInfoPath, "utf8");
                 return JSON.parse(gameInfoData);
@@ -186,7 +186,7 @@ function registerGameHandlers() {
           for (const ext of possibleExtensions) {
             const potentialPath = path.join(
               gamesDirectory,
-              `${game.game}.ascendara${ext}`
+              `${game.game}.QuadDown${ext}`
             );
             if (fs.existsSync(potentialPath)) {
               imagePath = potentialPath;
@@ -299,7 +299,7 @@ function registerGameHandlers() {
             const testGameDir = path.join(directory, sanitizedGame);
             const testGameInfoPath = path.join(
               testGameDir,
-              `${sanitizedGame}.ascendara.json`
+              `${sanitizedGame}.QuadDown.json`
             );
 
             if (fs.existsSync(testGameInfoPath)) {
@@ -365,12 +365,12 @@ function registerGameHandlers() {
         let handlerScript;
 
         if (isWindows) {
-          executablePath = path.join(appDirectory, "/resources/AscendaraGameHandler.exe");
+          executablePath = path.join(appDirectory, "/resources/QuadDownGameHandler.exe");
         } else if (isDev) {
           executablePath = getPythonPath();
-          handlerScript = "binaries/AscendaraGameHandler/src/AscendaraGameHandler.py";
+          handlerScript = "binaries/QuadDownGameHandler/src/QuadDownGameHandler.py";
         } else {
-          executablePath = path.join(process.resourcesPath, "AscendaraGameHandler");
+          executablePath = path.join(process.resourcesPath, "QuadDownGameHandler");
         }
 
         if (isWindows && !fs.existsSync(executablePath)) {
@@ -395,7 +395,7 @@ function registerGameHandlers() {
             if (!isCustom) {
               const gameInfoPath = path.join(
                 gameDirectory,
-                `${sanitizeText(game)}.ascendara.json`
+                `${sanitizeText(game)}.QuadDown.json`
               );
               if (fs.existsSync(gameInfoPath)) {
                 const gi = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
@@ -494,7 +494,7 @@ function registerGameHandlers() {
 
         // Create shortcut on first launch
         if (!isCustom) {
-          const gameInfoPath = path.join(gameDirectory, `${game}.ascendara.json`);
+          const gameInfoPath = path.join(gameDirectory, `${game}.QuadDown.json`);
           const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
           if (!gameInfo.hasBeenLaunched && settings.autoCreateShortcuts) {
             await createGameShortcut({ game, name: game, executable, custom: false });
@@ -548,7 +548,7 @@ function registerGameHandlers() {
       if (game === "local") {
         const timestampFilePath = path.join(
           process.env.USERPROFILE,
-          "timestamp.ascendara.json"
+          "timestamp.QuadDown.json"
         );
         fs.unlinkSync(timestampFilePath);
         return;
@@ -594,7 +594,7 @@ function registerGameHandlers() {
 
         const possibleExtensions = [".jpg", ".jpeg", ".png"];
         for (const ext of possibleExtensions) {
-          const imagePath = path.join(gamesDirectory, `${game}.ascendara${ext}`);
+          const imagePath = path.join(gamesDirectory, `${game}.QuadDown${ext}`);
           if (fs.existsSync(imagePath)) {
             fs.unlinkSync(imagePath);
             break;
@@ -614,13 +614,13 @@ function registerGameHandlers() {
     }
 
     if (game === "debuglog") {
-      shell.openPath(path.join(process.env.APPDATA, "Ascendara by tagoWorks"));
+      shell.openPath(path.join(process.env.APPDATA, "QuadDown by tagoWorks"));
       return;
     }
 
     if (game === "workshop") {
       shell.openPath(
-        path.join(os.homedir(), "ascendaraSteamcmd", "steamapps/workshop/content")
+        path.join(os.homedir(), "QuadDownSteamcmd", "steamapps/workshop/content")
       );
       return;
     }
@@ -670,8 +670,8 @@ function registerGameHandlers() {
 
     // Define search patterns
     const legacyPatterns = [
-      "header.ascendara.jpg",
-      "header.ascendara.png",
+      "header.QuadDown.jpg",
+      "header.QuadDown.png",
       "header.jpeg",
       "header.jpg",
       "header.png",
@@ -679,11 +679,11 @@ function registerGameHandlers() {
     let searchPatterns = [];
 
     if (type === "grid") {
-      searchPatterns = ["grid.ascendara.jpg", "grid.ascendara.png", ...legacyPatterns];
+      searchPatterns = ["grid.QuadDown.jpg", "grid.QuadDown.png", ...legacyPatterns];
     } else if (type === "hero") {
-      searchPatterns = ["hero.ascendara.jpg", "hero.ascendara.png", ...legacyPatterns];
+      searchPatterns = ["hero.QuadDown.jpg", "hero.QuadDown.png", ...legacyPatterns];
     } else if (type === "logo") {
-      searchPatterns = ["logo.ascendara.png", "logo.ascendara.jpg"];
+      searchPatterns = ["logo.QuadDown.png", "logo.QuadDown.jpg"];
     } else {
       searchPatterns = legacyPatterns;
     }
@@ -722,7 +722,7 @@ function registerGameHandlers() {
     // 3. Fallback: "games" folder (For custom images)
     const centralGamesDir = path.join(settings.downloadDirectory, "games");
     if (fs.existsSync(centralGamesDir)) {
-      const baseName = `${game}.ascendara`;
+      const baseName = `${game}.QuadDown`;
       const exts = [".jpg", ".png", ".jpeg"];
       for (const ext of exts) {
         const p = path.join(centralGamesDir, baseName + ext);
@@ -763,7 +763,7 @@ function registerGameHandlers() {
         ...(settings.additionalDirectories || []),
       ];
       for (const directory of allDirectories) {
-        const gameInfoPath = path.join(directory, game, `${game}.ascendara.json`);
+        const gameInfoPath = path.join(directory, game, `${game}.QuadDown.json`);
         if (fs.existsSync(gameInfoPath)) {
           const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
           return (
@@ -807,7 +807,7 @@ function registerGameHandlers() {
         ...(settings.additionalDirectories || []),
       ];
       for (const directory of allDirectories) {
-        const gameInfoPath = path.join(directory, game, `${game}.ascendara.json`);
+        const gameInfoPath = path.join(directory, game, `${game}.QuadDown.json`);
         if (fs.existsSync(gameInfoPath)) {
           const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
           gameInfo.executable = executables[0];
@@ -848,7 +848,7 @@ function registerGameHandlers() {
         const gameInfoPath = path.join(
           directory,
           sanitizedGame,
-          `${sanitizedGame}.ascendara.json`
+          `${sanitizedGame}.QuadDown.json`
         );
         if (fs.existsSync(gameInfoPath)) {
           const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
@@ -889,7 +889,7 @@ function registerGameHandlers() {
         const gameInfoPath = path.join(
           directory,
           sanitizedGame,
-          `${sanitizedGame}.ascendara.json`
+          `${sanitizedGame}.QuadDown.json`
         );
         if (fs.existsSync(gameInfoPath)) {
           const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
@@ -1021,14 +1021,14 @@ function registerGameHandlers() {
         let testPath = path.join(
           directory,
           sanitizedGame,
-          `${sanitizedGame}.ascendara.json`
+          `${sanitizedGame}.QuadDown.json`
         );
         if (fs.existsSync(testPath)) {
           gameInfoPath = testPath;
           break;
         }
         // Also try with original name (in case folder name wasn't sanitized)
-        testPath = path.join(directory, gameName, `${gameName}.ascendara.json`);
+        testPath = path.join(directory, gameName, `${gameName}.QuadDown.json`);
         if (fs.existsSync(testPath)) {
           gameInfoPath = testPath;
           break;

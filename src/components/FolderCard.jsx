@@ -224,7 +224,7 @@ const FolderCard = ({ name, onClick, className, refreshKey }) => {
               deleteFolder(name);
               setShowDeleteDialog(false);
               // Optionally trigger a refresh (emit event or callback)
-              window.dispatchEvent(new CustomEvent("ascendara:folders-updated"));
+              window.dispatchEvent(new CustomEvent("QuadDown:folders-updated"));
             }}
           >
             {t("library.removeFolder")}

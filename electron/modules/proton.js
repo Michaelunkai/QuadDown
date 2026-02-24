@@ -111,7 +111,7 @@ async function detectInstalledProtons() {
     }
   }
 
-  // 2. Scan custom runners directory (~/.ascendara/runners/)
+  // 2. Scan custom runners directory (~/.QuadDown/runners/)
   if (fs.existsSync(linuxRunnersDir)) {
     try {
       const dirs = await fs.readdir(linuxRunnersDir, { withFileTypes: true });
@@ -198,7 +198,7 @@ async function getProtonGEInfo() {
   try {
     const releaseRes = await fetch(
       "https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest",
-      { headers: { "User-Agent": "Ascendara-Launcher" } }
+      { headers: { "User-Agent": "QuadDown-Launcher" } }
     );
 
     if (!releaseRes.ok) {
@@ -764,7 +764,7 @@ function registerProtonHandlers() {
 
   // Set per-game runner override
   ipcMain.handle("set-game-runner", async (_, gameName, runnerPath) => {
-    // This will be stored in the game's .ascendara.json
+    // This will be stored in the game's .QuadDown.json
     // The actual modification is done in games.js when reading the game config
     return { success: true, runnerPath };
   });

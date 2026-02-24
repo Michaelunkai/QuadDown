@@ -14,7 +14,7 @@ const SupportDialog = ({ onClose }) => {
     const fetchToken = async () => {
       try {
         const AUTHORIZATION = await window.electron.getAPIKey();
-        const response = await fetch("https://api.ascendara.app/auth/token", {
+        const response = await fetch("https://api.QuadDown.app/auth/token", {
           headers: {
             Authorization: AUTHORIZATION,
           },
@@ -50,7 +50,7 @@ const SupportDialog = ({ onClose }) => {
       }
 
       // Send the rating to the API
-      fetch("https://api.ascendara.app/app/rate", {
+      fetch("https://api.QuadDown.app/app/rate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,11 +71,11 @@ const SupportDialog = ({ onClose }) => {
   };
 
   const handleDonate = () => {
-    window.electron.openURL("https://ascendara.app/donate");
+    window.electron.openURL("https://QuadDown.app/donate");
   };
 
   const handleFeedback = () => {
-    window.electron.openURL("https://ascendara.app/feedback");
+    window.electron.openURL("https://QuadDown.app/feedback");
   };
 
   return (
@@ -150,7 +150,7 @@ const SupportDialog = ({ onClose }) => {
               <p className="px-8 italic">{t("app.supportDialog.note")}</p>
               <div className="flex justify-center">
                 <img
-                  src="https://cdn.ascendara.app/files/signature.svg"
+                  src="https://cdn.QuadDown.app/files/signature.svg"
                   className="w-28"
                   alt="Santiago Signature"
                 />

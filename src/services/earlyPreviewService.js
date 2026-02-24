@@ -1,7 +1,7 @@
 const getToken = async () => {
   try {
     const AUTHORIZATION = await window.electron.getAPIKey();
-    const response = await fetch("https://api.ascendara.app/auth/token", {
+    const response = await fetch("https://api.QuadDown.app/auth/token", {
       headers: {
         Authorization: AUTHORIZATION,
       },
@@ -22,7 +22,7 @@ const getToken = async () => {
 const fetchEarlyChanges = async () => {
   try {
     const token = await getToken();
-    const response = await fetch("https://api.ascendara.app/app/earlychanges/read", {
+    const response = await fetch("https://api.QuadDown.app/app/earlychanges/read", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -34,7 +34,7 @@ const fetchEarlyChanges = async () => {
       // If token expired, try once with a new token
       const newToken = await getToken();
       const retryResponse = await fetch(
-        "https://api.ascendara.app/app/earlychanges/read",
+        "https://api.QuadDown.app/app/earlychanges/read",
         {
           headers: {
             Authorization: `Bearer ${newToken}`,
@@ -65,7 +65,7 @@ const voteForFeature = async (featureId, voteType) => {
       }
 
       const token = await getToken();
-      const response = await fetch("https://api.ascendara.app/app/earlychanges/vote", {
+      const response = await fetch("https://api.QuadDown.app/app/earlychanges/vote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const voteForFeature = async (featureId, voteType) => {
         // If token expired, try once with a new token
         const newToken = await getToken();
         const retryResponse = await fetch(
-          "https://api.ascendara.app/app/earlychanges/vote",
+          "https://api.QuadDown.app/app/earlychanges/vote",
           {
             method: "POST",
             headers: {

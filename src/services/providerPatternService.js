@@ -1,4 +1,4 @@
-const PROVIDER_API_URL = "https://api.ascendara.app/app/json/providers";
+const PROVIDER_API_URL = "https://api.QuadDown.app/app/json/providers";
 
 /**
  * Fetches provider regex patterns from the API.

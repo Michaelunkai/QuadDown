@@ -83,7 +83,7 @@ const themes = [
   // Light themes
   { id: "light", name: "Arctic Sky", group: "light" },
   { id: "blue", name: "Ocean Blue", group: "light" },
-  { id: "purple", name: "Ascendara Purple", group: "light" },
+  { id: "purple", name: "QuadDown Purple", group: "light" },
   { id: "emerald", name: "Emerald", group: "light" },
   { id: "rose", name: "Rose", group: "light" },
   { id: "amber", name: "Amber Sand", group: "light" },
@@ -874,7 +874,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                   <p>{t("welcome.optOutOfSharing")}</p>
                   <div className="rounded-lg bg-card/30 p-4">
                     <p className="text-sm text-muted-foreground">
-                      {t("welcome.ascendaraNeverCollects")}
+                      {t("welcome.QuadDownNeverCollects")}
                     </p>
                   </div>
                 </div>
@@ -929,7 +929,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
               </span>
               <div className="relative inline-flex items-center">
                 <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
-                  Ascendara&nbsp;
+                  QuadDown&nbsp;
                 </span>
                 <span className="relative">
                   <span className="inline-block animate-shine bg-[linear-gradient(110deg,var(--shine-from),45%,var(--shine-via),55%,var(--shine-to))] bg-[length:200%_100%] bg-clip-text text-transparent">
@@ -1112,7 +1112,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                     </span>
                     <span className="relative">
                       <span className="inline-block animate-shine bg-[linear-gradient(110deg,var(--shine-from),45%,var(--shine-via),55%,var(--shine-to))] bg-[length:200%_100%] bg-clip-text text-transparent">
-                        {t("welcome.ascendara")}
+                        {t("welcome.QuadDown")}
                       </span>
                     </span>
                   </div>
@@ -1122,7 +1122,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                 className="mb-12 max-w-4xl text-xl text-foreground/80"
                 variants={itemVariants}
               >
-                {t("welcome.welcomeToAscendaraDescription")}
+                {t("welcome.welcomeToQuadDownDescription")}
               </motion.p>
 
               <motion.div className="mb-12 max-w-xl space-y-6" variants={itemVariants}>
@@ -1132,7 +1132,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                     onClick={e => {
                       if (e.target.closest("button")) return;
                       if (!termsLinkVisited) {
-                        window.electron.openURL("https://ascendara.app/terms");
+                        window.electron.openURL("https://QuadDown.app/terms");
                         setTermsLinkVisited(true);
                         return;
                       }
@@ -1155,7 +1155,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                         onClick={e => {
                           e.preventDefault();
                           setTermsLinkVisited(true);
-                          window.electron.openURL("https://ascendara.app/terms");
+                          window.electron.openURL("https://QuadDown.app/terms");
                         }}
                         className="inline text-primary hover:underline"
                       >
@@ -1169,7 +1169,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                     onClick={e => {
                       if (e.target.closest("button")) return;
                       if (!privacyLinkVisited) {
-                        window.electron.openURL("https://ascendara.app/privacy");
+                        window.electron.openURL("https://QuadDown.app/privacy");
                         setPrivacyLinkVisited(true);
                         return;
                       }
@@ -1192,7 +1192,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                         onClick={e => {
                           e.preventDefault();
                           setPrivacyLinkVisited(true);
-                          window.electron.openURL("https://ascendara.app/privacy");
+                          window.electron.openURL("https://QuadDown.app/privacy");
                         }}
                         className="inline text-primary hover:underline"
                       >
@@ -1566,7 +1566,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                       type="text"
                       placeholder={
                         t("welcome.referral.linkPlaceholder") ||
-                        "Where did you find Ascendara? (optional)"
+                        "Where did you find QuadDown? (optional)"
                       }
                       className={`w-full ${referralLinkError ? "border-red-500" : ""}`}
                       value={referralLink}
@@ -1614,7 +1614,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                       try {
                         const AUTHORIZATION = await window.electron.getAPIKey();
                         const tokenResponse = await fetch(
-                          "https://api.ascendara.app/auth/token",
+                          "https://api.QuadDown.app/auth/token",
                           {
                             headers: {
                               Authorization: AUTHORIZATION,
@@ -1628,7 +1628,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                           if (referralLink) {
                             payload.link = referralLink;
                           }
-                          await fetch("https://api.ascendara.app/app/downloadedfrom", {
+                          await fetch("https://api.QuadDown.app/app/downloadedfrom", {
                             method: "POST",
                             headers: {
                               "Content-Type": "application/json",
@@ -1748,7 +1748,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                 className="mb-8 max-w-2xl text-xl text-foreground/80"
                 variants={itemVariants}
               >
-                {t("welcome.getTheAscendaraDownloadHandlerExtension")}
+                {t("welcome.getTheQuadDownDownloadHandlerExtension")}
               </motion.p>
 
               <motion.div
@@ -1785,7 +1785,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                 <Button
                   size="lg"
                   onClick={() =>
-                    window.electron.openURL("https://ascendara.app/extension")
+                    window.electron.openURL("https://QuadDown.app/extension")
                   }
                   className="bg-primary px-8 py-6 text-lg font-semibold text-secondary hover:bg-primary/90"
                 >
@@ -1963,11 +1963,11 @@ const Welcome = ({ welcomeData, onComplete }) => {
                 className="max-w-2xl text-sm text-muted-foreground"
                 variants={itemVariants}
               >
-                {t("welcome.ascendaraNeverCollectsPersonalInfo")}&nbsp;
+                {t("welcome.QuadDownNeverCollectsPersonalInfo")}&nbsp;
                 <span
                   className="cursor-pointer text-primary hover:underline"
                   onClick={() =>
-                    window.electron.openURL("https://ascendara.app/analytics")
+                    window.electron.openURL("https://QuadDown.app/analytics")
                   }
                 >
                   {t("common.learnMore")}{" "}
@@ -2048,7 +2048,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
                     </h3>
                   </div>
                   <p className="mb-6 text-left text-muted-foreground">
-                    {t("welcome.chooseWhenToUpdateAscendaraYourself")}
+                    {t("welcome.chooseWhenToUpdateQuadDownYourself")}
                   </p>
                   <Button
                     variant="outline"
@@ -2608,7 +2608,7 @@ const Welcome = ({ welcomeData, onComplete }) => {
               </p>
               <p className="text-muted-foreground">
                 {t("welcome.protonGEDialog.description")}{" "}
-                <code className="rounded bg-muted px-1">~/.ascendara/runners/</code>
+                <code className="rounded bg-muted px-1">~/.QuadDown/runners/</code>
               </p>
             </div>
             <div className="flex justify-end gap-3 pt-2">

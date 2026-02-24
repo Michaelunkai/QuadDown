@@ -1,10 +1,10 @@
 # ==============================================================================
-# Ascendara Game Handler
+# QuadDown Game Handler
 # ==============================================================================
-# Game process manager for the Ascendara Game Launcher. Handles game execution,
+# Game process manager for the QuadDown Game Launcher. Handles game execution,
 # process monitoring, and Discord Rich Presence integration.
 # Read more about the Game Handler here:
-# https://ascendara.app/docs/binary-tool/game-handler
+# https://QuadDown.app/docs/binary-tool/game-handler
 
 
 
@@ -33,16 +33,16 @@ import shutil
 import re
 
 if sys.platform == 'darwin':
-    ascendara_dir = os.path.join(os.path.expanduser('~/Library/Application Support'), 'ascendara')
+    QuadDown_dir = os.path.join(os.path.expanduser('~/Library/Application Support'), 'QuadDown')
 elif sys.platform == 'linux':
-    ascendara_dir = os.path.join(os.path.expanduser('~/.ascendara'))
+    QuadDown_dir = os.path.join(os.path.expanduser('~/.QuadDown'))
 else:
-    ascendara_dir = os.path.join(os.environ.get('APPDATA', ''), 'Ascendara by tagoWorks')
+    QuadDown_dir = os.path.join(os.environ.get('APPDATA', ''), 'QuadDown by tagoWorks')
 
-log_file_path = os.path.join(ascendara_dir, 'gamehandler.log')
+log_file_path = os.path.join(QuadDown_dir, 'gamehandler.log')
 
 # Ensure the log directory exists
-os.makedirs(ascendara_dir, exist_ok=True)
+os.makedirs(QuadDown_dir, exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -188,7 +188,7 @@ def launch_with_wine_isolated(exe_path, linux_config, game_launch_cmd=None):
 def _launch_crash_reporter_on_exit(error_code, error_message):
     logging.info(f"[ENTRY] _launch_crash_reporter_on_exit(error_code={error_code}, error_message={error_message})")
     try:
-        crash_reporter_path = os.path.join('./AscendaraCrashReporter.exe')
+        crash_reporter_path = os.path.join('./QuadDownCrashReporter.exe')
         logging.info(f"Attempting to launch crash reporter with error code {error_code}")
         if os.path.exists(crash_reporter_path):
             kwargs = {"creationflags": subprocess.CREATE_NO_WINDOW} if sys.platform == "win32" else {}
@@ -240,9 +240,9 @@ def update_discord_presence(rpc, game_name):
                 details="Playing a Game",
                 state=game_name,
                 start=int(time.time()),
-                large_image="ascendara",
-                large_text="Ascendara",
-                buttons=[{"label": "Play on Ascendara", "url": "https://ascendara.app/"}]
+                large_image="QuadDown",
+                large_text="QuadDown",
+                buttons=[{"label": "Play on QuadDown", "url": "https://QuadDown.app/"}]
             )
             logging.debug("Discord presence updated successfully")
             logging.info("[EXIT] update_discord_presence() - Success")
@@ -338,11 +338,11 @@ def get_ludusavi_settings():
     logging.info("[ENTRY] get_ludusavi_settings()")
     try:
         if sys.platform == 'darwin':
-            settings_path = os.path.join(os.path.expanduser('~/Library/Application Support'), 'ascendara', 'ascendarasettings.json')
+            settings_path = os.path.join(os.path.expanduser('~/Library/Application Support'), 'QuadDown', 'QuadDownsettings.json')
         elif sys.platform == 'linux':
-            settings_path = os.path.join(os.path.expanduser('~/.ascendara'), 'ascendarasettings.json')
+            settings_path = os.path.join(os.path.expanduser('~/.QuadDown'), 'QuadDownsettings.json')
         else:
-            settings_path = os.path.join(os.environ.get('APPDATA', ''), 'ascendara', 'ascendarasettings.json')
+            settings_path = os.path.join(os.environ.get('APPDATA', ''), 'QuadDown', 'QuadDownsettings.json')
         logging.debug(f"Checking Ludusavi settings at: {settings_path}")
         if os.path.exists(settings_path):
             with open(settings_path, 'r') as f:
@@ -430,25 +430,25 @@ def execute(game_path, is_custom_game, admin, is_shortcut=False, use_ludusavi=Fa
     game_entry = None
     game_name = None
     if sys.platform == 'darwin':
-        settings_file = os.path.join(os.path.expanduser('~/Library/Application Support'), 'ascendara', 'ascendarasettings.json')
+        settings_file = os.path.join(os.path.expanduser('~/Library/Application Support'), 'QuadDown', 'QuadDownsettings.json')
     elif sys.platform == 'linux':
-        settings_file = os.path.join(os.path.expanduser('~/.ascendara'), 'ascendarasettings.json')
+        settings_file = os.path.join(os.path.expanduser('~/.QuadDown'), 'QuadDownsettings.json')
     else:
-        settings_file = os.path.join(os.environ.get('APPDATA', ''), 'ascendara', 'ascendarasettings.json')
+        settings_file = os.path.join(os.environ.get('APPDATA', ''), 'QuadDown', 'QuadDownsettings.json')
     logging.debug(f"Initial settings_file path: {settings_file}")
 
     if not is_custom_game:
         game_dir, exe_name = os.path.split(game_path)
         exe_path = os.path.join(game_dir, exe_name)
         
-        # First, try to find the game's root directory by looking for the .ascendara.json file
+        # First, try to find the game's root directory by looking for the .QuadDown.json file
         # Start from the executable's directory and move up until we find it
         current_dir = game_dir
         found_json = False
         
         while current_dir and os.path.dirname(current_dir) != current_dir:
             dir_name = os.path.basename(current_dir)
-            potential_json = os.path.join(current_dir, f"{dir_name}.ascendara.json")
+            potential_json = os.path.join(current_dir, f"{dir_name}.QuadDown.json")
             
             if os.path.exists(potential_json):
                 json_file_path = potential_json
@@ -459,7 +459,7 @@ def execute(game_path, is_custom_game, admin, is_shortcut=False, use_ludusavi=Fa
             # Also check for a JSON file with the same name as the parent directory
             parent_dir = os.path.dirname(current_dir)
             parent_name = os.path.basename(parent_dir)
-            potential_parent_json = os.path.join(parent_dir, f"{parent_name}.ascendara.json")
+            potential_parent_json = os.path.join(parent_dir, f"{parent_name}.QuadDown.json")
             
             if os.path.exists(potential_parent_json):
                 json_file_path = potential_parent_json
@@ -473,26 +473,26 @@ def execute(game_path, is_custom_game, admin, is_shortcut=False, use_ludusavi=Fa
         # If we couldn't find the JSON file, fall back to the original behavior
         if not found_json:
             game_name = os.path.basename(game_dir)
-            json_file_path = os.path.join(game_dir, f"{game_name}.ascendara.json")
+            json_file_path = os.path.join(game_dir, f"{game_name}.QuadDown.json")
             
             if not os.path.exists(json_file_path):
                 parent_dir = os.path.dirname(game_dir)
                 parent_name = os.path.basename(parent_dir)
-                json_file_path = os.path.join(parent_dir, f"{parent_name}.ascendara.json")
+                json_file_path = os.path.join(parent_dir, f"{parent_name}.QuadDown.json")
     else:
         exe_path = game_path
         if sys.platform == 'darwin':
-            user_data_dir = os.path.join(os.path.expanduser('~/Library/Application Support'), 'ascendara')
+            user_data_dir = os.path.join(os.path.expanduser('~/Library/Application Support'), 'QuadDown')
         elif sys.platform == 'linux':
-            user_data_dir = os.path.join(os.path.expanduser('~/.ascendara'))
+            user_data_dir = os.path.join(os.path.expanduser('~/.QuadDown'))
         else:
-            user_data_dir = os.path.join(os.environ.get('APPDATA', ''), 'ascendara')
-        settings_file = os.path.join(user_data_dir, 'ascendarasettings.json')
+            user_data_dir = os.path.join(os.environ.get('APPDATA', ''), 'QuadDown')
+        settings_file = os.path.join(user_data_dir, 'QuadDownsettings.json')
         with open(settings_file, 'r', encoding='utf-8') as f:
             settings = json.load(f)
         download_dir = settings.get('downloadDirectory')
         if not download_dir:
-            logging.error('Download directory not found in ascendarasettings.json')
+            logging.error('Download directory not found in QuadDownsettings.json')
             logging.info("[EXIT] execute due to missing download_dir for custom game")
             return
         games_json_path = os.path.join(download_dir, 'games.json')
@@ -609,7 +609,7 @@ def execute(game_path, is_custom_game, admin, is_shortcut=False, use_ludusavi=Fa
             wine_bin = shutil.which("wine")
             if wine_bin:
                 fallback_compat = os.path.join(
-                    os.path.expanduser("~/.ascendara/compatdata"),
+                    os.path.expanduser("~/.QuadDown/compatdata"),
                     sanitize_game_slug(game_name or "unknown")
                 )
                 os.makedirs(fallback_compat, exist_ok=True)
@@ -722,14 +722,14 @@ def execute(game_path, is_custom_game, admin, is_shortcut=False, use_ludusavi=Fa
         # Launch trainer if requested
         trainer_process = None
         if launch_trainer:
-            # For non-custom games, use the game root directory (where .ascendara.json is)
+            # For non-custom games, use the game root directory (where .QuadDown.json is)
             # For custom games, use the executable's directory
             if not is_custom_game and json_file_path:
                 trainer_dir = os.path.dirname(json_file_path)
             else:
                 trainer_dir = os.path.dirname(exe_path)
             
-            trainer_path = os.path.join(trainer_dir, "ascendaraFlingTrainer.exe")
+            trainer_path = os.path.join(trainer_dir, "QuadDownFlingTrainer.exe")
             if os.path.exists(trainer_path):
                 try:
                     logging.info(f"Launching trainer: {trainer_path}")
@@ -902,11 +902,11 @@ if __name__ == "__main__":
         )
         print("[DEBUG] Logging configured.")
         
-        logging.info("=== Ascendara Game Handler Started ===")
+        logging.info("=== QuadDown Game Handler Started ===")
         logging.info(f"Arguments received: {args}")
         
         if len(args) < 2:
-            error_msg = "Error: Not enough arguments\nUsage: AscendaraGameHandler.exe [game_path] [is_custom_game] [admin] [--shortcut] [--ludusavi] [--trainer] [--gameLaunchCmd \"command\"]"
+            error_msg = "Error: Not enough arguments\nUsage: QuadDownGameHandler.exe [game_path] [is_custom_game] [admin] [--shortcut] [--ludusavi] [--trainer] [--gameLaunchCmd \"command\"]"
             logging.error(error_msg)
             print(error_msg)
             sys.exit(1)

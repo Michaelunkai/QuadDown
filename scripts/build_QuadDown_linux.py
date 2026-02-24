@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# This script is used to build Ascendara for Linux distribution as AppImage
+# This script is used to build QuadDown for Linux distribution as AppImage
 
 import os
 import subprocess
@@ -37,28 +37,28 @@ def check_dependencies():
     return True
 
 def build_achievement_watcher():
-    """Build the AscendaraAchievementWatcher for Linux"""
-    print("Building AscendaraAchievementWatcher...")
+    """Build the QuadDownAchievementWatcher for Linux"""
+    print("Building QuadDownAchievementWatcher...")
     
-    achievement_watcher_dir = os.path.join('binaries', 'AscendaraAchievementWatcher')
+    achievement_watcher_dir = os.path.join('binaries', 'QuadDownAchievementWatcher')
     if not os.path.exists(achievement_watcher_dir):
-        print("Warning: AscendaraAchievementWatcher directory not found, skipping...")
+        print("Warning: QuadDownAchievementWatcher directory not found, skipping...")
         return True
     
     # Check if package.json exists, if not create it
     package_json_path = os.path.join(achievement_watcher_dir, 'package.json')
     if not os.path.exists(package_json_path):
-        print("Creating package.json for AscendaraAchievementWatcher...")
+        print("Creating package.json for QuadDownAchievementWatcher...")
         package_json_content = """{
-  "name": "ascendara-achievement-watcher",
+  "name": "QuadDown-achievement-watcher",
   "version": "1.0.0",
-  "description": "Achievement watcher for Ascendara",
+  "description": "Achievement watcher for QuadDown",
   "main": "src/monitor.js",
   "scripts": {
     "start": "node src/monitor.js",
-    "build-linux": "pkg src/monitor.js --target node18-linux-x64 --output dist/AscendaraAchievementWatcher",
-    "build-win": "pkg src/monitor.js --target node18-win-x64 --output dist/AscendaraAchievementWatcher.exe",
-    "build-mac": "pkg src/monitor.js --target node18-macos-x64 --output dist/AscendaraAchievementWatcher"
+    "build-linux": "pkg src/monitor.js --target node18-linux-x64 --output dist/QuadDownAchievementWatcher",
+    "build-win": "pkg src/monitor.js --target node18-win-x64 --output dist/QuadDownAchievementWatcher.exe",
+    "build-mac": "pkg src/monitor.js --target node18-macos-x64 --output dist/QuadDownAchievementWatcher"
   },
   "dependencies": {
     "find-up": "^4.1.0",
@@ -89,15 +89,15 @@ def build_achievement_watcher():
     
     # Install dependencies
     if not run_command(['yarn', 'install'], cwd=achievement_watcher_dir):
-        print("Failed to install AscendaraAchievementWatcher dependencies")
+        print("Failed to install QuadDownAchievementWatcher dependencies")
         return False
     
     # Build for Linux
     if not run_command(['yarn', 'build-linux'], cwd=achievement_watcher_dir):
-        print("Failed to build AscendaraAchievementWatcher for Linux")
+        print("Failed to build QuadDownAchievementWatcher for Linux")
         return False
     
-    print("AscendaraAchievementWatcher built successfully")
+    print("QuadDownAchievementWatcher built successfully")
     return True
 
 def build_python_binaries_linux():
@@ -135,14 +135,14 @@ def build_python_binaries_linux():
 
     # Map: (output name, script path relative to binaries_dir, extra PyInstaller args)
     binaries = [
-        ('AscendaraDownloader',         'AscendaraDownloader/src/AscendaraDownloader.py',         []),
-        ('AscendaraGofileHelper',        'AscendaraDownloader/src/AscendaraGofileHelper.py',        []),
-        ('AscendaraGameHandler',         'AscendaraGameHandler/src/AscendaraGameHandler.py',        []),
-        ('AscendaraCrashReporter',       'AscendaraCrashReporter/src/AscendaraCrashReporter.py',    ['--windowed']),
-        ('AscendaraLanguageTranslation', 'AscendaraLanguageTranslation/src/AscendaraLanguageTranslation.py', []),
-        ('AscendaraLocalRefresh',        'AscendaraLocalRefresh/src/AscendaraLocalRefresh.py',      []),
-        ('AscendaraTorrentHandler',      'AscendaraTorrentHandler/src/AscendaraTorrentHandler.py',  []),
-        ('AscendaraNotificationHelper',  'AscendaraNotificationHelper/src/AscendaraNotificationHelper.py', ['--windowed']),
+        ('QuadDownDownloader',         'QuadDownDownloader/src/QuadDownDownloader.py',         []),
+        ('QuadDownGofileHelper',        'QuadDownDownloader/src/QuadDownGofileHelper.py',        []),
+        ('QuadDownGameHandler',         'QuadDownGameHandler/src/QuadDownGameHandler.py',        []),
+        ('QuadDownCrashReporter',       'QuadDownCrashReporter/src/QuadDownCrashReporter.py',    ['--windowed']),
+        ('QuadDownLanguageTranslation', 'QuadDownLanguageTranslation/src/QuadDownLanguageTranslation.py', []),
+        ('QuadDownLocalRefresh',        'QuadDownLocalRefresh/src/QuadDownLocalRefresh.py',      []),
+        ('QuadDownTorrentHandler',      'QuadDownTorrentHandler/src/QuadDownTorrentHandler.py',  []),
+        ('QuadDownNotificationHelper',  'QuadDownNotificationHelper/src/QuadDownNotificationHelper.py', ['--windowed']),
     ]
 
     for binary_name, rel_script, extra_args in binaries:
@@ -261,12 +261,12 @@ def move_files():
         print("Copied assets directory to electron directory")
 
         # Copy icon.png for Linux window/tray icon
-        icon_src = os.path.join('readme', 'logo', 'png', 'ascendara_512x.png')
+        icon_src = os.path.join('readme', 'logo', 'png', 'QuadDown_512x.png')
         if os.path.exists(icon_src):
             shutil.copy(icon_src, os.path.join('electron', 'icon.png'))
             print("Copied icon.png to electron directory")
         else:
-            print("Warning: ascendara_512x.png not found, skipping icon copy")
+            print("Warning: QuadDown_512x.png not found, skipping icon copy")
 
         return True
     except Exception as e:
@@ -345,12 +345,12 @@ def create_tar_archive():
         return False
     
     version = get_app_version() or 'unknown'
-    archive_name = f'dist/Ascendara-{version}-linux-x64.tar.gz'
+    archive_name = f'dist/QuadDown-{version}-linux-x64.tar.gz'
     
     try:
         import tarfile
         with tarfile.open(archive_name, 'w:gz') as tar:
-            tar.add(unpacked_dir, arcname='Ascendara')
+            tar.add(unpacked_dir, arcname='QuadDown')
         print(f"Created archive: {archive_name}")
         return True
     except Exception as e:
@@ -370,7 +370,7 @@ def get_app_version():
 
 def main():
     """Main build process for Linux AppImage"""
-    print("Starting Ascendara Linux AppImage build process...")
+    print("Starting QuadDown Linux AppImage build process...")
     
     # Check if we're on Linux
     if os.name != 'posix':
@@ -386,9 +386,9 @@ def main():
         print("Failed to clean up build artifacts. Exiting.")
         return 1
     
-    # Step 3: Build AscendaraAchievementWatcher for Linux
+    # Step 3: Build QuadDownAchievementWatcher for Linux
     if not build_achievement_watcher():
-        print("Failed to build AscendaraAchievementWatcher. Exiting.")
+        print("Failed to build QuadDownAchievementWatcher. Exiting.")
         return 1
 
     # Step 4: Compile Python binaries to standalone ELF executables
@@ -431,8 +431,8 @@ def main():
     
     # Check what was created
     version = get_app_version() or 'unknown'
-    appimage_path = f'dist/Ascendara-{version}.AppImage'
-    tar_path = f'dist/Ascendara-{version}-linux-x64.tar.gz'
+    appimage_path = f'dist/QuadDown-{version}.AppImage'
+    tar_path = f'dist/QuadDown-{version}-linux-x64.tar.gz'
     if os.path.exists(appimage_path):
         print(f"✅ AppImage created: {appimage_path}")
     elif os.path.exists('dist/linux-unpacked'):

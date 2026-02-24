@@ -1,6 +1,6 @@
-# Building Ascendara for Linux (AppImage)
+# Building QuadDown for Linux (AppImage)
 
-This guide explains how to build Ascendara as an AppImage for Linux distribution.
+This guide explains how to build QuadDown as an AppImage for Linux distribution.
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ yarn dist-linux
 This will:
 
 1. ✅ Check dependencies (yarn, python3)
-2. ✅ Build the AscendaraAchievementWatcher Node.js binary for Linux
+2. ✅ Build the QuadDownAchievementWatcher Node.js binary for Linux
 3. ✅ Copy all Linux Python scripts to debian directories
 4. ✅ Build the React application with environment variables
 5. ✅ Package everything into an AppImage
@@ -29,7 +29,7 @@ This will:
 
 The build process creates several Linux-specific components:
 
-### AscendaraAchievementWatcher
+### QuadDownAchievementWatcher
 
 - Node.js application packaged as a standalone Linux binary
 - Uses `pkg` to create a self-contained executable
@@ -37,7 +37,7 @@ The build process creates several Linux-specific components:
 
 ### Linux Python Scripts
 
-- All Ascendara helper binaries as Python scripts
+- All QuadDown helper binaries as Python scripts
 - Copied to debian directories for Linux compatibility
 - Includes: Downloader, GameHandler, CrashReporter, etc.
 
@@ -57,16 +57,16 @@ If you prefer to run the build steps manually:
 # Install main project dependencies
 yarn install
 
-# Install AscendaraAchievementWatcher dependencies
-cd binaries/AscendaraAchievementWatcher
+# Install QuadDownAchievementWatcher dependencies
+cd binaries/QuadDownAchievementWatcher
 yarn install
 cd ../..
 ```
 
-### 2. Build AscendaraAchievementWatcher for Linux
+### 2. Build QuadDownAchievementWatcher for Linux
 
 ```bash
-cd binaries/AscendaraAchievementWatcher
+cd binaries/QuadDownAchievementWatcher
 yarn build-linux
 cd ../..
 ```
@@ -93,9 +93,9 @@ yarn electron-builder --linux --config.extraMetadata.main=electron/app.js
 
 The build will create one or more of the following:
 
-- `dist/Ascendara-9.6.3.AppImage` - Main AppImage file
+- `dist/QuadDown-9.6.3.AppImage` - Main AppImage file
 - `dist/linux-unpacked/` - Unpacked Linux application (fallback)
-- `dist/Ascendara-9.6.3-linux-x64.tar.gz` - Compressed archive (fallback)
+- `dist/QuadDown-9.6.3-linux-x64.tar.gz` - Compressed archive (fallback)
 
 ## Troubleshooting
 
@@ -141,12 +141,12 @@ The build script includes automatic fallbacks:
 1. Make the AppImage executable:
 
    ```bash
-   chmod +x dist/Ascendara-*.AppImage
+   chmod +x dist/QuadDown-*.AppImage
    ```
 
 2. Run the AppImage:
    ```bash
-   ./dist/Ascendara-*.AppImage
+   ./dist/QuadDown-*.AppImage
    ```
 
 ## Environment Variables
@@ -159,8 +159,8 @@ Make sure your `.env` file contains all necessary environment variables:
 
 ## Notes
 
-- The Linux build includes Python scripts for all Ascendara binaries except AscendaraAchievementWatcher
-- AscendaraAchievementWatcher is built as a standalone Node.js binary using `pkg`
+- The Linux build includes Python scripts for all QuadDown binaries except QuadDownAchievementWatcher
+- QuadDownAchievementWatcher is built as a standalone Node.js binary using `pkg`
 - The AppImage is self-contained and should work on most Linux distributions
 - The build process automatically handles asset path corrections for the Electron app
 - Fallback mechanisms ensure you get a working Linux build even with limited disk space

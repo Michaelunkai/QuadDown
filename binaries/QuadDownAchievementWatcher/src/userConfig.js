@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs").promises;
 
 /**
- * Loads the user settings from Ascendara's settings file.
+ * Loads the user settings from QuadDown's settings file.
  * @returns {Promise<Object>} Parsed settings object, or {} on error.
  */
 async function getSettings() {
@@ -10,7 +10,7 @@ async function getSettings() {
     const appData =
       process.env.APPDATA ||
       path.join(process.env.HOME || require("os").homedir(), ".config");
-    const settingsPath = path.join(appData, "ascendara", "ascendarasettings.json");
+    const settingsPath = path.join(appData, "QuadDown", "QuadDownsettings.json");
     const data = await fs.readFile(settingsPath, "utf8");
     return JSON.parse(data);
   } catch (error) {

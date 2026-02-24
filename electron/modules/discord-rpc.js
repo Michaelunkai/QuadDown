@@ -75,8 +75,8 @@ function initializeDiscordRPC() {
       rpc
         .setActivity({
           state: "Searching for games...",
-          largeImageKey: "ascendara",
-          largeImageText: "Ascendara",
+          largeImageKey: "QuadDown",
+          largeImageText: "QuadDown",
         })
         .catch(() => {
           // Ignore activity setting errors
@@ -133,8 +133,8 @@ function updateDiscordRPCToLibrary() {
         rpc
           .setActivity({
             state: "Searching for games...",
-            largeImageKey: "ascendara",
-            largeImageText: "Ascendara",
+            largeImageKey: "QuadDown",
+            largeImageText: "QuadDown",
           })
           .catch(err => {
             console.log("Failed to set Discord RPC library activity:", err);
@@ -159,12 +159,12 @@ function setPlayingActivity(gameName) {
       details: "Playing a Game",
       state: `${gameName}`,
       startTimestamp: new Date(),
-      largeImageKey: "ascendara",
-      largeImageText: "Ascendara",
+      largeImageKey: "QuadDown",
+      largeImageText: "QuadDown",
       buttons: [
         {
-          label: "Play on Ascendara",
-          url: "https://ascendara.app/",
+          label: "Play on QuadDown",
+          url: "https://QuadDown.app/",
         },
       ],
     })
@@ -188,8 +188,8 @@ function setRPCState(state) {
       rpc
         .setActivity({
           state: "Searching for games...",
-          largeImageKey: "ascendara",
-          largeImageText: "Ascendara",
+          largeImageKey: "QuadDown",
+          largeImageText: "QuadDown",
         })
         .catch(err => {
           console.log("Failed to set Discord RPC activity:", err);
@@ -198,8 +198,8 @@ function setRPCState(state) {
       rpc
         .setActivity({
           state: "Watching download progress...",
-          largeImageKey: "ascendara",
-          largeImageText: "Ascendara",
+          largeImageKey: "QuadDown",
+          largeImageText: "QuadDown",
         })
         .catch(err => {
           console.log("Failed to set Discord RPC activity:", err);

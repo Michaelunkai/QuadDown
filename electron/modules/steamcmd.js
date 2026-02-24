@@ -75,11 +75,11 @@ function registerSteamCMDHandlers() {
     }
   });
 
-  // Install steamcmd.exe from Ascendara CDN
+  // Install steamcmd.exe from QuadDown CDN
   ipcMain.handle("install-steamcmd", async () => {
     try {
-      const steamCMDUrl = "https://cdn.ascendara.app/files/steamcmd.exe";
-      const steamCMDDir = path.join(os.homedir(), "ascendaraSteamcmd");
+      const steamCMDUrl = "https://cdn.QuadDown.app/files/steamcmd.exe";
+      const steamCMDDir = path.join(os.homedir(), "QuadDownSteamcmd");
 
       // Ensure the directory exists
       await fs.promises.mkdir(steamCMDDir, { recursive: true });
@@ -144,7 +144,7 @@ function registerSteamCMDHandlers() {
       }
 
       // Construct the SteamCMD command
-      const steamCMDDir = path.join(os.homedir(), "ascendaraSteamcmd");
+      const steamCMDDir = path.join(os.homedir(), "QuadDownSteamcmd");
       const steamCMDPath = path.join(steamCMDDir, "steamcmd.exe");
 
       return new Promise((resolve, reject) => {

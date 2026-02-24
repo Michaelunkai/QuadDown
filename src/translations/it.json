@@ -48,10 +48,10 @@
     },
     "features": {
       "autoUpdate": "Aggiornamenti automatici",
-      "autoUpdateDesc": "Mantieni i tuoi giochi e Ascendara aggiornati automaticamente con le ultime versioni e patch.",
+      "autoUpdateDesc": "Mantieni i tuoi giochi e QuadDown aggiornati automaticamente con le ultime versioni e patch.",
       "chat": "Chiacchierata",
       "cloudSyncandBackups": "Sincronizzazione e backup nel cloud",
-      "cloudSyncandBackupsDesc": "Sincronizza il tuo profilo Ascendara e i salvataggi del gioco sul cloud",
+      "cloudSyncandBackupsDesc": "Sincronizza il tuo profilo QuadDown e i salvataggi del gioco sul cloud",
       "downloadQueues": "Scarica Code",
       "downloadQueuesDesc": "Metti in coda più download e gestiscili in modo efficiente con i controlli di priorità.",
       "friends": "Amici",
@@ -122,13 +122,13 @@
   "app": {
     "admin": {
       "warning": {
-        "message": "Riavvia Ascendara senza privilegi di amministratore. L'esecuzione in modalità amministratore causa problemi di ricerca del percorso e altri problemi.",
+        "message": "Riavvia QuadDown senza privilegi di amministratore. L'esecuzione in modalità amministratore causa problemi di ricerca del percorso e altri problemi.",
         "title": "Impossibile eseguire in modalità amministratore"
       }
     },
     "brokenVersion": {
-      "description": "Questa versione di Ascendara contiene problemi critici noti relativi alle sue funzionalità, come download, aggiornamenti e altre funzioni principali.",
-      "development": "Durante l'utilizzo di questa versione potresti riscontrare problemi o arresti anomali. Si prega di aggiornare Ascendara all'ultima versione dal sito web.",
+      "description": "Questa versione di QuadDown contiene problemi critici noti relativi alle sue funzionalità, come download, aggiornamenti e altre funzioni principali.",
+      "development": "Durante l'utilizzo di questa versione potresti riscontrare problemi o arresti anomali. Si prega di aggiornare QuadDown all'ultima versione dal sito web.",
       "title": "Stai utilizzando una versione non funzionante",
       "understand": "Capisco i problemi, continua",
       "update": "Aggiorna ora"
@@ -143,14 +143,14 @@
       "loading": "Caricamento registro modifiche...",
       "removals": "Traslochi",
       "retry": "Riprova",
-      "title": "Novità in Ascendara"
+      "title": "Novità in QuadDown"
     },
     "crashScreen": {
       "checkConnection": "Controlla la tua connessione Internet",
-      "clearCache": "Cancella la cache e i cookie dell'app Ascendara",
+      "clearCache": "Cancella la cache e i cookie dell'app QuadDown",
       "contactSupport": "Se il problema persiste, segnalalo al supporto",
-      "description": "Ad Ascendara non è piaciuto quello che è appena successo. Non preoccuparti, se hai abilitato l'analisi, questo errore è stato monitorato e lo sviluppatore lo risolverà.",
-      "reload": "Ricarica Ascendara",
+      "description": "Ad QuadDown non è piaciuto quello che è appena successo. Non preoccuparti, se hai abilitato l'analisi, questo errore è stato monitorato e lo sviluppatore lo risolverà.",
+      "reload": "Ricarica QuadDown",
       "title": "Oh no...",
       "troubleshooting": "Prova questi passaggi per risolvere il problema:"
     },
@@ -158,20 +158,20 @@
     "experiment": "SPERIMENTALE",
     "firstIndexDialog": {
       "goToIndex": "Imposta l'indice del gioco",
-      "message": "Ascendara sta passando all'indicizzazione dei giochi locali. Per ora è facoltativo, ma sarà necessario in futuro poiché l'API continua a crescere e diventa sempre più difficile servire tutti.",
+      "message": "QuadDown sta passando all'indicizzazione dei giochi locali. Per ora è facoltativo, ma sarà necessario in futuro poiché l'API continua a crescere e diventa sempre più difficile servire tutti.",
       "note": "Puoi aggiornare l'indice in qualsiasi momento nelle Preferenze.",
       "title": "Indice di gioco obbligatorio"
     },
     "loading": {
-      "ascendaraWillRestart": "Ascendara si riavvierà automaticamente",
+      "QuadDownWillRestart": "QuadDown si riavvierà automaticamente",
       "installingUpdate": "Installazione dell'aggiornamento"
     },
     "outdated": "obsoleto",
     "platform": {
       "warning": {
-        "description": "Attualmente stai utilizzando Ascendara su una piattaforma non Windows. Sebbene la piattaforma multipiattaforma sia in fase di sviluppo, alcune funzionalità potrebbero non funzionare come previsto.",
-        "development": "Ascendara è ancora in fase di sviluppo attivo e si consiglia di utilizzare Windows per un'esperienza ottimale. Apprezzo la tua pazienza e il tuo feedback mentre continuo a migliorare il supporto multipiattaforma.",
-        "fromSantiago": "Santiago, sviluppatore solista di Ascendara",
+        "description": "Attualmente stai utilizzando QuadDown su una piattaforma non Windows. Sebbene la piattaforma multipiattaforma sia in fase di sviluppo, alcune funzionalità potrebbero non funzionare come previsto.",
+        "development": "QuadDown è ancora in fase di sviluppo attivo e si consiglia di utilizzare Windows per un'esperienza ottimale. Apprezzo la tua pazienza e il tuo feedback mentre continuo a migliorare il supporto multipiattaforma.",
+        "fromSantiago": "Santiago, sviluppatore solista di QuadDown",
         "title": "Avviso sulla compatibilità della piattaforma",
         "understand": "Capisco"
       }
@@ -190,25 +190,25 @@
     "supportDialog": {
       "donate": "Sostenere lo sviluppo",
       "feedback": "Dai un feedback",
-      "message": "Lo so, ho detto \"nessuna pubblicità\", ma è davvero una pubblicità? Stai iniziando a utilizzare Ascendara e mi piacerebbe che tu lo valutassi o mi dessi un feedback. Non vedrai mai più questo messaggio.",
-      "note": "Ho passato così tanto tempo a creare Ascendara come progetto di passione. Ogni funzionalità, ogni riga di codice è realizzata con cura. Il tuo supporto significa tutto per me e mi aiuta a continuare a rendere Ascendara ancora migliore.",
+      "message": "Lo so, ho detto \"nessuna pubblicità\", ma è davvero una pubblicità? Stai iniziando a utilizzare QuadDown e mi piacerebbe che tu lo valutassi o mi dessi un feedback. Non vedrai mai più questo messaggio.",
+      "note": "Ho passato così tanto tempo a creare QuadDown come progetto di passione. Ogni funzionalità, ogni riga di codice è realizzata con cura. Il tuo supporto significa tutto per me e mi aiuta a continuare a rendere QuadDown ancora migliore.",
       "title": "Fammi sapere se ti piace"
     },
     "toasts": {
       "installAndRestart": "Installa e riavvia",
       "justUpdated": "Aggiornamento completato",
       "justUpdatedDesc": "Hai appena aggiornato a {{version}}",
-      "outOfDate": "Ascendara non è aggiornato",
+      "outOfDate": "QuadDown non è aggiornato",
       "outOfDateDesc": "Si prega di scaricare l'ultima versione dal sito ufficiale",
       "updateNow": "Aggiorna ora",
-      "updateReady": "Ascendara è pronta per l'aggiornamento",
-      "updateReadyDesc": "Ascendara ha scaricato l'aggiornamento ed è pronto per l'installazione e il riavvio"
+      "updateReady": "QuadDown è pronta per l'aggiornamento",
+      "updateReadyDesc": "QuadDown ha scaricato l'aggiornamento ed è pronto per l'installazione e il riavvio"
     },
     "torrentWarning": "IL TORRENTING È ABILITATO: USA VPN",
     "watchdog": {
       "error": {
-        "help": "Disinstalla Achievement Watcher dal tuo sistema, quindi riavvia Ascendara. Entrambe le applicazioni non possono essere eseguite insieme poiché utilizzano lo stesso sistema di monitoraggio dei risultati.",
-        "message": "Il servizio di monitoraggio dei risultati di Ascendara non è attivo. Ciò è comunemente causato dall'installazione di Achievement Watcher, che è in conflitto con il sistema di obiettivi integrato di Ascendara.",
+        "help": "Disinstalla Achievement Watcher dal tuo sistema, quindi riavvia QuadDown. Entrambe le applicazioni non possono essere eseguite insieme poiché utilizzano lo stesso sistema di monitoraggio dei risultati.",
+        "message": "Il servizio di monitoraggio dei risultati di QuadDown non è attivo. Ciò è comunemente causato dall'installazione di Achievement Watcher, che è in conflitto con il sistema di obiettivi integrato di QuadDown.",
         "title": "Servizio obiettivi non in esecuzione"
       }
     }
@@ -366,7 +366,7 @@
       "emptyDescription": "Sincronizza il tuo profilo per apparire nella classifica e competere con altri giocatori!",
       "loading": "Caricamento classifica...",
       "refresh": "Aggiorna",
-      "subtitle": "I migliori giocatori della community di Ascendara",
+      "subtitle": "I migliori giocatori della community di QuadDown",
       "syncProfile": "Sincronizza il tuo profilo",
       "title": "Classifica"
     },
@@ -419,7 +419,7 @@
         "title": "Controllo automatico dell'aggiornamento del gioco"
       },
       "chat": {
-        "description": "Chatta direttamente con i tuoi amici all'interno di Ascendara. Condividi consigli sui giochi, coordina le sessioni di gioco e rimani in contatto con la tua cerchia di giocatori.",
+        "description": "Chatta direttamente con i tuoi amici all'interno di QuadDown. Condividi consigli sui giochi, coordina le sessioni di gioco e rimani in contatto con la tua cerchia di giocatori.",
         "title": "Chat in tempo reale"
       },
       "cloudBackups": {
@@ -435,7 +435,7 @@
         "title": "Comunità di gioco"
       },
       "downloadQueue": {
-        "description": "Metti in coda più download e lascia che Ascendara li gestisca automaticamente. Avvia i download e torna quando sono tutti pronti.",
+        "description": "Metti in coda più download e lascia che QuadDown li gestisca automaticamente. Avvia i download e torna quando sono tutti pronti.",
         "title": "Scarica coda"
       },
       "flingTrainer": {
@@ -443,7 +443,7 @@
         "title": "Allenatore di FLiNG"
       },
       "friends": {
-        "description": "Invia e accetta richieste di amicizia, costruisci la tua rete di gioco e vedi quando i tuoi amici sono online. Connettiti con altri utenti Ascendara e fai crescere la tua community.",
+        "description": "Invia e accetta richieste di amicizia, costruisci la tua rete di gioco e vedi quando i tuoi amici sono online. Connettiti con altri utenti QuadDown e fai crescere la tua community.",
         "title": "Sistema degli amici"
       },
       "leaderboard": {
@@ -455,7 +455,7 @@
         "title": "E altro ancora in arrivo"
       },
       "nexusMods": {
-        "description": "Gestisci senza problemi le mod del tuo Nexus per i giochi supportati. Sfoglia, installa e organizza le mod direttamente in Ascendara.",
+        "description": "Gestisci senza problemi le mod del tuo Nexus per i giochi supportati. Sfoglia, installa e organizza le mod direttamente in QuadDown.",
         "title": "Gestione mod Nexus"
       },
       "profile": {
@@ -469,7 +469,7 @@
         "title": "Download illimitati"
       },
       "upcoming": {
-        "description": "Ottieni un'anteprima esclusiva di ciò che accadrà nel prossimo aggiornamento di Ascendara. Resta al passo con i tempi e scopri quali nuove funzionalità sono all'orizzonte.",
+        "description": "Ottieni un'anteprima esclusiva di ciò che accadrà nel prossimo aggiornamento di QuadDown. Resta al passo con i tempi e scopri quali nuove funzionalità sono all'orizzonte.",
         "title": "Prossimi aggiornamenti"
       },
       "webView": {
@@ -622,7 +622,7 @@
       "profile": "Profilo",
       "profileUpdated": "Profilo aggiornato con successo!",
       "save": "Salva modifiche",
-      "securityDescription": "I comandi vengono inviati tramite un'API sicura e la tua app Ascendara decide se e come eseguirli.",
+      "securityDescription": "I comandi vengono inviati tramite un'API sicura e la tua app QuadDown decide se e come eseguirli.",
       "securityTitle": "Crittografato end-to-end.",
       "socialLinks": "Collegamenti sociali",
       "startConnection": "Avvia connessione",
@@ -652,7 +652,7 @@
       "subtitle": "Gestisci il tuo account e profilo",
       "supportMessage": "Fai un passo avanti. Collegare. Unisciti ad Ascend.",
       "supportMessageSub": "Sei iscritto ad Ascend. Grazie per il vostro supporto!",
-      "thankYouSubscriber": "Grazie per supportare Ascendara!",
+      "thankYouSubscriber": "Grazie per supportare QuadDown!",
       "title": "Impostazioni dell'account",
       "trialActive": "Prova attiva",
       "trialDaysRemaining": "{{days}} giorni rimanenti nel periodo di prova",
@@ -660,7 +660,7 @@
       "verificationRequiresSubscription": "Abbonamento richiesto",
       "verificationTrialWarning": "Il comando di verifica funziona solo per gli abbonati attivi. Iscriviti ad Ascend per verificare e sbloccare canali Discord esclusivi.",
       "verifiedDescription": "Hai pieno accesso a tutte le funzionalità di Ascend",
-      "verifiedThankYou": "Grazie per far parte di Ascendara!",
+      "verifiedThankYou": "Grazie per far parte di QuadDown!",
       "verifiedThankYouSub": "I tuoi contributi contribuiscono a rendere tutto questo possibile",
       "verifiedUser": "Utente verificato",
       "verifyCommand": "Comando di verifica",
@@ -707,9 +707,9 @@
       "upToDate": "Sei aggiornato!"
     },
     "updateRequired": {
-      "description": "Aggiorna Ascendara alla versione più recente per accedere alle funzionalità di Ascend.",
+      "description": "Aggiorna QuadDown alla versione più recente per accedere alle funzionalità di Ascend.",
       "download": "Scarica l'ultima versione",
-      "info": "Ascend richiede l'ultima versione di Ascendara per garantire sicurezza e compatibilità.",
+      "info": "Ascend richiede l'ultima versione di QuadDown per garantire sicurezza e compatibilità.",
       "title": "Aggiornamento richiesto"
     },
     "welcome": "Bentornato, {{name}}!"
@@ -724,13 +724,13 @@
     "bigPictureSettings": "IMPOSTAZIONI PER IMMAGINI GRANDI",
     "cancel": "Cancellare",
     "catalog": "RICERCA",
-    "closeAscendara": "CHIUDI ASCENDARA",
+    "closeQuadDown": "CHIUDI QuadDown",
     "cloudSaves": "Salvataggi nel cloud",
     "confirm": "Confermare",
     "confirmKillDownload": "Uccidi il download?",
     "confirmKillDownloadMessage": "Sei sicuro di voler interrompere ed eliminare {{game}}? Questo rimuoverà tutti i file scaricati.",
     "controllerDetected": "Rilevato controller",
-    "controllerDetectedMessage": "Ascendara ha rilevato un controller collegato al tuo dispositivo. Desideri passare alla modalità Big Picture per un'esperienza migliore con il controller?",
+    "controllerDetectedMessage": "QuadDown ha rilevato un controller collegato al tuo dispositivo. Desideri passare alla modalità Big Picture per un'esperienza migliore con il controller?",
     "controllerType": "Tipo di controller",
     "controllerTypeGeneric": "Generico",
     "controllerTypePlayStation": "PlayStation",
@@ -746,9 +746,9 @@
     "exit": "USCITA",
     "exitBigPicture": "ESCI DALL'IMMAGINE GRANDE",
     "exitBigPictureConfirm": "Uscire dal quadro generale?",
-    "exitBigPictureMessage": "Sei sicuro di voler uscire dalla modalità Big Picture e tornare alla normale interfaccia di Ascendara?",
+    "exitBigPictureMessage": "Sei sicuro di voler uscire dalla modalità Big Picture e tornare alla normale interfaccia di QuadDown?",
     "exitToDownload": "Esci da Big Picture per scaricare",
-    "exitToDownloadMessage": "Per scaricare i giochi, devi uscire dalla modalità Big Picture e utilizzare la normale interfaccia di Ascendara. Vuoi uscire adesso?",
+    "exitToDownloadMessage": "Per scaricare i giochi, devi uscire dalla modalità Big Picture e utilizzare la normale interfaccia di QuadDown. Vuoi uscire adesso?",
     "extracting": "Estrazione...",
     "failedToFetchDescription": "Impossibile recuperare la descrizione.",
     "gameManagement": "GESTIONE DEL GIOCO",
@@ -842,7 +842,7 @@
       "cancel": "Cancellare",
       "couldNotReport": "Il rapporto non è stato inviato.",
       "couldNotReportDesc": "La tua segnalazione non è stata inviata. Per favore riprova più tardi.",
-      "description": "Aiuta a migliorare Ascendara segnalando eventuali problemi riscontrati.",
+      "description": "Aiuta a migliorare QuadDown segnalando eventuali problemi riscontrati.",
       "detailsLabel": "Dettagli",
       "detailsPlaceholder": "Si prega di fornire maggiori dettagli sul problema...",
       "error": "Impossibile inviare il rapporto",
@@ -858,7 +858,7 @@
       "title": "Segnala problema"
     },
     "reportIssue": "Segnala problema",
-    "reportToAscendara": "Fate rapporto ad Ascendara",
+    "reportToQuadDown": "Fate rapporto ad QuadDown",
     "reporting": "Segnalazione...",
     "retry": "Riprova",
     "save": "Salva",
@@ -889,7 +889,7 @@
     "dataProvidedBy": "Dati di gioco forniti da",
     "developers": "Sviluppatori",
     "downloadOptions": {
-      "ascendaraHandler": "Gestore di download di Ascendara",
+      "QuadDownHandler": "Gestore di download di QuadDown",
       "downloadLink": "Collegamento per il download:",
       "downloadNow": "Scarica ora",
       "downloadOptions": "Opzioni di download",
@@ -900,7 +900,7 @@
       "handlerInstructions": {
         "step1": "Apri il collegamento nel tuo browser e abilita l'estensione",
         "step2": "Completa il CAPTCHA e avvia il download",
-        "step3": "L'estensione interromperà automaticamente il download e lo avvierà per te in Ascendara"
+        "step3": "L'estensione interromperà automaticamente il download e lo avvierà per te in QuadDown"
       },
       "invalidLink": "Inserisci un collegamento per il download valido per",
       "manualInstructions": {
@@ -914,14 +914,14 @@
       "noProviders": "Nessun provider di download disponibile per questo gioco.",
       "pasteLink": "Incolla qui il link per il download diretto (DDL).",
       "seamlessInstructions": {
-        "description": "Ascendara elaborerà automaticamente il collegamento per il download e lo convertirà in un collegamento per il download diretto",
+        "description": "QuadDown elaborerà automaticamente il collegamento per il download e lo convertirà in un collegamento per il download diretto",
         "title": "Avvia il download senza interruzioni"
       },
       "selectProvider": "Seleziona un fornitore di download",
       "selectProviderPrompt": "Seleziona un provider di download per visualizzare le istruzioni.",
       "startingDownload": "Avvio download...",
       "torboxInstructions": {
-        "description": "Ascendara eliminerà automaticamente il tuo collegamento Torbox e recupererà un collegamento premium per il download diretto",
+        "description": "QuadDown eliminerà automaticamente il tuo collegamento Torbox e recupererà un collegamento premium per il download diretto",
         "title": "Inizia il download con Torbox"
       },
       "torrentInstructions": {
@@ -954,22 +954,22 @@
     "modManaging": "Mod Nexus",
     "newUserGuide": {
       "close": "Vicino",
-      "description": "Non hai installato un gioco prima, quindi Ascendara ti guiderà attraverso il processo di configurazione.",
+      "description": "Non hai installato un gioco prima, quindi QuadDown ti guiderà attraverso il processo di configurazione.",
       "finish": "Fine",
       "handlerEnabled": "Il gestore è abilitato →",
       "installed": "L'ho installato →",
       "nextStep": "Passaggio successivo →",
       "noThanks": "No grazie",
       "startGuide": "Guida introduttiva",
-      "steps": "[{'description': 'The Ascendara Download Handler will automatically stop the download in your browser and start it for you in Ascendara. If you don\\'t have it, close the guide and click the \"Don\\'t have the extension? Get it for Chrome or Firefox\" button to download it.', 'title': 'The Ascendara Download Handler'}, {'description': 'After installing the extension, click the extension icon to enable the handler.', 'title': 'Step 1: Enable the Handler'}, {'description': 'The extension can stay on as it will only send known providers to Ascendara.', 'title': 'The Download Handler'}, {'description': 'Complete the CAPTCHA, and start the download.', 'title': 'Step 2: Start the download'}, {'description': 'Once the download tries to start, you will see a popup asking to open Ascendara. Toggle the always allow button to allow the extension to always send known providers to Ascendara.', 'title': 'Step 3: Using the Extension'}, {'description': 'Click the button to Open Ascendara.', 'title': 'Step 4: Downloading'}, {'description': \"Your download will automatically start in Ascendara. If you're not brought to the download page, navigate to it.\", 'title': \"That's it!\"}]",
-      "title": "Scaricare con Ascendara"
+      "steps": "[{'description': 'The QuadDown Download Handler will automatically stop the download in your browser and start it for you in QuadDown. If you don\\'t have it, close the guide and click the \"Don\\'t have the extension? Get it for Chrome or Firefox\" button to download it.', 'title': 'The QuadDown Download Handler'}, {'description': 'After installing the extension, click the extension icon to enable the handler.', 'title': 'Step 1: Enable the Handler'}, {'description': 'The extension can stay on as it will only send known providers to QuadDown.', 'title': 'The Download Handler'}, {'description': 'Complete the CAPTCHA, and start the download.', 'title': 'Step 2: Start the download'}, {'description': 'Once the download tries to start, you will see a popup asking to open QuadDown. Toggle the always allow button to allow the extension to always send known providers to QuadDown.', 'title': 'Step 3: Using the Extension'}, {'description': 'Click the button to Open QuadDown.', 'title': 'Step 4: Downloading'}, {'description': \"Your download will automatically start in QuadDown. If you're not brought to the download page, navigate to it.\", 'title': \"That's it!\"}]",
+      "title": "Scaricare con QuadDown"
     },
     "noDownloadPath": {
       "desc": "Non hai ancora impostato una directory di download. Vai su Impostazioni per scegliere dove verranno salvati i tuoi giochi.",
       "goToSettings": "Vai su Impostazioni",
       "title": "Nessuna directory di download impostata"
     },
-    "noGameInfoAvailable": "Configura Ascendara Xtra nelle Preferenze per visualizzare ulteriori informazioni su questo gioco",
+    "noGameInfoAvailable": "Configura QuadDown Xtra nelle Preferenze per visualizzare ulteriori informazioni su questo gioco",
     "noReviewsExplanation": "Questo gioco non ha recensioni di critici professionisti disponibili su OpenCritic. Ciò potrebbe essere dovuto al fatto che si tratta di una nuova uscita, di un titolo indipendente o semplicemente non è stato ancora recensito.",
     "notExactMatch": "Il nome del gioco non corrispondeva esattamente. Segnala il gioco se necessario.",
     "online": "IN LINEA",
@@ -993,7 +993,7 @@
       "title": "Download in corso"
     },
     "queueDownloads": "Download in coda",
-    "ratingTooltip": "Questo gioco è valutato con {{rating}} stelle su 5 da altri su Ascendara. Leggi i commenti su questo gioco nel server Discord.",
+    "ratingTooltip": "Questo gioco è valutato con {{rating}} stelle su 5 da altri su QuadDown. Leggi i commenti su questo gioco nel server Discord.",
     "readReviews": "Leggi le recensioni",
     "refreshNow": "Aggiorna ora",
     "remoteDownloads": "Telecomando",
@@ -1022,7 +1022,7 @@
       "title": "Dove vuoi scaricare questo gioco?"
     },
     "sendingTorrent": "Invio del torrent...",
-    "shareGame": "Condividi il collegamento al gioco Ascendara",
+    "shareGame": "Condividi il collegamento al gioco QuadDown",
     "showingResultsFor": "Risultati per",
     "specs": {
       "component": "Componente",
@@ -1033,7 +1033,7 @@
       "ram": "RAM"
     },
     "steamLoading": "Caricamento informazioni sul gioco...",
-    "steamRating": "Questo gioco è classificato come {{rating}} mele. Le valutazioni di Apple sono diverse dalle valutazioni in stelle su Ascendara e sono più una valutazione generale del gioco.",
+    "steamRating": "Questo gioco è classificato come {{rating}} mele. Le valutazioni di Apple sono diverse dalle valutazioni in stelle su QuadDown e sono più una valutazione generale del gioco.",
     "submitReport": "Invia rapporto",
     "submitting": "Invio...",
     "switchProvider": "Cambia fornitore",
@@ -1046,7 +1046,7 @@
       "loadError": "Impossibile caricare la cronologia delle versioni",
       "loading": "Caricamento versioni precedenti...",
       "noVersions": "Nessuna versione precedente trovata",
-      "title": "La macchina del tempo di Ascendara",
+      "title": "La macchina del tempo di QuadDown",
       "unknownDate": "Data sconosciuta",
       "unknownVersion": "Versione sconosciuta",
       "versionChanged": "Versione modificata",
@@ -1087,7 +1087,7 @@
       "killDownload": "Uccidi il download",
       "killDownloadDescription": "Ciò interromperà definitivamente il download ed eliminerà tutti i file scaricati. Questa azione non può essere annullata.",
       "killDownloadTitle": "Uccidere il download per {{gameName}}?",
-      "legacyGameVerification": "La verifica dei file è disponibile solo per i giochi scaricati dopo la versione 8.1.2 di Ascendara",
+      "legacyGameVerification": "La verifica dei file è disponibile solo per i giochi scaricati dopo la versione 8.1.2 di QuadDown",
       "openFolder": "Apri cartella",
       "pauseDownload": "Metti in pausa il download",
       "resumeDownload": "Riprendi download",
@@ -1098,12 +1098,12 @@
     "ascendRequired": {
       "description": "Hai già un download in corso. Vuoi scaricare più giochi contemporaneamente?",
       "learnMore": "Unisciti ad Ascend",
-      "suggestion": "Unisciti ad Ascend per sbloccare download simultanei illimitati e supportare lo sviluppatore solista dietro Ascendara. Oppure metti prima in pausa il download corrente per avviare questo.",
+      "suggestion": "Unisciti ad Ascend per sbloccare download simultanei illimitati e supportare lo sviluppatore solista dietro QuadDown. Oppure metti prima in pausa il download corrente per avviare questo.",
       "title": "Scarica più giochi contemporaneamente"
     },
     "completed": "Scarica completo",
     "completedDescription": "Il download del gioco è terminato ed è pronto per essere giocato",
-    "connectionBrokenError": "La connessione per il download è stata interrotta. Prova ad abilitare il download a flusso singolo nelle Preferenze di Ascendara per un download più stabile.",
+    "connectionBrokenError": "La connessione per il download è stata interrotta. Prova ad abilitare il download a flusso singolo nelle Preferenze di QuadDown per un download più stabile.",
     "connectionResetError": "Non è stato possibile avviare il download perché la connessione è stata interrotta. Il tuo provider di servizi Internet potrebbe bloccare questa specifica fonte di download, considera l'utilizzo di una VPN.",
     "contentTypeError": "Il downloader ha segnalato un errore nel tipo di contenuto. Ciò molto probabilmente significa che il collegamento per il download è scaduto.",
     "currentTotalSpeed": "Velocità totale attuale",
@@ -1112,7 +1112,7 @@
     "downloadsInProgress": "Download di {{count}} in corso",
     "error": "Errore",
     "errorReported": "Problema segnalato correttamente",
-    "errorReportedDescription": "Grazie per aver contribuito a migliorare Ascendara. Il team di sviluppatori di Ascendara indagherà su questo problema.",
+    "errorReportedDescription": "Grazie per aver contribuito a migliorare QuadDown. Il team di sviluppatori di QuadDown indagherà su questo problema.",
     "errors": {
       "killFailed": "Impossibile terminare il download",
       "pauseFailed": "Impossibile mettere in pausa il download"
@@ -1120,8 +1120,8 @@
     "extracting": "Estrazione dei file di gioco...",
     "extractingDescription": "L'estrazione dei file di gioco potrebbe richiedere fino a 30 minuti a seconda delle dimensioni del file.",
     "firstTimeDownload": {
-      "message": "Ascendara continuerà a scaricare i giochi in background se chiudi l'applicazione. Puoi interrompere il download in qualsiasi momento facendo clic sul pulsante di azione, quindi sul pulsante \"Interrompi download\".",
-      "title": "Download su Ascendara",
+      "message": "QuadDown continuerà a scaricare i giochi in background se chiudi l'applicazione. Puoi interrompere il download in qualsiasi momento facendo clic sul pulsante di azione, quindi sul pulsante \"Interrompi download\".",
+      "title": "Download su QuadDown",
       "understand": "Capisco"
     },
     "kill": "Uccidi il download",
@@ -1163,11 +1163,11 @@
     "verificationSuccessDesc": "Tutti i file di gioco sono stati verificati",
     "verifyAgain": "Verifica i file di gioco",
     "verifying": "Verifica dei file...",
-    "verifyingDescription": "Ascendara sta verificando i file di gioco. L'operazione potrebbe richiedere del tempo a seconda delle dimensioni del gioco.",
+    "verifyingDescription": "QuadDown sta verificando i file di gioco. L'operazione potrebbe richiedere del tempo a seconda delle dimensioni del gioco.",
     "waiting": "In attesa dei pari",
     "waitingDescription": "qBittorrent sta cercando peer a cui connettersi per scaricare parti del file torrent da altri utenti e caricarli a loro volta. Altri potrebbero essere in grado di vedere cosa stai scaricando e/o determinare il tuo indirizzo IP pubblico.",
     "waitingInQueue": "Aspettando in coda",
-    "windowsDefenderError": "Windows ha rilevato un falso positivo e ha impedito il completamento del download. Abilita Proteggi directory nelle preferenze di Ascendara."
+    "windowsDefenderError": "Windows ha rilevato un falso positivo e ha impedito il completamento del download. Abilita Proteggi directory nelle preferenze di QuadDown."
   },
   "game": {
     "metadata": {
@@ -1186,22 +1186,22 @@
     "loading": "Recupero dettagli gioco...",
     "onlineTooltip": "Multigiocatore in linea",
     "playLater": "Gioca più tardi",
-    "ratingTooltip": "Questa è una valutazione media degli altri che hanno scaricato e giocato a questo gioco su Ascendara.",
+    "ratingTooltip": "Questa è una valutazione media degli altri che hanno scaricato e giocato a questo gioco su QuadDown.",
     "showLess": "Mostra meno",
     "update": "Aggiornamento",
     "updateAvailable": "Aggiornamento disponibile",
     "verified": {
       "alwaysWorking": "Sempre al lavoro",
-      "alwaysWorkingDesc": "Verificato per funzionare correttamente dopo gli aggiornamenti e funziona con tutte le funzionalità di Ascendara",
+      "alwaysWorkingDesc": "Verificato per funzionare correttamente dopo gli aggiornamenti e funziona con tutte le funzionalità di QuadDown",
       "badge": "Gioco verificato",
       "clickForInfo": "Clicca per informazioni",
-      "dialogDescription": "Questo gioco è stato verificato dalla community di Ascendara e funziona con tutte le funzionalità di Ascendara.",
+      "dialogDescription": "Questo gioco è stato verificato dalla community di QuadDown e funziona con tutte le funzionalità di QuadDown.",
       "dialogTitle": "Gioco verificato",
       "gotIt": "Fatto",
       "highlyRated": "Altamente valutato",
       "highlyRatedDesc": "Riceve costantemente valutazioni eccellenti dalla comunità",
       "mostPopular": "Il più popolare",
-      "mostPopularDesc": "Tra i giochi più scaricati e giocati su Ascendara",
+      "mostPopularDesc": "Tra i giochi più scaricati e giocati su QuadDown",
       "selectionCriteria": "I giochi verificati vengono accuratamente selezionati in base al feedback della community, alle statistiche di download e ai test di garanzia della qualità."
     },
     "viewDetails": "Visualizza dettagli"
@@ -1256,12 +1256,12 @@
     "modDetails": "Visualizza i dettagli della mod e scarica i file",
     "modFiles": "File disponibili",
     "mods": "Mod",
-    "modsAscendPromo": "Sfoglia e scarica le mod direttamente in Ascendara con Ascend. Ottieni l'accesso a migliaia di mod da Nexus Mods senza uscire dall'app.",
+    "modsAscendPromo": "Sfoglia e scarica le mod direttamente in QuadDown con Ascend. Ottieni l'accesso a migliaia di mod da Nexus Mods senza uscire dall'app.",
     "modsAvailable": "{{count}} mod disponibili su Nexus Mods",
     "modsDescription": "Questo gioco ha mod disponibili su Nexus Mods. Sfoglia e scarica mod per migliorare la tua esperienza di gioco.",
     "modsSupported": "Mod disponibili",
     "modsTitle": "Mod Nexus",
-    "noAchievementsDescription": "Nessun risultato trovato per questo gioco. Gioca e Ascendara li rileverà e li traccerà automaticamente.",
+    "noAchievementsDescription": "Nessun risultato trovato per questo gioco. Gioca e QuadDown li rileverà e li traccerà automaticamente.",
     "noAchievementsFound": "Nessun risultato trovato",
     "noFilesFound": "Nessun file disponibile. Visualizza su Nexus Mods per ulteriori opzioni.",
     "noSoundtrackDescription": "Non è stata trovata alcuna informazione sulla colonna sonora per questo gioco.",
@@ -1300,7 +1300,7 @@
     "trainerInstalledDescription": "Il trainer è ora disponibile nella cartella del gioco. Attiva \"Avvia con Trainer\" per utilizzarlo con il tuo gioco.",
     "trainerInstalledSuccess": "Trainer installato correttamente",
     "trainers": "Formatori",
-    "trainersAscendPromo": "Scarica e utilizza i trainer di gioco direttamente in Ascendara con Ascend. Ottieni l'accesso ai trainer da FLiNG Trainer senza uscire dall'app.",
+    "trainersAscendPromo": "Scarica e utilizza i trainer di gioco direttamente in QuadDown con Ascend. Ottieni l'accesso ai trainer da FLiNG Trainer senza uscire dall'app.",
     "trainersDescription": "I trainer di gioco ti consentono di modificare il gameplay con trucchi come salute infinita, munizioni illimitate e altro ancora. Installa il trainer nella cartella del gioco e avvialo automaticamente con il gioco.",
     "trainersTitle": "Allenatore di FLiNG",
     "updateAvailable": "Aggiornamento disponibile",
@@ -1328,7 +1328,7 @@
     "navigate": "Navigare",
     "noResults": "Nessun risultato trovato",
     "placeholder": {
-      "global": "Cerca Ascendara",
+      "global": "Cerca QuadDown",
       "library": "Cerca nella libreria",
       "settings": "Impostazioni di ricerca"
     },
@@ -1338,11 +1338,11 @@
   "home": {
     "actionGames": "Giochi d'azione",
     "footer": {
-      "description": "Ascendara è costruito e gestito da un singolo sviluppatore come progetto appassionato. Il tuo supporto finanzia i server Ascendaras, mantiene l'app senza pubblicità e motiva il miglioramento continuo per tutti.",
+      "description": "QuadDown è costruito e gestito da un singolo sviluppatore come progetto appassionato. Il tuo supporto finanzia i server QuadDowns, mantiene l'app senza pubblicità e motiva il miglioramento continuo per tutti.",
       "donate": "Sostenere lo sviluppo",
       "github": "Visualizza su GitHub",
       "madeWith": "Realizzato con ❤️ da Santiago",
-      "title": "Aiutaci a mantenere Ascendara libera"
+      "title": "Aiutaci a mantenere QuadDown libera"
     },
     "mostRecentlyUpdated": "Aggiornato più recentemente",
     "noRecentGames": "I tuoi 3 migliori giochi recenti vengono visualizzati qui",
@@ -1366,7 +1366,7 @@
       "title": "Aggiungi alla libreria"
     },
     "addGameDescription1": "Aggiungi i tuoi giochi o importali da Steam.",
-    "addGameDescription2": "Aggiungi un gioco alla tua libreria Ascendara per avviarlo facilmente e tenere traccia del tempo di gioco. Nessun file verrà modificato quando si aggiunge un gioco.",
+    "addGameDescription2": "Aggiungi un gioco alla tua libreria QuadDown per avviarlo facilmente e tenere traccia del tempo di gioco. Nessun file verrà modificato quando si aggiunge un gioco.",
     "addToFavorites": "Aggiungi ai preferiti",
     "alreadyRunning": "{{game}} è già in esecuzione",
     "availableSpace": "Spazio disponibile",
@@ -1411,7 +1411,7 @@
       "loadingBackups": "Caricamento dei backup",
       "noBackupsFound": "Nessun backup trovato",
       "openBackupFolder": "Apri la cartella di backup",
-      "pleaseWait": "Attendi mentre Ascendara recupera i tuoi backup...",
+      "pleaseWait": "Attendi mentre QuadDown recupera i tuoi backup...",
       "restoreButton": "Ripristina i dati di salvataggio",
       "restoreFailed": "Ripristino non riuscito",
       "restoreLatest": "Ripristina l'ultimo backup",
@@ -1465,7 +1465,7 @@
     "coverSearchError": "Errore nella ricerca dell'immagine",
     "createShortcut": "Crea collegamento sul desktop",
     "delete": "Eliminare",
-    "deleteConfirmMessage": "Sei sicuro di voler eliminare {{game}} dalla tua libreria? Ciò rimuoverà il gioco dalla tua libreria Ascendara ed eliminerà tutti i file associati. Questa azione non può essere annullata.",
+    "deleteConfirmMessage": "Sei sicuro di voler eliminare {{game}} dalla tua libreria? Ciò rimuoverà il gioco dalla tua libreria QuadDown ed eliminerà tutti i file associati. Questa azione non può essere annullata.",
     "deleteFolder": "Rimuovi cartella",
     "deleteGame": "Elimina gioco",
     "deleteGameConfirm": "Eliminare {{game}}?",
@@ -1527,14 +1527,14 @@
     "importFailedDesc": "Si è verificato un problema durante l'importazione dei tuoi giochi Steam. Riprova o controlla la tua directory.",
     "importFailedTitle": "Importazione non riuscita",
     "importSteamGames": "Importa giochi Steam",
-    "importSteamGamesDescription": "Scegli la directory steamapps in cui desideri importare e Ascendara importerà tutti i giochi in quella directory. Online, DLC, tag di versione e altri metadati verranno saltati durante l'aggiunta dei giochi.",
+    "importSteamGamesDescription": "Scegli la directory steamapps in cui desideri importare e QuadDown importerà tutti i giochi in quella directory. Online, DLC, tag di versione e altri metadati verranno saltati durante l'aggiunta dei giochi.",
     "importSuccessDesc": "I tuoi giochi Steam sono stati importati con successo. Alcune copertine di giochi insieme ai percorsi eseguibili potrebbero mancare o non essere corretti, puoi risolvere questo problema aggiornando le informazioni del gioco.",
     "importSuccessTitle": "Importazione completata!",
     "importingGames": "Importazione dei giochi Steam...",
     "importingGamesDesc": "Per favore attendi mentre i tuoi giochi Steam vengono importati. L'operazione potrebbe richiedere alcuni minuti a seconda delle dimensioni della libreria.",
     "includesAllDLCs": "Include tutti i DLC",
     "launchError": "Errore di avvio",
-    "launchErrorMessage": "Impossibile eseguire {{game}}. A volte gli eseguibili del gioco non hanno lo stesso nome del gioco. Assicurati che Ascendara stia tentando di eseguire il file corretto.",
+    "launchErrorMessage": "Impossibile eseguire {{game}}. A volte gli eseguibili del gioco non hanno lo stesso nome del gioco. Assicurati che QuadDown stia tentando di eseguire il file corretto.",
     "launching": "Lancio...",
     "lessThanMinute": "Meno di un minuto su questo gioco",
     "lessThanMinute2": "Meno di un minuto",
@@ -1557,7 +1557,7 @@
       "totalValue": "Valore totale della libreria"
     },
     "loadingLibrary": "Raccogliere i tuoi giochi",
-    "loadingLibraryMessage": "Ascendara sta raccogliendo tutti i tuoi giochi per te. Se riesci a leggere questo messaggio, significa che sta impiegando più tempo del previsto.",
+    "loadingLibraryMessage": "QuadDown sta raccogliendo tutti i tuoi giochi per te. Se riesci a leggere questo messaggio, significa che sta impiegando più tempo del previsto.",
     "minute": "minuto",
     "minutes": "minuti",
     "multiselect": "Selezione multipla",
@@ -1614,7 +1614,7 @@
     "renameFolderTitle": "Rinomina cartella",
     "running": "Corsa",
     "searchForCoverImage": "Cerca un'immagine di copertina per sostituire quella attuale",
-    "searchGameCover": "Cerca Ascendara per una copertina immagine",
+    "searchGameCover": "Cerca QuadDown per una copertina immagine",
     "searchGameCoverNotice": "Le copertine verranno cercate dalla fonte SteamRIP attualmente indicizzata.",
     "searchLibrary": "Cerca i tuoi giochi...",
     "searchOnline": "Indice di ricerca",
@@ -1624,7 +1624,7 @@
     "size": "Misurare",
     "sort": { "aToZ": "Ordina dalla A alla Z", "zToA": "Ordina dalla Z alla A" },
     "spaceTooltip": {
-      "games": "Spazio utilizzato dai giochi Ascendara: {{size}}",
+      "games": "Spazio utilizzato dai giochi QuadDown: {{size}}",
       "other": "Spazio utilizzato da altri file: {{size}}"
     },
     "steamNotRunning": "Steam non è in esecuzione",
@@ -1648,7 +1648,7 @@
       "confirm": "Capisco, corri comunque",
       "description": "Questo è un gioco di realtà virtuale e potrebbe essere necessario avviare il gioco tramite SteamVR o l'app Meta Quest. L'esecuzione diretta del gioco potrebbe impedire la connessione delle cuffie al gioco.",
       "learnMore": "Ulteriori informazioni sull'esecuzione di giochi VR",
-      "title": "Giochi VR e Ascendara"
+      "title": "Giochi VR e QuadDown"
     }
   },
   "localRefresh": {
@@ -1662,7 +1662,7 @@
     "done": "Fatto",
     "download": "Scaricamento",
     "downloadSharedIndex": "Scarica Indice condiviso",
-    "downloadSharedIndexDesc": "Scarica un indice recuperato e condiviso da qualcun altro su Ascendara.",
+    "downloadSharedIndexDesc": "Scarica un indice recuperato e condiviso da qualcun altro su QuadDown.",
     "downloading": "Download in corso...",
     "enableLocalIndex": "Abilitare",
     "enableSharing": "Abilita condivisione",
@@ -1752,9 +1752,9 @@
     "gamesPlayed": "Giochi giocati",
     "gpu": "GPU",
     "level": "Livello",
-    "levelProgress": "Guadagna esperienza e sali di livello giocando su Ascendara!",
+    "levelProgress": "Guadagna esperienza e sali di livello giocando su QuadDown!",
     "loading": "Caricamento...",
-    "memberSince": "Hai iniziato a utilizzare Ascendara il {{date}}",
+    "memberSince": "Hai iniziato a utilizzare QuadDown il {{date}}",
     "mostPlayed": "Il gioco più giocato",
     "nextLevel": "Successivo: Livello {{level}}",
     "noDownloadHistory": "Nessuna cronologia dei download ancora",
@@ -1791,9 +1791,9 @@
     "detectingDesc": "Verifica se la protezione Cloudflare è attiva su SteamRIP",
     "detectingProtection": "Rilevamento dello stato di protezione in corso...",
     "extStep1": "Completa il captcha di Cloudflare sulla pagina SteamRIP",
-    "extStep2": "Cerca il popup dell'estensione Ascendara",
-    "extStep3": "Fai clic su \"Invia ad Ascendara\" nel popup",
-    "listeningDesc": "Ascendara è in attesa di ricevere il cookie dall'estensione del browser.",
+    "extStep2": "Cerca il popup dell'estensione QuadDown",
+    "extStep3": "Fai clic su \"Invia ad QuadDown\" nel popup",
+    "listeningDesc": "QuadDown è in attesa di ricevere il cookie dall'estensione del browser.",
     "listeningStatus": "Ascolto per l'estensione...",
     "listeningTitle": "Aspettando Biscotto...",
     "manualStep1": "Apri Chrome DevTools",
@@ -1819,8 +1819,8 @@
     "step1Description": "Innanzitutto, devi aprire il collegamento ai post di SteamRIP e completare la sfida di verifica di Cloudflare.",
     "step1Note": "Completa il captcha/verifica, quindi fai clic su Avanti per continuare.",
     "step1Title": "Completa la verifica di Cloudflare",
-    "step2Description": "L'estensione del gestore di download Ascendara può inviare automaticamente la verifica ad Ascendara.",
-    "step2Title": "Hai l'Estensione Ascendara?",
+    "step2Description": "L'estensione del gestore di download QuadDown può inviare automaticamente la verifica ad QuadDown.",
+    "step2Title": "Hai l'Estensione QuadDown?",
     "step4Description": "Segui questi passaggi per ottenere il cookie cf_clearance:",
     "step4Title": "Apri Strumenti per sviluppatori",
     "step5Description": "Incolla il valore del cookie cf_clearance di seguito:",
@@ -1836,7 +1836,7 @@
     "filters": "Filtri",
     "gamesIndexed": "Giochi indicizzati",
     "indexedInformation": "Informazioni indicizzate",
-    "indexedInformationDescription": "Ascendara utilizza un database sviluppato su misura per memorizzare collegamenti e informazioni sui giochi. Le informazioni indicizzate vengono aggiornate ogni due giorni o se viene effettuata una richiesta. Nessun file di gioco viene mai archiviato sui server Ascendara.",
+    "indexedInformationDescription": "QuadDown utilizza un database sviluppato su misura per memorizzare collegamenti e informazioni sui giochi. Le informazioni indicizzate vengono aggiornate ogni due giorni o se viene effettuata una richiesta. Nessun file di gioco viene mai archiviato sui server QuadDown.",
     "lastUpdated": "Ultimo aggiornamento",
     "leastPopular": "Meno popolare",
     "localIndexedDescription": "I giochi vengono caricati dal tuo indice locale. Ciò fornisce un caricamento più rapido e un accesso offline alle informazioni di gioco.",
@@ -1865,11 +1865,11 @@
     "usingLocalIndex": "Utilizzo dell'indice locale"
   },
   "server-status": {
-    "api-description": "L'API principale di Ascendara gestisce informazioni di gioco, analisi e report.",
-    "api-name": "API Ascendara",
+    "api-description": "L'API principale di QuadDown gestisce informazioni di gioco, analisi e report.",
+    "api-name": "API QuadDown",
     "api-subtitle": "Endpoint principale",
     "cdn-name": "CDN",
-    "check-connection": "Controlla la tua connessione Internet e riavvia Ascendara.",
+    "check-connection": "Controlla la tua connessione Internet e riavvia QuadDown.",
     "description": "Visualizza lo stato corrente e le informazioni sull'integrità del server",
     "down": "Non in linea",
     "healthy": "Tutti i server operativi",
@@ -1893,7 +1893,7 @@
       "addDir": "Aggiungi rubrica",
       "defaultDirs": "Directory di controllo predefinite",
       "defaultDirsNote": "Queste directory sono sempre monitorate per i risultati ottenuti. Puoi aggiungere più directory di seguito.",
-      "description": "Queste sono le cartelle che verranno controllate per i risultati. Tutti gli obiettivi trovati verranno aggiunti alla tua libreria. L'Achievement Watcher è basato sull'originale di xan105 ed è stato modificato per Ascendara.",
+      "description": "Queste sono le cartelle che verranno controllate per i risultati. Tutti gli obiettivi trovati verranno aggiunti alla tua libreria. L'Achievement Watcher è basato sull'originale di xan105 ed è stato modificato per QuadDown.",
       "noDirs": "Nessuna directory selezionata",
       "title": "Osservatore dei risultati"
     },
@@ -1919,7 +1919,7 @@
       "switchDialog": {
         "cancel": "Cancellare",
         "confirm": "Cambia ramo",
-        "description": "Ascendara scaricherà il file",
+        "description": "QuadDown scaricherà il file",
         "downloading": "Download in corso...",
         "downloadingInstaller": "Download del programma di installazione in corso...",
         "experimentalWarning": "Le build sperimentali potrebbero essere instabili e contenere bug. Utilizzare a proprio rischio.",
@@ -1934,7 +1934,7 @@
     "applyCustomColors": "Applicare i colori",
     "ascendPromoDialog": {
       "benefit1": "Ottieni l'accesso anticipato a funzionalità sperimentali e aggiornamenti",
-      "benefit2": "Sostieni lo sviluppo di Ascendara",
+      "benefit2": "Sostieni lo sviluppo di QuadDown",
       "benefit3": "Sblocca funzionalità e vantaggi esclusivi",
       "experimentalBranch": "Ramo sperimentale",
       "experimentalBranchExclusivePrefix": "IL",
@@ -1944,15 +1944,15 @@
       "title": "Ascesa richiesta",
       "whySubscribe": "Perché iscriversi ad Ascend?"
     },
-    "ascendaraAnalytics": "Analisi dell'utilizzo",
-    "ascendaraAnalyticsDescription": "Contribuisci a migliorare Ascendara inviando dati di utilizzo. Questi dati sono anonimi e non possono essere utilizzati per identificarti.",
-    "ascendaraTimechine": "La macchina del tempo di Ascendara",
-    "ascendaraToggleAnalytics": "Partecipa e aiuta a migliorare Ascendara",
-    "ascendaraUpdates": "Aggiornamenti automatici",
-    "ascendaraUpdatesDescription": "Scarica automaticamente le nuove versioni di Ascendara e ti chiede di installarle quando sono pronte.",
-    "ascendaraWorkshopDownloader": "Downloader dell'officina",
-    "ascendaraWorkshopDownloaderDescription": "Il Workshop Downloader ti consente di scaricare oggetti da Steam Workshop senza dover disporre di un account.",
-    "ascendaraWorkshopDownloaderEnable": "Mostra nella barra di navigazione",
+    "QuadDownAnalytics": "Analisi dell'utilizzo",
+    "QuadDownAnalyticsDescription": "Contribuisci a migliorare QuadDown inviando dati di utilizzo. Questi dati sono anonimi e non possono essere utilizzati per identificarti.",
+    "QuadDownTimechine": "La macchina del tempo di QuadDown",
+    "QuadDownToggleAnalytics": "Partecipa e aiuta a migliorare QuadDown",
+    "QuadDownUpdates": "Aggiornamenti automatici",
+    "QuadDownUpdatesDescription": "Scarica automaticamente le nuove versioni di QuadDown e ti chiede di installarle quando sono pronte.",
+    "QuadDownWorkshopDownloader": "Downloader dell'officina",
+    "QuadDownWorkshopDownloaderDescription": "Il Workshop Downloader ti consente di scaricare oggetti da Steam Workshop senza dover disporre di un account.",
+    "QuadDownWorkshopDownloaderEnable": "Mostra nella barra di navigazione",
     "autoCreateShortcuts": "Crea automaticamente scorciatoie",
     "autoCreateShortcutsDescription": "Crea automaticamente collegamenti sul desktop per i giochi che vengono eseguiti correttamente per la prima volta.",
     "behaviorAfterDownload": "Comportamento dopo il download",
@@ -1984,12 +1984,12 @@
     "darkThemes": "Temi oscuri",
     "defaultDownloadLocation": "Posizione di download predefinita",
     "defaultLandingPage": "Pagina di destinazione predefinita",
-    "defaultLandingPageDescription": "Scegli quale pagina si apre quando avvii Ascendara.",
+    "defaultLandingPageDescription": "Scegli quale pagina si apre quando avvii QuadDown.",
     "discordRPC": "Presenza ricca di discordia",
-    "discordRPCDescription": "Mostra a quale gioco stai giocando con Ascendara in Discord.",
+    "discordRPCDescription": "Mostra a quale gioco stai giocando con QuadDown in Discord.",
     "downloadLimit": "Scarica Limite di velocità",
     "downloadLimitDescription": "Imposta una velocità massima per i download. 0 significa illimitato.",
-    "downloadLocationWarning": "Ascendara non può scrivere file nella directory scelta. La modifica non è stata salvata.",
+    "downloadLocationWarning": "QuadDown non può scrivere file nella directory scelta. La modifica non è stata salvata.",
     "downloadThreads": "Scarica discussioni",
     "downloadThreadsDescription": "I thread di download determinano quante connessioni simultanee vengono utilizzate durante il download.",
     "downloadThreadsPresets": {
@@ -2001,7 +2001,7 @@
     },
     "downloaderRunningWarning": "Non è possibile modificare queste impostazioni mentre è in corso un download",
     "downloaderSettings": "Scarica Gestore",
-    "enableAscendaraTimechine": "Abilita la macchina del tempo Ascendara",
+    "enableQuadDownTimechine": "Abilita la macchina del tempo QuadDown",
     "enterBigPicture": "Inserisci il quadro generale",
     "excludeFolders": "Proteggi le directory da Defender",
     "excludeFoldersDescription": "La directory di download predefinita e le directory aggiuntive verranno escluse da Windows Defender. Ciò impedirà a Defender di scansionare queste directory ed eliminare i falsi positivi.",
@@ -2013,10 +2013,10 @@
       "additionalLanguagesList": "Lingue aggiuntive",
       "availableLanguagesList": "Le tue lingue disponibili",
       "downloadTool": "Scarica lo strumento di traduzione",
-      "downloadToolDesc": "È necessario avere installato lo strumento di traduzione Ascendara per selezionare più lingue. Fare clic su Continua per scaricare automaticamente lo strumento.",
-      "title": "Lingue Ascendara",
-      "translatingDialog": "Non chiudere Ascendara",
-      "translatingDialogDesc": "Ascendara sta traducendo la lingua selezionata. L'operazione potrebbe richiedere alcuni minuti, puoi lasciarla ma non chiudere Ascendara."
+      "downloadToolDesc": "È necessario avere installato lo strumento di traduzione QuadDown per selezionare più lingue. Fare clic su Continua per scaricare automaticamente lo strumento.",
+      "title": "Lingue QuadDown",
+      "translatingDialog": "Non chiudere QuadDown",
+      "translatingDialogDesc": "QuadDown sta traducendo la lingua selezionata. L'operazione potrebbe richiedere alcuni minuti, puoi lasciarla ma non chiudere QuadDown."
     },
     "gameBackup": {
       "backupFormat": "Formato di backup",
@@ -2046,7 +2046,7 @@
     "general": "Generale",
     "getHelp": "Ottieni aiuto",
     "hideOnGameLaunch": "Nascondi all'avvio del gioco",
-    "hideOnGameLaunchDescription": "Nascondi Ascendara quando viene avviato un gioco da esso.",
+    "hideOnGameLaunchDescription": "Nascondi QuadDown quando viene avviato un gioco da esso.",
     "highThreadWarning": "L'utilizzo di più di 32 thread è considerato estremo e può causare instabilità, ban o problemi di rete. Usare con cautela.",
     "homeSearch": "Barra di ricerca domestica",
     "homeSearchDescription": "Mostra la barra di ricerca e i pulsanti di accesso rapido nella home page.",
@@ -2114,7 +2114,7 @@
     "logUploadPurpose": "Questo registro di debug aiuta il team ad assisterti con il tuo problema. I tuoi dati verranno cancellati una volta completata l'assistenza.",
     "logUploadWarningDesc": "I log che stai per caricare conterranno:",
     "logUploadWarningTitle": "Avviso di caricamento del registro",
-    "logWarningActivity": "Attività di Ascendara Core, Downloader Manager, Notification Helper e Game Handler",
+    "logWarningActivity": "Attività di QuadDown Core, Downloader Manager, Notification Helper e Game Handler",
     "logWarningDirectories": "Scarica directory e percorsi di file",
     "logWarningUsername": "Il tuo nome utente Windows",
     "logsUploaded": "Log caricati con successo!",
@@ -2124,12 +2124,12 @@
     "noAdditionalLocations": "Nessuna posizione aggiuntiva per ora...",
     "noBranchDialog": { "close": "Vicino", "title": "Nessuna filiale disponibile" },
     "noControllerDetected": "Nessun controller rilevato",
-    "noControllerDetectedDescription": "Collega un controller e Ascendara lo rileverà automaticamente",
+    "noControllerDetectedDescription": "Collega un controller e QuadDown lo rileverà automaticamente",
     "noLudusaviTool": "Il sidecar Ludusavi è obbligatorio",
-    "noLudusaviToolDesc": "Ludusavi è tenuto a utilizzare la funzionalità di backup/ripristino su Ascendara. Facendo clic su Continua verrà installato automaticamente Ludusavi.",
+    "noLudusaviToolDesc": "Ludusavi è tenuto a utilizzare la funzionalità di backup/ripristino su QuadDown. Facendo clic su Continua verrà installato automaticamente Ludusavi.",
     "noPublicThemes": "Nessun tema della community ancora disponibile.",
     "noTorrentTool": "È richiesto il sidecar Torrent",
-    "noTorrentToolDesc": "Per utilizzare la funzionalità torrent su Ascendara è necessario il sidecar torrent. Facendo clic su Continua verrà installato automaticamente Torrent Sidecar.",
+    "noTorrentToolDesc": "Per utilizzare la funzionalità torrent su QuadDown è necessario il sidecar torrent. Facendo clic su Continua verrà installato automaticamente Torrent Sidecar.",
     "notifications": "Notifiche sul desktop",
     "notificationsDescription": "Invia notifiche desktop per download e aggiornamento dell'indice.",
     "onlyWindowsSupported": "Per ora è supportato solo Windows",
@@ -2160,7 +2160,7 @@
     "publicThemeApplied": "Tema applicato! Fare clic su Applica colori per salvare.",
     "publicThemesFailed": "Impossibile caricare i temi della comunità",
     "quickLaunch": "Avvio veloce",
-    "quickLaunchDescription": "Mantieni Ascendara in esecuzione in background dopo averlo chiuso per accelerare i lanci futuri.",
+    "quickLaunchDescription": "Mantieni QuadDown in esecuzione in background dopo averlo chiuso per accelerare i lanci futuri.",
     "quickSupport": "Supporto rapido",
     "reinstallDependencies": "Reinstallare le dipendenze",
     "reinstallDependenciesDesc": "Queste sono le dipendenze di gioco necessarie per l'esecuzione della maggior parte dei giochi. Reinstallarli risolverà la maggior parte dei problemi relativi ai giochi non in esecuzione.",
@@ -2169,13 +2169,13 @@
     "selectDirectory": "Seleziona Rubrica",
     "selectMoreLanguages": "Visualizza l'elenco completo delle lingue",
     "setKey": "Impostato",
-    "showOldDownloadLinksDescription": "Utilizza Ascendara Timemachine per recuperare vecchi collegamenti di download per i giochi. Alcune versioni del gioco potrebbero non funzionare o essere disponibili.",
+    "showOldDownloadLinksDescription": "Utilizza QuadDown Timemachine per recuperare vecchi collegamenti di download per i giochi. Alcune versioni del gioco potrebbero non funzionare o essere disponibili.",
     "sideScrollBar": "Barra di scorrimento laterale",
     "sideScrollBarDescription": "Mostra una barra di scorrimento sul lato della finestra dell'applicazione.",
     "sidecar": {
       "available": "Disponibile",
-      "builtIn": "Costruito in Ascendara",
-      "description": "I sidecar sono integrazioni ufficiali gestite da Ascendara. Questi componenti funzionano come plugin per estendere le capacità dell'app.",
+      "builtIn": "Costruito in QuadDown",
+      "description": "I sidecar sono integrazioni ufficiali gestite da QuadDown. Questi componenti funzionano come plugin per estendere le capacità dell'app.",
       "hideBuiltIn": "Nascondi integrato",
       "installed": "Installato",
       "notOnWindows": "Non supportato su questa piattaforma",
@@ -2190,7 +2190,7 @@
     "smoothTransitions": "Transizioni fluide",
     "smoothTransitionsDescription": "Il passaggio da una pagina all'altra nell'app ha un'animazione fluida per renderlo più naturale.",
     "supportCodeDesc": "Inserisci qui il tuo codice di supporto a 6 cifre per caricare automaticamente i registri. Hai bisogno di aiuto?",
-    "supportDesc": "Utilizza il tuo codice di supporto per connetterti con il team di supporto di Ascendara. I log vengono caricati automaticamente.",
+    "supportDesc": "Utilizza il tuo codice di supporto per connetterti con il team di supporto di QuadDown. I log vengono caricati automaticamente.",
     "supportError": "Impossibile caricare i log. Per favore riprova.",
     "themeBy": "di",
     "themeExportFailed": "Impossibile esportare il tema",
@@ -2199,13 +2199,13 @@
     "themeImported": "Tema importato con successo!",
     "themes": "Temi dell'app",
     "threads": "Discussioni",
-    "title": "Preferenze di Ascendara",
+    "title": "Preferenze di QuadDown",
     "torboxApiKey": "Chiave API Torbox",
     "torboxApiKeyDescription": "I servizi Debrid ti consentono di convertire i collegamenti host di file in collegamenti premium per il download diretto, ignorando i limiti di velocità e i tempi di attesa. Inserisci qui la tua chiave API Torbox per abilitare questa funzione.",
     "torboxApiKeyLearnHowtoGet": "Scopri come ottenere la chiave API",
     "torboxApiKeyPlaceholder": "Incolla la chiave API Torbox",
-    "torrentDescription": "Abilita la funzionalità torrent di Ascendara. Questa funzionalità richiede l'installazione di qBittorrent ed è consigliata solo a utenti esperti.",
-    "torrentOnAscendara": "Torrente su Ascendara",
+    "torrentDescription": "Abilita la funzionalità torrent di QuadDown. Questa funzionalità richiede l'installazione di qBittorrent ed è consigliata solo a utenti esperti.",
+    "torrentOnQuadDown": "Torrente su QuadDown",
     "torrentWarningDialog": {
       "cancel": "Cancellare",
       "continue": "Capisco i rischi",
@@ -2216,7 +2216,7 @@
       "vpnWarning": "Il tuo indirizzo IP sarà visibile ad altri peer. Utilizza una VPN per proteggere la tua privacy ed evitare potenziali problemi legali."
     },
     "torrenting": "Torrenti",
-    "torrentingDescription": "Configura i download torrent su Ascendara. Il torrenting richiede qBittorrent ed è fortemente consigliata una VPN.",
+    "torrentingDescription": "Configura i download torrent su QuadDown. Il torrenting richiede qBittorrent ed è fortemente consigliata una VPN.",
     "uploadLogs": "Carica registri",
     "userSettings": {
       "browseDirectory": "Sfoglia",
@@ -2233,7 +2233,7 @@
       "usernameError": "Impossibile salvare il nome utente"
     },
     "viewComponentsPage": "Visualizza la pagina Componenti",
-    "warningDescription": "Ascendara è progettata come piattaforma di test per videogiochi, consentendo agli utenti di valutare gameplay, prestazioni e compatibilità prima di prendere una decisione di acquisto. Ascendara incoraggia fortemente gli utenti a supportare gli sviluppatori di giochi acquistando i giochi che preferiscono.",
+    "warningDescription": "QuadDown è progettata come piattaforma di test per videogiochi, consentendo agli utenti di valutare gameplay, prestazioni e compatibilità prima di prendere una decisione di acquisto. QuadDown incoraggia fortemente gli utenti a supportare gli sviluppatori di giochi acquistando i giochi che preferiscono.",
     "warningSupportDevelopers": "Gli sviluppatori di giochi investono molto tempo, risorse e creatività per creare le esperienze di cui tutti godiamo. Il tuo acquisto supporta direttamente la loro capacità di continuare a creare fantastici giochi e sostiene l'industria dei giochi.",
     "warningSupportDevelopersCallToAction": "Sostieni gli sviluppatori acquistando i giochi che ti piacciono.",
     "warningTitle": "Ehi, per favore leggi questo!",
@@ -2316,18 +2316,18 @@
     },
     "final": {
       "content": "Se riscontri problemi o desideri inviare feedback, fai clic con il pulsante destro del mouse in un punto qualsiasi dell'app e seleziona \"Segnala problema\".",
-      "title": "Benvenuti ad Ascendara"
+      "title": "Benvenuti ad QuadDown"
     },
     "gameLibrary": {
       "content": "Ecco la tua libreria di giochi. Tutti i tuoi giochi scaricati o importati verranno visualizzati qui, pronti per essere lanciati, organizzati e divertiti.",
       "title": "Libreria di giochi"
     },
     "navigationBar": {
-      "content": "Qui è dove passerai da una pagina all'altra di Ascendara. Puoi anche utilizzare il tasto Control più un numero da 1 a 5 per passare da una pagina all'altra.",
+      "content": "Qui è dove passerai da una pagina all'altra di QuadDown. Puoi anche utilizzare il tasto Control più un numero da 1 a 5 per passare da una pagina all'altra.",
       "title": "Barra di navigazione"
     },
     "profile": {
-      "content": "Questo è il tuo profilo Ascendara. Puoi salire di livello avendo un tempo di gioco elevato e giocando, è tutto per divertimento! Niente verrà mai caricato su nessun server.",
+      "content": "Questo è il tuo profilo QuadDown. Puoi salire di livello avendo un tempo di gioco elevato e giocando, è tutto per divertimento! Niente verrà mai caricato su nessun server.",
       "title": "Profilo"
     },
     "resizing": {
@@ -2339,11 +2339,11 @@
       "title": "Cerca e scarica"
     },
     "serverStatus": {
-      "content": "Si spera che questo punto verde significhi che tutto sta funzionando senza intoppi. Fare clic in qualsiasi momento per visualizzare maggiori dettagli su tutti gli stati dei server Ascendara.",
+      "content": "Si spera che questo punto verde significhi che tutto sta funzionando senza intoppi. Fare clic in qualsiasi momento per visualizzare maggiori dettagli su tutti gli stati dei server QuadDown.",
       "title": "Stato del server"
     },
     "settings": {
-      "content": "Rendi Ascendara tuo: modifica i temi, scegli la cartella di download, aggiungi cartelle di download e ottimizza altre preferenze qui. Ci sono anche alcune funzioni utili che puoi attivare e disattivare, controlla dopo il tour per vedere cosa potresti desiderare.",
+      "content": "Rendi QuadDown tuo: modifica i temi, scegli la cartella di download, aggiungi cartelle di download e ottimizza altre preferenze qui. Ci sono anche alcune funzioni utili che puoi attivare e disattivare, controlla dopo il tour per vedere cosa potresti desiderare.",
       "title": "Le tue preferenze"
     },
     "sound": {
@@ -2353,47 +2353,47 @@
       "readyForLiftoff": "Pronti per ascendere?",
       "soClose": "Così vicino adesso..."
     },
-    "title": "Benvenuti ad Ascendara",
-    "welcome": "Facciamo un breve tour per metterti a tuo agio con Ascendara e mostrarti alcuni trucchi."
+    "title": "Benvenuti ad QuadDown",
+    "welcome": "Facciamo un breve tour per metterti a tuo agio con QuadDown e mostrarti alcuni trucchi."
   },
   "welcome": {
-    "allRequiredDependenciesHaveBeenInstalledDesc": "Tutte le dipendenze richieste sono state installate correttamente. Benvenuti ad Ascendara.",
+    "allRequiredDependenciesHaveBeenInstalledDesc": "Tutte le dipendenze richieste sono state installate correttamente. Benvenuti ad QuadDown.",
     "allRequiredDependenciesHaveBeenInstalledTitle": "Installazione della dipendenza completata",
-    "analytics": "Aiuta a migliorare Ascendara",
+    "analytics": "Aiuta a migliorare QuadDown",
     "analyticsDesc": "Condividi dati di utilizzo anonimi per migliorare la tua esperienza",
     "apiMigration": {
-      "goodNews": "Buone notizie! Ascendara Xtra non richiede più la configurazione manuale della chiave API.",
+      "goodNews": "Buone notizie! QuadDown Xtra non richiede più la configurazione manuale della chiave API.",
       "steamBuiltIn": "L'API Steam è ora integrata e configurata automaticamente. Le tue vecchie chiavi API GiantBomb non sono più necessarie.",
-      "title": "Aggiornamento Ascendara Xtra",
+      "title": "Aggiornamento QuadDown Xtra",
       "whatChanged": "Cosa è cambiato: l'API di Steam ora fornisce automaticamente metadati, screenshot e dettagli del gioco."
     },
     "areYouSureYouWantToSkip": "Sei sicuro di voler saltare l'installazione delle dipendenze? Alcuni giochi potrebbero non funzionare correttamente.",
-    "ascendara": "Ascendera",
-    "ascendaraNeverCollects": "Ascendara non raccoglie mai informazioni personali o dati di gioco. Tutte le analisi sono anonime e utilizzate esclusivamente per migliorare Ascendara.",
-    "ascendaraNeverCollectsPersonalInfo": "Ascendara non raccoglie mai informazioni personali o dati di gioco. Tutte le analisi sono anonime e utilizzate esclusivamente per migliorare Ascendara.",
+    "QuadDown": "Ascendera",
+    "QuadDownNeverCollects": "QuadDown non raccoglie mai informazioni personali o dati di gioco. Tutte le analisi sono anonime e utilizzate esclusivamente per migliorare QuadDown.",
+    "QuadDownNeverCollectsPersonalInfo": "QuadDown non raccoglie mai informazioni personali o dati di gioco. Tutte le analisi sono anonime e utilizzate esclusivamente per migliorare QuadDown.",
     "audioProcessing": "Elaborazione dell'audio",
     "automaticUpdates": "Aggiornamenti automatici",
     "automaticUpdatesDesc": "Ottieni le funzionalità e i miglioramenti più recenti non appena sono disponibili",
     "automaticUpdatesTitle": "Aggiornamenti automatici",
-    "bePartOfImproving": "Partecipa al miglioramento di Ascendara",
-    "bePartOfImprovingDesc": "Unisciti alle centinaia di altre persone che contribuiscono a migliorare Ascendara semplicemente usandola",
+    "bePartOfImproving": "Partecipa al miglioramento di QuadDown",
+    "bePartOfImprovingDesc": "Unisciti alle centinaia di altre persone che contribuiscono a migliorare QuadDown semplicemente usandola",
     "browse": "Sfoglia",
     "bugFixesDesc": "Ricevi automaticamente le correzioni per eventuali problemi",
     "bugFixesTitle": "Correzioni di bug",
     "cancel": "Cancellare",
-    "cannotWriteWarning": "Sembra che Ascendara non possa scrivere file nella directory scelta. Seleziona una directory diversa.",
+    "cannotWriteWarning": "Sembra che QuadDown non possa scrivere file nella directory scelta. Seleziona una directory diversa.",
     "chooseDownloadLocation": "Scegli la posizione di download",
-    "chooseHowToHelp": "Scegli come vorresti contribuire a rendere Ascendara migliore per tutti.",
-    "chooseHowYouWantToReceiveUpdates": "Scegli come desideri ricevere gli aggiornamenti per Ascendara.",
-    "chooseWhenToUpdateAscendaraYourself": "Scegli tu stesso quando aggiornare Ascendara. Riceverai una notifica quando gli aggiornamenti saranno disponibili, ma non verranno installati automaticamente.",
+    "chooseHowToHelp": "Scegli come vorresti contribuire a rendere QuadDown migliore per tutti.",
+    "chooseHowYouWantToReceiveUpdates": "Scegli come desideri ricevere gli aggiornamenti per QuadDown.",
+    "chooseWhenToUpdateQuadDownYourself": "Scegli tu stesso quando aggiornare QuadDown. Riceverai una notifica quando gli aggiornamenti saranno disponibili, ma non verranno installati automaticamente.",
     "chooseYourTheme": "Scegli il tuo tema",
     "clickTheExtensionIcon": "Fai clic sull'icona dell'estensione e abilita il gestore dei download quando lo installi",
     "compatibilityLayer": "Livello di compatibilità",
     "continue": "Continuare",
     "continueWithoutSharing": "Continua senza condividere",
     "darkThemes": "Temi oscuri",
-    "dependenciesDesc": "Se stai giocando su un nuovo PC o hai installato Windows di recente, Ascendara può aiutarti a installare questi componenti essenziali per assicurarti la migliore esperienza",
-    "downloadGamesFaster": "Ottieni l'estensione Ascendara",
+    "dependenciesDesc": "Se stai giocando su un nuovo PC o hai installato Windows di recente, QuadDown può aiutarti a installare questi componenti essenziali per assicurarti la migliore esperienza",
+    "downloadGamesFaster": "Ottieni l'estensione QuadDown",
     "enableAutoUpdates": "Abilita Aggiornamenti automatici",
     "errorInstallingDependencies": "Errore durante l'installazione delle dipendenze",
     "essentialDependencies": "Dipendenze del gioco",
@@ -2404,21 +2404,21 @@
     "freshNewLookTitle": "Nuovo look fresco",
     "gameDevelopmentFramework": "Quadro di sviluppo del gioco",
     "getStarted": "Inizia",
-    "getTheAscendaraDownloadHandlerExtension": "L'estensione Ascendara ti aiuta a scaricare i giochi più velocemente e ti consigliamo di impostare l'indice dei giochi nel passaggio successivo.",
+    "getTheQuadDownDownloadHandlerExtension": "L'estensione QuadDown ti aiuta a scaricare i giochi più velocemente e ti consigliamo di impostare l'indice dei giochi nel passaggio successivo.",
     "getTheExtension": "Ottieni l'estensione",
     "graphicsAndMultimedia": "Grafica e multimedialità",
     "havePython": "Ho Python",
     "haveWine": "Ho questi, portami al tour",
     "helpIdentifyAndFix": "Aiuta a identificare e risolvere i problemi più rapidamente",
     "helpIdentifyAndFixDesc": "Tutti gli errori verranno automaticamente inviati ad Analytics con un flag urgente, inserendoli in cima all'elenco",
-    "helpImprove": "Aiuta a migliorare Ascendara",
+    "helpImprove": "Aiuta a migliorare QuadDown",
     "howItWorks": "Come funziona:",
-    "iHaveReadAndAgreeTo": "Ho letto e accetto quelli di Ascendara",
+    "iHaveReadAndAgreeTo": "Ho letto e accetto quelli di QuadDown",
     "iHaveTheseTakeMeToTheTour": "Ho questi, portami al tour",
     "improvedUXDesc": "Le cose sono suddivise in più pagine e organizzate meglio per assicurarti di poter trovare ciò di cui hai bisogno",
     "improvedUXTitle": "Esperienza utente migliorata",
     "influenceFutureFeatures": "Influenza le funzionalità future",
-    "influenceFutureFeaturesDesc": "Aiuta Ascendara a comprendere le tue esigenze e a influenzare gli aggiornamenti futuri",
+    "influenceFutureFeaturesDesc": "Aiuta QuadDown a comprendere le tue esigenze e a influenzare gli aggiornamenti futuri",
     "installDependencies": "Installa le dipendenze",
     "installPython": "Installa Python",
     "installWine": "Installa ora",
@@ -2436,7 +2436,7 @@
       "refreshing": "Creazione dell'indice del tuo gioco...",
       "setupIndex": "Imposta l'indice del gioco",
       "stillRefreshing": "Il tuo indice di gioco è ancora in fase di creazione",
-      "subtitle": "Ascendara utilizza un indice di gioco locale per una navigazione più rapida e un accesso offline",
+      "subtitle": "QuadDown utilizza un indice di gioco locale per una navigazione più rapida e un accesso offline",
       "title": "Imposta l'indice del tuo gioco",
       "waitForRefresh": "Non potrai sfogliare i giochi finché l'indice non sarà completo. Solitamente l'operazione richiede alcuni minuti."
     },
@@ -2448,12 +2448,12 @@
     "noRunnersTitle": "Nessuno strumento di compatibilità rilevato",
     "notEnoughSpaceWarning": "Woah! Hai meno di 40 GB di spazio libero sull'unità selezionata. Prendi in considerazione l'idea di liberare spazio o selezionare un'unità diversa.",
     "noticeAppIsFree": {
-      "point1": "I download e tutto ciò che riguarda i giochi su Ascendara saranno sempre gratuiti",
-      "point2": "Ascendara non chiederà alcun dato personale per scaricare o giocare",
+      "point1": "I download e tutto ciò che riguarda i giochi su QuadDown saranno sempre gratuiti",
+      "point2": "QuadDown non chiederà alcun dato personale per scaricare o giocare",
       "point3": "Se scegli di iscriverti ad Ascend, dovrai creare un account per tali funzionalità",
       "point4": "I dati anonimi vengono condivisi solo se accetti e puoi modificare questa impostazione in qualsiasi momento nelle Impostazioni",
-      "subtitle": "Se pagavi per Ascendara eri truffato. Contatta immediatamente la tua banca.",
-      "title": "Ascendara è completamente gratuito"
+      "subtitle": "Se pagavi per QuadDown eri truffato. Contatta immediatamente la tua banca.",
+      "title": "QuadDown è completamente gratuito"
     },
     "okay": "Va bene",
     "optOutOfSharing": "Disattivare la condivisione dei dati di utilizzo anonimi. Puoi sempre abilitarlo in un secondo momento nelle impostazioni se cambi idea.",
@@ -2481,11 +2481,11 @@
     "protonGERecommended": "Proton-GE (consigliato)",
     "protonGESize": "Misurare:",
     "pythonIsRequired": "Python è obbligatorio",
-    "pythonMustBeInstalled": "Python deve essere installato sul tuo computer per poter eseguire gli strumenti principali di Ascendara su questo sistema operativo",
+    "pythonMustBeInstalled": "Python deve essere installato sul tuo computer per poter eseguire gli strumenti principali di QuadDown su questo sistema operativo",
     "referral": {
-      "friendThankYou": "Ringrazia il tuo amico per aver condiviso Ascendara in giro! Alla gente piacciono e tu sei il motivo per cui Ascendara può crescere.",
-      "linkPlaceholder": "Puoi condividere il link o il post in cui hai trovato Ascendara?",
-      "otherPlaceholder": "Dove hai trovato esattamente Ascendara?",
+      "friendThankYou": "Ringrazia il tuo amico per aver condiviso QuadDown in giro! Alla gente piacciono e tu sei il motivo per cui QuadDown può crescere.",
+      "linkPlaceholder": "Puoi condividere il link o il post in cui hai trovato QuadDown?",
+      "otherPlaceholder": "Dove hai trovato esattamente QuadDown?",
       "sources": {
         "discord": "Discordia",
         "fmhy": "FMHY",
@@ -2497,8 +2497,8 @@
         "reddit": "Reddit",
         "tiktok": "TikTok"
       },
-      "subtitle": "Aiuta Ascendara a capire da dove provengono gli utenti. Questo è completamente facoltativo.",
-      "title": "Come hai trovato Ascendara?"
+      "subtitle": "Aiuta QuadDown a capire da dove provengono gli utenti. Questo è completamente facoltativo.",
+      "title": "Come hai trovato QuadDown?"
     },
     "requiredForModernGames": "Richiesto per i giochi moderni",
     "restart": "Ricomincia",
@@ -2518,33 +2518,33 @@
     "skipTour": "Salta il giro",
     "smartOrganizationDesc": "Nuove opzioni di filtraggio e ordinamento per gestire la ricerca e il download dei giochi",
     "smartOrganizationTitle": "Organizzazione intelligente",
-    "startTheDownload": "Ti siedi e ti rilassi mentre il tuo gioco viene scaricato ed estratto in Ascendara",
+    "startTheDownload": "Ti siedi e ti rilassi mentre il tuo gioco viene scaricato ed estratto in QuadDown",
     "stayPrivate": "Rimani privato",
-    "stayUpToDate": "Tieni aggiornato Ascendara",
+    "stayUpToDate": "Tieni aggiornato QuadDown",
     "systemWine": "Vino di sistema",
     "systemWineDesc": "Compatibilità di base utilizzando il gestore dei pacchetti di sistema.",
     "takeTour": "Fai il giro",
     "termsOfService": "Termini di servizio",
-    "theExtensionBlocksKnownProviders": "L'estensione aiuta anche a configurare l'indice del tuo gioco inviando facilmente cookie di autenticazione ad Ascendara",
+    "theExtensionBlocksKnownProviders": "L'estensione aiuta anche a configurare l'indice del tuo gioco inviando facilmente cookie di autenticazione ad QuadDown",
     "thisIsWhereAllYourDownloadedGamesWillBeStored": "Qui è dove verranno archiviati tutti i giochi scaricati",
     "welcomeTo": "Benvenuto a",
-    "welcomeToAscendaraDescription": "Sei quasi pronto per iniziare a utilizzare Ascendara. Esamineremo insieme il processo di onboarding e poi imposteremo l'indice del tuo gioco, ma prima leggi i Termini di servizio e l'Informativa sulla privacy.",
-    "whenYouClickADownloadLink": "Quando avvii un download da un provider noto, l'estensione interromperà automaticamente il download nel tuo browser e lo avvierà per te in Ascendara",
+    "welcomeToQuadDownDescription": "Sei quasi pronto per iniziare a utilizzare QuadDown. Esamineremo insieme il processo di onboarding e poi imposteremo l'indice del tuo gioco, ma prima leggi i Termini di servizio e l'Informativa sulla privacy.",
+    "whenYouClickADownloadLink": "Quando avvii un download da un provider noto, l'estensione interromperà automaticamente il download nel tuo browser e lo avvierà per te in QuadDown",
     "wineDetected": "Vino rilevato",
     "wineIsRequired": "Gioca con il vino",
-    "wineMustBeInstalled": "Wine, DXVK e altri strumenti devono essere installati e configurati sul tuo computer per eseguire i giochi Windows. Non preoccuparti però, Ascendara può installarlo e configurarlo solo per te",
+    "wineMustBeInstalled": "Wine, DXVK e altri strumenti devono essere installati e configurati sul tuo computer per eseguire i giochi Windows. Non preoccuparti però, QuadDown può installarlo e configurarlo solo per te",
     "wineRecommendation": "Wine funziona, ma Proton-GE è consigliato per prestazioni e compatibilità migliori. Puoi installarlo di seguito o saltare.",
     "youCanAddMoreLater": "Puoi aggiungere più directory nelle preferenze in un secondo momento",
     "youCanChangeThisLater": "Puoi sempre aggiornare la tua lingua in un secondo momento nelle Impostazioni.",
     "youCanChangeThisSettingLater": "Puoi modificarlo in seguito in Impostazioni.",
     "youWillReceiveAdminPrompts": "Riceverai le richieste dell'amministratore dai programmi di installazione Microsoft ufficiali per installare i componenti richiesti. Potrebbe essere necessario riavviare il computer dopo l'installazione.",
-    "yourContinuedSupport": "Il vostro continuo sostegno ha reso Ascendara quello che è oggi. Ascendara è stata completamente ricostruita da zero con il nuovo aspetto e l'atmosfera che stavi chiedendo."
+    "yourContinuedSupport": "Il vostro continuo sostegno ha reso QuadDown quello che è oggi. QuadDown è stata completamente ricostruita da zero con il nuovo aspetto e l'atmosfera che stavi chiedendo."
   },
   "workshopDownloader": {
     "downloadFailure": {
       "description": "Il download dell'articolo del workshop non è riuscito. Ciò potrebbe essere dovuto a:",
       "reasons": "['L'articolo potrebbe essere privato o limitato', 'Problemi di connessione a SteamCMD', 'Spazio su disco insufficiente', 'URL elemento del workshop non valido']",
-      "suggestion": "Verifica che l'elemento sia pubblico e riprova. Se il problema persiste, prova a riavviare Ascendara.",
+      "suggestion": "Verifica che l'elemento sia pubblico e riprova. Se il problema persiste, prova a riavviare QuadDown.",
       "title": "Download non riuscito"
     },
     "downloadLink": "Invia collegamento a SteamCMD",
@@ -2557,10 +2557,10 @@
     "installSteamCMDDescription": "Innanzitutto, dobbiamo installare SteamCMD Sidecar. Questo strumento CLI ti consente di scaricare elementi da Steam Workshop senza interfaccia utente.",
     "installSuccess": "Installazione completata!",
     "installingSteamCMD": "Installazione di SteamCMD Sidecar...",
-    "mainDescription": "Incolla qui i collegamenti agli elementi del workshop per scaricarli. Ascendara li aggiungerà a una directory affinché tu possa gestirli tu stesso.",
+    "mainDescription": "Incolla qui i collegamenti agli elementi del workshop per scaricarli. QuadDown li aggiungerà a una directory affinché tu possa gestirli tu stesso.",
     "mainTitle": "Scarica gli articoli del workshop",
     "waitingForLogs": "In attesa dell'avvio del download...",
-    "welcome": "Benvenuti nel Workshop Downloader di Ascendara",
+    "welcome": "Benvenuti nel Workshop Downloader di QuadDown",
     "welcomeDescription": "Qui puoi scaricare oggetti da Steam Workshop senza dover disporre di un account."
   }
 }

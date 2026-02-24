@@ -107,7 +107,7 @@ const sanitizeGameName = name => {
 // Helper function to check Torbox service status for a specific provider
 const checkTorboxStatus = async provider => {
   try {
-    const response = await fetch("https://api.ascendara.app/app/json/torboxstatus");
+    const response = await fetch("https://api.QuadDown.app/app/json/torboxstatus");
     if (!response.ok) {
       throw new Error("Failed to fetch Torbox status");
     }
@@ -328,7 +328,7 @@ export default function DownloadPage() {
     validate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedProvider, providerPatterns]);
-  const [useAscendara, setUseAscendara] = useState(false);
+  const [useQuadDown, setUseQuadDown] = useState(false);
   const [isDev, setIsDev] = useState(false);
   const [showNoDownloadPath, setShowNoDownloadPath] = useState(false);
   const [cachedImage, setCachedImage] = useState(null);
@@ -374,7 +374,7 @@ export default function DownloadPage() {
       if (settings.usingLocalIndex && gameData?.gameID) {
         try {
           const response = await fetch(
-            `https://api.ascendara.app/app/v2/gamerating/${gameData.gameID}`
+            `https://api.QuadDown.app/app/v2/gamerating/${gameData.gameID}`
           );
           if (response.ok) {
             const data = await response.json();
@@ -957,9 +957,9 @@ export default function DownloadPage() {
     checkDevMode();
   }, []);
 
-  // Protocol URL listener effect - only register handler when both useAscendara and providerPatterns are loaded
+  // Protocol URL listener effect - only register handler when both useQuadDown and providerPatterns are loaded
   useEffect(() => {
-    if (!useAscendara || !providerPatterns) return;
+    if (!useQuadDown || !providerPatterns) return;
 
     // Mark component as active
     isActive.current = true;
@@ -975,12 +975,12 @@ export default function DownloadPage() {
 
     // Create new handler and store in ref
     urlHandlerRef.current = async (event, url) => {
-      if (!url?.startsWith("ascendara://") || !isActive.current) {
+      if (!url?.startsWith("QuadDown://") || !isActive.current) {
         return;
       }
 
       try {
-        const encodedUrl = url.replace("ascendara://", "");
+        const encodedUrl = url.replace("QuadDown://", "");
         const decodedUrl = decodeURIComponent(encodedUrl);
         // Remove trailing slash if it exists
         const cleanUrl = decodedUrl.endsWith("/") ? decodedUrl.slice(0, -1) : decodedUrl;
@@ -1031,7 +1031,7 @@ export default function DownloadPage() {
       setLastProcessedUrl(null);
       setIsProcessingUrl(false);
     };
-  }, [useAscendara, providerPatterns]); // Only register handler when both are ready
+  }, [useQuadDown, providerPatterns]); // Only register handler when both are ready
 
   useEffect(() => {
     const loadFileFromPath = async path => {
@@ -1075,9 +1075,9 @@ export default function DownloadPage() {
   }, [gameData, navigate]);
 
   useEffect(() => {
-    const savedPreference = localStorage.getItem("useAscendara");
+    const savedPreference = localStorage.getItem("useQuadDown");
     if (savedPreference !== null) {
-      setUseAscendara(JSON.parse(savedPreference));
+      setUseQuadDown(JSON.parse(savedPreference));
     }
   }, []);
 
@@ -1395,7 +1395,7 @@ export default function DownloadPage() {
   };
 
   const handleShareLink = async () => {
-    const shareLink = `https://ascendara.app/game/${gameData.gameID}`;
+    const shareLink = `https://QuadDown.app/game/${gameData.gameID}`;
     await navigator.clipboard.writeText(shareLink);
     setShowShareCopySuccess(true);
     setTimeout(() => setShowShareCopySuccess(false), 2000);
@@ -1410,7 +1410,7 @@ export default function DownloadPage() {
     setIsReporting(true);
     try {
       const AUTHORIZATION = await window.electron.getAPIKey();
-      const response = await fetch("https://api.ascendara.app/auth/token", {
+      const response = await fetch("https://api.QuadDown.app/auth/token", {
         headers: {
           Authorization: AUTHORIZATION,
         },
@@ -1425,8 +1425,8 @@ export default function DownloadPage() {
       // Use v2 endpoint with gameID if using local index
       const useV2 = settings.usingLocalIndex && gameData.gameID;
       const endpoint = useV2
-        ? "https://api.ascendara.app/app/v2/report"
-        : "https://api.ascendara.app/app/report";
+        ? "https://api.QuadDown.app/app/v2/report"
+        : "https://api.QuadDown.app/app/report";
 
       const body = useV2
         ? {
@@ -1454,7 +1454,7 @@ export default function DownloadPage() {
       if (!reportResponse.ok) {
         // If token is expired or invalid, try once more with a new token
         if (reportResponse.status === 401) {
-          const newTokenResponse = await fetch("https://api.ascendara.app/auth/token", {
+          const newTokenResponse = await fetch("https://api.QuadDown.app/auth/token", {
             headers: {
               Authorization: AUTHORIZATION,
             },
@@ -1981,7 +1981,7 @@ export default function DownloadPage() {
                         className="gap-1.5 text-yellow-500 hover:text-yellow-400"
                         onClick={() =>
                           window.electron.openURL(
-                            "https://ascendara.app/docs/troubleshooting/emulators"
+                            "https://QuadDown.app/docs/troubleshooting/emulators"
                           )
                         }
                       >
@@ -2850,21 +2850,21 @@ export default function DownloadPage() {
                           </div>
                         </div>
 
-                        {/* Ascendara Handler Toggle */}
+                        {/* QuadDown Handler Toggle */}
                         <div className="flex items-center justify-between rounded-lg border border-border/50 bg-muted/30 px-4 py-3">
                           <div className="space-y-0.5">
                             <Label
-                              htmlFor="ascendara-handler"
+                              htmlFor="QuadDown-handler"
                               className="text-sm font-medium"
                             >
-                              {t("download.downloadOptions.ascendaraHandler")}
+                              {t("download.downloadOptions.QuadDownHandler")}
                             </Label>
-                            {!useAscendara && (
+                            {!useQuadDown && (
                               <p
                                 className="cursor-pointer text-xs text-primary hover:underline"
                                 onClick={() =>
                                   window.electron.openURL(
-                                    "https://ascendara.app/extension"
+                                    "https://QuadDown.app/extension"
                                   )
                                 }
                               >
@@ -2873,12 +2873,12 @@ export default function DownloadPage() {
                             )}
                           </div>
                           <Switch
-                            id="ascendara-handler"
-                            checked={useAscendara}
+                            id="QuadDown-handler"
+                            checked={useQuadDown}
                             onCheckedChange={checked => {
-                              setUseAscendara(checked);
+                              setUseQuadDown(checked);
                               localStorage.setItem(
-                                "useAscendara",
+                                "useQuadDown",
                                 JSON.stringify(checked)
                               );
                             }}
@@ -2886,7 +2886,7 @@ export default function DownloadPage() {
                         </div>
 
                         {/* Manual Link Input (when handler is off) */}
-                        {!useAscendara && (
+                        {!useQuadDown && (
                           <div className="space-y-2">
                             <Input
                               placeholder={t("download.downloadOptions.pasteLink")}
@@ -2904,7 +2904,7 @@ export default function DownloadPage() {
                         )}
 
                         {/* Status / Download Button */}
-                        {useAscendara ? (
+                        {useQuadDown ? (
                           <div className="flex items-center justify-center gap-3 rounded-lg border border-border/50 bg-muted/30 px-4 py-4 text-muted-foreground">
                             <Loader className="h-4 w-4 shrink-0 animate-spin" />
                             <span className="text-sm">
@@ -2963,7 +2963,7 @@ export default function DownloadPage() {
                             <button
                               onClick={() =>
                                 window.electron.openURL(
-                                  "https://ascendara.app/protect-yourself"
+                                  "https://QuadDown.app/protect-yourself"
                                 )
                               }
                               className="mt-2 inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
@@ -2983,7 +2983,7 @@ export default function DownloadPage() {
                           {t("download.downloadOptions.downloadOptions")}
                         </h4>
                         <ol className="space-y-2.5 text-xs text-muted-foreground">
-                          {useAscendara ? (
+                          {useQuadDown ? (
                             <>
                               <li className="flex items-start gap-2">
                                 <span className="mt-px shrink-0 font-semibold text-primary">
@@ -3684,19 +3684,19 @@ export default function DownloadPage() {
               <p className="text-base leading-relaxed">
                 {
                   t("gameCard.verified.dialogDescription").split(
-                    "verified by the Ascendara community"
+                    "verified by the QuadDown community"
                   )[0]
                 }
                 <span className="font-semibold text-primary">
                   {
                     t("gameCard.verified.dialogDescription").match(
-                      /verified by the Ascendara community/
+                      /verified by the QuadDown community/
                     )?.[0]
                   }
                 </span>
                 {
                   t("gameCard.verified.dialogDescription").split(
-                    "verified by the Ascendara community"
+                    "verified by the QuadDown community"
                   )[1]
                 }
               </p>

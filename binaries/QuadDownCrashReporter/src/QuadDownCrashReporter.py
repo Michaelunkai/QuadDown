@@ -1,10 +1,10 @@
 # ==============================================================================
-# Ascendara Crash Reporter
+# QuadDown Crash Reporter
 # ==============================================================================
 # A GUI-based error reporting tool that handles application crashes and errors
-# across all Ascendara components. Provides user-friendly error messages and
+# across all QuadDown components. Provides user-friendly error messages and
 # crash reporting capabilities. Read more about the Crash Reporter tool here:
-# https://ascendara.app/docs/binary-tool/crash-reporter
+# https://QuadDown.app/docs/binary-tool/crash-reporter
 
 
 
@@ -23,7 +23,7 @@ import webbrowser
 import json
 from datetime import datetime
 
-class AscendaraTool:
+class QuadDownTool:
     GOFILE_HELPER = "gofilehelper"
     MAIN_DOWNLOADER = "maindownloader"
     GAME_HANDLER = "gamehandler"
@@ -35,15 +35,15 @@ class AscendaraTool:
     @staticmethod
     def get_tool_name(tool_id):
         tool_names = {
-            AscendaraTool.GOFILE_HELPER: "Ascendara GoFile Helper",
-            AscendaraTool.MAIN_DOWNLOADER: "Ascendara Downloader",
-            AscendaraTool.GAME_HANDLER: "Ascendara Game Handler",
-            AscendaraTool.TOP_LEVEL: "Ascendara",
-            AscendaraTool.LANGUAGE_TRANSLATION: "Ascendara Language Translation",
-            AscendaraTool.TORRENT_HANDLER: "Ascendara Torrent Handler",
-            AscendaraTool.NOTIFICATION_HELPER: "Ascendara Notification Helper"
+            QuadDownTool.GOFILE_HELPER: "QuadDown GoFile Helper",
+            QuadDownTool.MAIN_DOWNLOADER: "QuadDown Downloader",
+            QuadDownTool.GAME_HANDLER: "QuadDown Game Handler",
+            QuadDownTool.TOP_LEVEL: "QuadDown",
+            QuadDownTool.LANGUAGE_TRANSLATION: "QuadDown Language Translation",
+            QuadDownTool.TORRENT_HANDLER: "QuadDown Torrent Handler",
+            QuadDownTool.NOTIFICATION_HELPER: "QuadDown Notification Helper"
         }
-        return tool_names.get(tool_id.lower(), "Unknown Ascendara Tool")
+        return tool_names.get(tool_id.lower(), "Unknown QuadDown Tool")
 
 class ErrorCodes:
     # General errors (1000-1004)
@@ -176,7 +176,7 @@ class ModernButton(ttk.Button):
 class CrashReporter:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("Ascendara Error Report")
+        self.root.title("QuadDown Error Report")
         
         # Make window non-resizable for consistent appearance
         self.root.resizable(False, False)
@@ -200,7 +200,7 @@ class CrashReporter:
             else:
                 # Running as script
                 base_path = os.path.dirname(os.path.abspath(__file__))
-            icon_path = os.path.join(os.path.dirname(__file__), "ascendara.ico")
+            icon_path = os.path.join(os.path.dirname(__file__), "QuadDown.ico")
             if os.path.exists(icon_path):
                 self.root.iconbitmap(icon_path)
         except Exception:
@@ -281,7 +281,7 @@ class CrashReporter:
         
         error_header = ttk.Label(
             header_frame,
-            text="⚠️ Critical Error: Ascendara Has Stopped Working",
+            text="⚠️ Critical Error: QuadDown Has Stopped Working",
             style='Critical.Header.TLabel'
         )
         error_header.grid(row=0, column=0, sticky='w')
@@ -289,7 +289,7 @@ class CrashReporter:
         # Critical error explanation
         explanation = ttk.Label(
             header_frame,
-            text="The main Ascendara application has encountered a serious error and needs to close.",
+            text="The main QuadDown application has encountered a serious error and needs to close.",
             style='Critical.TLabel',
             wraplength=600
         )
@@ -350,7 +350,7 @@ class CrashReporter:
         recovery_header.grid(row=0, column=0, sticky='w', pady=(0, 5))
         
         suggestions = [
-            "• Restart Ascendara",
+            "• Restart QuadDown",
             "• Check for updates",
             "• Verify your internet connection",
             "• Make sure your system meets the minimum requirements"
@@ -398,8 +398,8 @@ class CrashReporter:
         
         restart_button = ModernButton(
             buttons_frame,
-            text="Restart Ascendara",
-            command=self.restart_ascendara,
+            text="Restart QuadDown",
+            command=self.restart_QuadDown,
             style='Critical.TButton'
         )
         restart_button.grid(row=0, column=1, padx=10)
@@ -412,18 +412,18 @@ class CrashReporter:
         )
         close_button.grid(row=0, column=2, padx=(10, 0))
         
-    def restart_ascendara(self):
+    def restart_QuadDown(self):
         try:
-            # This would need to be implemented based on how Ascendara should be restarted
+            # This would need to be implemented based on how QuadDown should be restarted
             messagebox.showinfo(
                 "Restart",
-                "Please restart Ascendara manually at this time."
+                "Please restart QuadDown manually at this time."
             )
             self.root.destroy()
         except Exception as e:
             messagebox.showerror(
                 "Error",
-                "Unable to restart Ascendara. Please close and restart manually."
+                "Unable to restart QuadDown. Please close and restart manually."
             )
         
     def create_normal_error_widgets(self):
@@ -433,7 +433,7 @@ class CrashReporter:
         
         error_header = ttk.Label(
             header_frame,
-            text="⚠️ Ascendara Core Utility Crash",
+            text="⚠️ QuadDown Core Utility Crash",
             style='Header.TLabel'
         )
         error_header.grid(row=0, column=0, sticky='w')
@@ -441,7 +441,7 @@ class CrashReporter:
         # Subheader explaining the situation
         subheader = ttk.Label(
             header_frame,
-            text="A critical component of Ascendara has encountered an error and needs to close.",
+            text="A critical component of QuadDown has encountered an error and needs to close.",
             style='TLabel',
             wraplength=500
         )
@@ -533,7 +533,7 @@ class CrashReporter:
         # Action suggestion text
         action_text = ttk.Label(
             self.normal_frame,
-            text="To help us improve Ascendara, you can report this issue or get support below:",
+            text="To help us improve QuadDown, you can report this issue or get support below:",
             style='TLabel',
             wraplength=600
         )
@@ -568,7 +568,7 @@ class CrashReporter:
         close_button.grid(row=0, column=2, padx=(10, 0))
     
     def set_error(self, tool_id, error_code, error_message):
-        tool_name = AscendaraTool.get_tool_name(tool_id)
+        tool_name = QuadDownTool.get_tool_name(tool_id)
         error_desc = ErrorCodes.get_error_description(error_code)
         
         # Store crash data
@@ -580,7 +580,7 @@ class CrashReporter:
             "error_message": error_message
         }
         
-        if tool_id.lower() == AscendaraTool.TOP_LEVEL:
+        if tool_id.lower() == QuadDownTool.TOP_LEVEL:
             # Show critical error page and set critical styling
             self.root.configure(bg='#fce8e6')
             self.main_frame.configure(style='Critical.TFrame')
@@ -620,7 +620,7 @@ class CrashReporter:
         self.root.geometry(f"{window_width}x{window_height}+{x}+{y}")
     
     def open_support(self):
-        webbrowser.open("https://ascendara.app/discord")
+        webbrowser.open("https://QuadDown.app/discord")
 
     
     def upload_crash_report(self):
@@ -628,7 +628,7 @@ class CrashReporter:
             # In a real implementation, this would send the crash_data to a server
             messagebox.showinfo(
                 "Crash Report",
-                "Thank you for helping improve Ascendara!\nThe crash report has been uploaded successfully."
+                "Thank you for helping improve QuadDown!\nThe crash report has been uploaded successfully."
             )
         except Exception as e:
             messagebox.showerror(

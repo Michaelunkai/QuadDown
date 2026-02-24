@@ -162,7 +162,7 @@ class ImageCacheService {
             this.db = event.target.result;
             this.isInitialized = true;
             console.log(
-              "[ImageCache] Ascendara Image Cache service initialized, IndexedDB ready"
+              "[ImageCache] QuadDown Image Cache service initialized, IndexedDB ready"
             );
             resolve();
           } catch (error) {
@@ -485,9 +485,9 @@ class ImageCacheService {
 
     // Clear localStorage cache
     try {
-      localStorage.removeItem("ascendara_games_cache");
-      localStorage.removeItem("local_ascendara_games_timestamp");
-      localStorage.removeItem("local_ascendara_metadata_cache");
+      localStorage.removeItem("QuadDown_games_cache");
+      localStorage.removeItem("local_QuadDown_games_timestamp");
+      localStorage.removeItem("local_QuadDown_metadata_cache");
 
       // Force a refresh of the game data (respects local index setting)
       // Skip refresh if caller will handle it (e.g., during page reload)

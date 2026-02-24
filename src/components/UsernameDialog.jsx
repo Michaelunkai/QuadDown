@@ -148,7 +148,7 @@ const UsernameDialog = () => {
             <a
               onClick={() =>
                 window.electron.openURL(
-                  "https://ascendara.app/docs/features/overview#username-customization"
+                  "https://QuadDown.app/docs/features/overview#username-customization"
                 )
               }
               className="cursor-pointer text-sm text-muted-foreground hover:text-primary"

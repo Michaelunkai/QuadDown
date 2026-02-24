@@ -1414,13 +1414,13 @@ const DownloadCard = ({
     setIsReporting(true);
     try {
       const AUTHORIZATION = await window.electron.getAPIKey();
-      const response = await fetch("https://api.ascendara.app/auth/token", {
+      const response = await fetch("https://api.QuadDown.app/auth/token", {
         headers: { Authorization: AUTHORIZATION },
       });
       if (!response.ok) throw new Error("Failed to obtain token");
       const { token } = await response.json();
 
-      const reportResponse = await fetch("https://api.ascendara.app/app/report/feature", {
+      const reportResponse = await fetch("https://api.QuadDown.app/app/report/feature", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1694,7 +1694,7 @@ const DownloadCard = ({
                   className="inline-flex cursor-pointer items-center text-primary hover:underline"
                   onClick={() =>
                     window.electron.openURL(
-                      "https://ascendara.app/docs/troubleshooting/common-issues#verification-issues"
+                      "https://QuadDown.app/docs/troubleshooting/common-issues#verification-issues"
                     )
                   }
                 >
@@ -1784,7 +1784,7 @@ const DownloadCard = ({
                     <a
                       onClick={() =>
                         window.electron.openURL(
-                          "https://ascendara.app/docs/troubleshooting/common-issues#download-issues"
+                          "https://QuadDown.app/docs/troubleshooting/common-issues#download-issues"
                         )
                       }
                       className="mt-2 inline-flex cursor-pointer items-center gap-1 text-sm text-primary hover:underline"
@@ -1815,7 +1815,7 @@ const DownloadCard = ({
                       ? t("common.reporting")
                       : wasReported
                         ? t("downloads.alreadyReported")
-                        : t("common.reportToAscendara")}
+                        : t("common.reportToQuadDown")}
                   </Button>
                 )}
                 <Button

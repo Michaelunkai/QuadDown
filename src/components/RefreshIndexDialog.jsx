@@ -171,7 +171,7 @@ const RefreshIndexDialog = ({
   };
 
   const handleStartWithExtension = () => {
-    // Extension will handle sending the cookie to Ascendara
+    // Extension will handle sending the cookie to QuadDown
     onStartRefresh({ method: "extension" });
     handleClose();
   };
@@ -351,7 +351,7 @@ const RefreshIndexDialog = ({
                   <span
                     className="block cursor-pointer text-xs text-muted-foreground hover:underline"
                     onClick={() =>
-                      window.electron.openURL("https://ascendara.app/extension")
+                      window.electron.openURL("https://QuadDown.app/extension")
                     }
                   >
                     {t("download.downloadOptions.getExtension")}
@@ -445,7 +445,7 @@ const RefreshIndexDialog = ({
                           </span>
                           <span className="block text-sm text-muted-foreground">
                             {t("refreshDialog.listeningDesc") ||
-                              "Ascendara is waiting to receive the cookie from the browser extension."}
+                              "QuadDown is waiting to receive the cookie from the browser extension."}
                           </span>
                         </div>
                       </div>
@@ -457,11 +457,11 @@ const RefreshIndexDialog = ({
                           </li>
                           <li>
                             {t("refreshDialog.extStep2") ||
-                              "Look for the Ascendara extension popup"}
+                              "Look for the QuadDown extension popup"}
                           </li>
                           <li>
                             {t("refreshDialog.extStep3") ||
-                              "Click 'Send to Ascendara' in the popup"}
+                              "Click 'Send to QuadDown' in the popup"}
                           </li>
                         </ol>
                       </div>
@@ -562,7 +562,7 @@ const RefreshIndexDialog = ({
                   <span
                     className="block cursor-pointer text-xs text-muted-foreground hover:underline"
                     onClick={() =>
-                      window.electron.openURL("https://ascendara.app/extension")
+                      window.electron.openURL("https://QuadDown.app/extension")
                     }
                   >
                     {t("refreshDialog.orJustGetExtension")}

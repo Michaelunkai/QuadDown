@@ -1,9 +1,9 @@
 # ==============================================================================
-# Ascendara Local Refresh
+# QuadDown Local Refresh
 # ==============================================================================
 # A command-line tool for refreshing the local game index by scraping SteamRIP
 # Read more about the Local Refresh Tool here:
-# https://ascendara.app/docs/binary-tool/local-refresh
+# https://QuadDown.app/docs/binary-tool/local-refresh
 
 import cloudscraper
 import requests
@@ -183,15 +183,15 @@ def get_blacklist_ids():
         if sys.platform == 'win32':
             appdata = os.environ.get('APPDATA')
             if appdata:
-                candidate = os.path.join(appdata, 'Electron', 'ascendarasettings.json')
+                candidate = os.path.join(appdata, 'Electron', 'QuadDownsettings.json')
                 if os.path.exists(candidate):
                     settings_path = candidate
         elif sys.platform == 'darwin':
-            candidate = os.path.join(os.path.expanduser('~/Library/Application Support/ascendara'), 'ascendarasettings.json')
+            candidate = os.path.join(os.path.expanduser('~/Library/Application Support/QuadDown'), 'QuadDownsettings.json')
             if os.path.exists(candidate):
                 settings_path = candidate
         else:
-            candidate = os.path.join(os.path.expanduser('~/.ascendara'), 'ascendarasettings.json')
+            candidate = os.path.join(os.path.expanduser('~/.QuadDown'), 'QuadDownsettings.json')
             if os.path.exists(candidate):
                 settings_path = candidate
 
@@ -219,15 +219,15 @@ def get_notification_settings():
         if sys.platform == 'win32':
             appdata = os.environ.get('APPDATA')
             if appdata:
-                candidate = os.path.join(appdata, 'Electron', 'ascendarasettings.json')
+                candidate = os.path.join(appdata, 'Electron', 'QuadDownsettings.json')
                 if os.path.exists(candidate):
                     settings_path = candidate
         elif sys.platform == 'darwin':
-            candidate = os.path.join(os.path.expanduser('~/Library/Application Support/ascendara'), 'ascendarasettings.json')
+            candidate = os.path.join(os.path.expanduser('~/Library/Application Support/QuadDown'), 'QuadDownsettings.json')
             if os.path.exists(candidate):
                 settings_path = candidate
         else:
-            candidate = os.path.join(os.path.expanduser('~/.ascendara'), 'ascendarasettings.json')
+            candidate = os.path.join(os.path.expanduser('~/.QuadDown'), 'QuadDownsettings.json')
             if os.path.exists(candidate):
                 settings_path = candidate
 
@@ -253,7 +253,7 @@ def _launch_notification(title, message):
     try:
         # Get the directory where the current executable is located
         exe_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-        notification_helper_path = os.path.join(exe_dir, 'AscendaraNotificationHelper.exe')
+        notification_helper_path = os.path.join(exe_dir, 'QuadDownNotificationHelper.exe')
         logging.debug(f"Looking for notification helper at: {notification_helper_path}")
         
         if os.path.exists(notification_helper_path):
@@ -272,7 +272,7 @@ def _launch_notification(title, message):
 def _launch_crash_reporter_on_exit(error_code, error_message):
     """Launch crash reporter on exit"""
     try:
-        crash_reporter_path = os.path.join('./AscendaraCrashReporter.exe')
+        crash_reporter_path = os.path.join('./QuadDownCrashReporter.exe')
         if os.path.exists(crash_reporter_path):
             subprocess.Popen(
                 [crash_reporter_path, "localrefresh", str(error_code), error_message],
@@ -1034,14 +1034,14 @@ def extract_shared_index(zip_path, output_dir):
         logging.info(f"Extracting shared index from {zip_path} to {output_dir}")
         
         # Backup existing files
-        games_file = os.path.join(output_dir, "ascendara_games.json")
+        games_file = os.path.join(output_dir, "QuadDown_games.json")
         imgs_dir = os.path.join(output_dir, "imgs")
-        games_backup = os.path.join(output_dir, "ascendara_games_backup.json")
+        games_backup = os.path.join(output_dir, "QuadDown_games_backup.json")
         imgs_backup = os.path.join(output_dir, "imgs_backup")
         
         if os.path.exists(games_file):
             shutil.copy2(games_file, games_backup)
-            logging.info("Backed up ascendara_games.json")
+            logging.info("Backed up QuadDown_games.json")
         
         if os.path.exists(imgs_dir):
             if os.path.exists(imgs_backup):
@@ -1100,7 +1100,7 @@ def extract_shared_index(zip_path, output_dir):
         try:
             if os.path.exists(games_backup):
                 shutil.copy2(games_backup, games_file)
-                logging.info("Restored ascendara_games.json from backup")
+                logging.info("Restored QuadDown_games.json from backup")
             if os.path.exists(imgs_backup):
                 if os.path.exists(imgs_dir):
                     shutil.rmtree(imgs_dir)
@@ -1114,7 +1114,7 @@ def extract_shared_index(zip_path, output_dir):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Ascendara Local Refresh - Scrape SteamRIP for game data'
+        description='QuadDown Local Refresh - Scrape SteamRIP for game data'
     )
     parser.add_argument(
         '--output', '-o',
@@ -1175,26 +1175,26 @@ def main():
         extract_shared_index(args.zip_path, args.output)
         sys.exit(0)
     
-    logging.info("=== Starting Ascendara Local Refresh ===")
+    logging.info("=== Starting QuadDown Local Refresh ===")
     logging.info(f"Output directory: {args.output}")
     
     # Setup directories - use staging approach:
     # - incoming: new data written here during refresh (app doesn't read this)
-    # - current: live data the app reads (imgs/ and ascendara_games.json)
+    # - current: live data the app reads (imgs/ and QuadDown_games.json)
     # - backup: created only when swapping incoming -> current
     output_dir = args.output
     
     # Current (live) paths - what the app reads
     imgs_dir = os.path.join(output_dir, "imgs")
-    games_file = os.path.join(output_dir, "ascendara_games.json")
+    games_file = os.path.join(output_dir, "QuadDown_games.json")
     
     # Incoming (staging) paths - where new data is written during refresh
     imgs_incoming_dir = os.path.join(output_dir, "imgs_incoming")
-    games_incoming_file = os.path.join(output_dir, "ascendara_games_incoming.json")
+    games_incoming_file = os.path.join(output_dir, "QuadDown_games_incoming.json")
     
     # Backup paths - created during swap for rollback safety
     imgs_backup_dir = os.path.join(output_dir, "imgs_backup")
-    games_backup_file = os.path.join(output_dir, "ascendara_games_backup.json")
+    games_backup_file = os.path.join(output_dir, "QuadDown_games_backup.json")
     
     def cleanup_incoming():
         """Remove incomplete incoming data on failure"""
@@ -1224,7 +1224,7 @@ def main():
                 if os.path.exists(games_file):
                     os.remove(games_file)
                 shutil.move(games_backup_file, games_file)
-                logging.info("Restored ascendara_games.json from backup")
+                logging.info("Restored QuadDown_games.json from backup")
                 restored = True
         except Exception as e:
             logging.error(f"Failed to restore backup: {e}")
@@ -1649,7 +1649,7 @@ def main():
         
         # Mark that user has successfully indexed
         try:
-            timestamp_path = os.path.join(os.path.expanduser('~'), 'timestamp.ascendara.json')
+            timestamp_path = os.path.join(os.path.expanduser('~'), 'timestamp.QuadDown.json')
             timestamp_data = {}
             if os.path.exists(timestamp_path):
                 with open(timestamp_path, 'r', encoding='utf-8') as f:

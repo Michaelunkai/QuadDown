@@ -1,9 +1,9 @@
 # ==============================================================================
-# Ascendara Torrent Handler
+# QuadDown Torrent Handler
 # ==============================================================================
-# A command-line tool for handling Ascendara torrents
+# A command-line tool for handling QuadDown torrents
 # Read more about the Torrent Handler Tool here:
-# https://ascendara.app/docs/binary-tool/torrent-handler
+# https://QuadDown.app/docs/binary-tool/torrent-handler
 
 
 
@@ -26,7 +26,7 @@ from typing import Dict, Any
 
 def _launch_crash_reporter_on_exit(error_code, error_message):
     try:
-        crash_reporter_path = os.path.join('./AscendaraCrashReporter.exe')
+        crash_reporter_path = os.path.join('./QuadDownCrashReporter.exe')
         if os.path.exists(crash_reporter_path):
             kwargs = {"creationflags": subprocess.CREATE_NO_WINDOW} if sys.platform == "win32" else {}
             subprocess.Popen(
@@ -89,7 +89,7 @@ def setup_logging():
     
     # Create temp log file with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    temp_log_path = os.path.join(gettempdir(), f'ascendara_torrent_{timestamp}.log')
+    temp_log_path = os.path.join(gettempdir(), f'QuadDown_torrent_{timestamp}.log')
     
     # File handler for temp file
     file_handler = logging.FileHandler(temp_log_path)
@@ -117,7 +117,7 @@ def _launch_notification(theme, title, message):
     try:
         # Get the directory where the current executable is located
         exe_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-        notification_helper_path = os.path.join(exe_dir, 'AscendaraNotificationHelper.exe')
+        notification_helper_path = os.path.join(exe_dir, 'QuadDownNotificationHelper.exe')
         logging.debug(f"Looking for notification helper at: {notification_helper_path}")
         
         if os.path.exists(notification_helper_path):
@@ -194,7 +194,7 @@ class TorrentManager:
         dir_thread.join()
         game_dir = os.path.join(download_dir, game)
         
-        game_info_path = os.path.join(game_dir, f"{game}.ascendara.json")
+        game_info_path = os.path.join(game_dir, f"{game}.QuadDown.json")
         
         game_info: Dict[str, Any] = {
             "game": game,
@@ -335,7 +335,7 @@ def parse_boolean(value):
     raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def main():
-    parser = argparse.ArgumentParser(description='Ascendara Torrent Handler')
+    parser = argparse.ArgumentParser(description='QuadDown Torrent Handler')
     parser.add_argument("magnet", help="Magnet link to download")
     parser.add_argument("game", help="Game name")
     parser.add_argument("online", type=parse_boolean, help="Is online game")

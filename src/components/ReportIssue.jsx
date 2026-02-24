@@ -51,7 +51,7 @@ const ReportIssue = ({ isOpen, onClose }) => {
   const getToken = async () => {
     try {
       const AUTHORIZATION = await window.electron.getAPIKey();
-      const response = await fetch("https://api.ascendara.app/auth/token", {
+      const response = await fetch("https://api.QuadDown.app/auth/token", {
         headers: {
           Authorization: AUTHORIZATION,
         },
@@ -82,14 +82,14 @@ const ReportIssue = ({ isOpen, onClose }) => {
         // Get a fresh token for each request to ensure timestamp validity
         const freshToken = await getToken();
 
-        const response = await fetch("https://api.ascendara.app/app/report/feature", {
+        const response = await fetch("https://api.QuadDown.app/app/report/feature", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${freshToken}`,
           },
           body: JSON.stringify({
-            reportType: "AscendaraApp",
+            reportType: "QuadDownApp",
             reason: reportReason,
             details: details,
           }),
@@ -102,7 +102,7 @@ const ReportIssue = ({ isOpen, onClose }) => {
           if (response.status === 401) {
             const newToken = await getToken();
             const retryResponse = await fetch(
-              "https://api.ascendara.app/app/report/feature",
+              "https://api.QuadDown.app/app/report/feature",
               {
                 method: "POST",
                 headers: {
@@ -110,7 +110,7 @@ const ReportIssue = ({ isOpen, onClose }) => {
                   Authorization: `Bearer ${newToken}`,
                 },
                 body: JSON.stringify({
-                  reportType: "AscendaraApp",
+                  reportType: "QuadDownApp",
                   reason: reportReason,
                   details: details,
                 }),

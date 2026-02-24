@@ -1,9 +1,9 @@
 const ENDPOINTS = {
-  monitor: "https://monitor.ascendara.app/",
-  api: "https://api.ascendara.app/",
-  storage: "https://cdn.ascendara.app/",
-  lfs: "https://lfs.ascendara.app/",
-  r2: "https://r2.ascendara.app/",
+  monitor: "https://monitor.QuadDown.app/",
+  api: "https://api.QuadDown.app/",
+  storage: "https://cdn.QuadDown.app/",
+  lfs: "https://lfs.QuadDown.app/",
+  r2: "https://r2.QuadDown.app/",
 };
 
 const checkEndpoint = async url => {
@@ -91,7 +91,7 @@ const checkEndpoint = async url => {
 
 const checkInternetConnectivity = async () => {
   try {
-    const response = await window.electron.request("https://monitor.ascendara.app/", {
+    const response = await window.electron.request("https://monitor.QuadDown.app/", {
       method: "HEAD",
       timeout: 5000,
     });

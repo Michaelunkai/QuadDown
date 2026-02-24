@@ -1,7 +1,7 @@
 let wordLists = null;
 let fetchPromise = null;
 
-const API_URL = "https://api.ascendara.app/app/json/profanity";
+const API_URL = "https://api.QuadDown.app/app/json/profanity";
 
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

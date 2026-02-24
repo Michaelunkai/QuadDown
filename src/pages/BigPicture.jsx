@@ -2680,7 +2680,7 @@ const ExecutableManagerDialog = ({
                   <button
                     onClick={() =>
                       window.electron.openURL(
-                        "https://ascendara.app/docs/troubleshooting/common-issues#executable-not-found-launch-error"
+                        "https://QuadDown.app/docs/troubleshooting/common-issues#executable-not-found-launch-error"
                       )
                     }
                     className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -4695,7 +4695,7 @@ const SidebarMenu = ({ isOpen, selectedIndex, t, onItemClick, buttons }) => {
     { icon: LogOut, label: t("bigPicture.exitBigPicture"), action: "exit_bp" },
     {
       icon: Power,
-      label: t("bigPicture.closeAscendara"),
+      label: t("bigPicture.closeQuadDown"),
       action: "quit_app",
       danger: true,
     },
@@ -5884,7 +5884,7 @@ export default function BigPicture() {
         else if (action === "BACK" || action === "MENU") setIsMenuOpen(false);
         else if (action === "CONFIRM") {
           setIsMenuOpen(false);
-          // Menu items: 0=HOME, 1=LIBRARY, 2=CATALOG, 3=DOWNLOADS, 4=SETTINGS, 5=EXIT BIG PICTURE, 6=CLOSE ASCENDARA
+          // Menu items: 0=HOME, 1=LIBRARY, 2=CATALOG, 3=DOWNLOADS, 4=SETTINGS, 5=EXIT BIG PICTURE, 6=CLOSE QuadDown
           if (menuIndex === 0) {
             changeView("carousel");
           } else if (menuIndex === 1) {
@@ -5898,7 +5898,7 @@ export default function BigPicture() {
           } else if (menuIndex === 5) {
             setShowExitBigPictureDialog(true);
           } else if (menuIndex === 6) {
-            // Close Ascendara completely (Force Quit)
+            // Close QuadDown completely (Force Quit)
             if (window.electron && window.electron.closeWindow) {
               window.electron.closeWindow(true);
             } else {
@@ -6337,7 +6337,7 @@ export default function BigPicture() {
         buttons={buttons}
         onItemClick={idx => {
           setIsMenuOpen(false);
-          // Menu items: 0=HOME, 1=LIBRARY, 2=CATALOG, 3=DOWNLOADS, 4=SETTINGS, 5=EXIT BIG PICTURE, 6=CLOSE ASCENDARA
+          // Menu items: 0=HOME, 1=LIBRARY, 2=CATALOG, 3=DOWNLOADS, 4=SETTINGS, 5=EXIT BIG PICTURE, 6=CLOSE QuadDown
           if (idx === 0) {
             changeView("carousel");
           } else if (idx === 1) {

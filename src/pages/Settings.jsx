@@ -104,7 +104,7 @@ const themes = [
   // Light themes
   { id: "light", name: "Arctic Sky", group: "light" },
   { id: "blue", name: "Ocean Blue", group: "light" },
-  { id: "purple", name: "Ascendara Purple", group: "light" },
+  { id: "purple", name: "QuadDown Purple", group: "light" },
   { id: "emerald", name: "Emerald", group: "light" },
   { id: "rose", name: "Rose", group: "light" },
   { id: "amber", name: "Amber Sand", group: "light" },
@@ -489,7 +489,7 @@ function Settings() {
   useEffect(() => {
     const fetchBranchVersions = async () => {
       try {
-        const response = await fetch("https://api.ascendara.app/branch-versions");
+        const response = await fetch("https://api.QuadDown.app/branch-versions");
         const data = await response.json();
         setBranchVersions(data);
       } catch (error) {
@@ -771,7 +771,7 @@ function Settings() {
         clearCustomThemeStyles();
       }
       setTheme(newTheme);
-      localStorage.setItem("ascendara-theme", newTheme);
+      localStorage.setItem("QuadDown-theme", newTheme);
 
       // Try to save
       try {
@@ -903,7 +903,7 @@ function Settings() {
 
       // Update React state without triggering full save
       setTheme("custom");
-      localStorage.setItem("ascendara-theme", "custom");
+      localStorage.setItem("QuadDown-theme", "custom");
 
       localStorage.setItem("custom-theme-colors", JSON.stringify(customColors));
       setSettingsLocal(prev => ({
@@ -954,7 +954,7 @@ function Settings() {
     setShowPublicThemesDialog(true);
     setLoadingPublicThemes(true);
     try {
-      const response = await fetch("https://api.ascendara.app/json/publicthemes");
+      const response = await fetch("https://api.QuadDown.app/json/publicthemes");
       const data = await response.json();
       // Ensure we always have an array
       let themesArray = [];
@@ -1166,7 +1166,7 @@ function Settings() {
               <div
                 onClick={() =>
                   window.electron.openURL(
-                    `https://github.com/ascendara/ascendara/commit/${__APP_REVISION__}`
+                    `https://github.com/QuadDown/QuadDown/commit/${__APP_REVISION__}`
                   )
                 }
                 className="mr-2 -translate-x-8 transform cursor-pointer opacity-0 transition-all duration-300 hover:underline group-hover:translate-x-0 group-hover:opacity-100"
@@ -1177,7 +1177,7 @@ function Settings() {
               </div>
               <div
                 onClick={() =>
-                  window.electron.openURL("https://ascendara.app/changelog?individual")
+                  window.electron.openURL("https://QuadDown.app/changelog?individual")
                 }
                 className="cursor-pointer px-2 hover:underline"
               >
@@ -1479,9 +1479,9 @@ function Settings() {
 
                 <div id="auto-update" className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <Label>{t("settings.ascendaraUpdates")}</Label>
+                    <Label>{t("settings.QuadDownUpdates")}</Label>
                     <p className="text-sm text-muted-foreground">
-                      {t("settings.ascendaraUpdatesDescription")}
+                      {t("settings.QuadDownUpdatesDescription")}
                     </p>
                   </div>
                   <Switch
@@ -1716,7 +1716,7 @@ function Settings() {
                                 className="cursor-pointer text-secondary hover:underline"
                                 onClick={() =>
                                   window.electron.openURL(
-                                    "https://ascendara.app/docs/features/overview#protecting-directories-from-windows-defender"
+                                    "https://QuadDown.app/docs/features/overview#protecting-directories-from-windows-defender"
                                   )
                                 }
                               >
@@ -1750,7 +1750,7 @@ function Settings() {
                     <a
                       onClick={() =>
                         window.electron.openURL(
-                          "https://ascendara.app/docs/features/torbox-integration"
+                          "https://QuadDown.app/docs/features/torbox-integration"
                         )
                       }
                       className="cursor inline-flex cursor-pointer items-center text-primary hover:underline"
@@ -2258,7 +2258,7 @@ function Settings() {
                           <a
                             onClick={() =>
                               window.electron.openURL(
-                                "https://ascendara.app/docs/features/game-backups"
+                                "https://QuadDown.app/docs/features/game-backups"
                               )
                             }
                             className="cursor-pointer text-primary hover:underline"
@@ -2711,7 +2711,7 @@ function Settings() {
                         <p>
                           {t("settings.linuxCompat.protonConfirm.description")}{" "}
                           <code className="rounded bg-muted px-1 text-xs">
-                            ~/.ascendara/runners/
+                            ~/.QuadDown/runners/
                           </code>
                         </p>
                       </AlertDialogDescription>
@@ -2917,7 +2917,7 @@ function Settings() {
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
                           <h3 className="text-lg font-semibold">
-                            {t("settings.torrentOnAscendara")}
+                            {t("settings.torrentOnQuadDown")}
                           </h3>
                           <Badge variant="secondary" className="text-xs">
                             <FlaskConical className="mr-1 h-4 w-4" />
@@ -2993,17 +2993,17 @@ function Settings() {
               <div className="mb-2 flex items-center gap-2">
                 <ChartNoAxesCombined className="mb-2 h-5 w-5 text-primary" />
                 <h2 className="text-xl font-semibold text-primary">
-                  {t("settings.ascendaraAnalytics")}
+                  {t("settings.QuadDownAnalytics")}
                 </h2>
               </div>
               <div className="space-y-6">
                 <div className="space-y-4">
                   <p className="text-sm text-muted-foreground">
-                    {t("settings.ascendaraAnalyticsDescription")}&nbsp;
+                    {t("settings.QuadDownAnalyticsDescription")}&nbsp;
                     <a
                       className="inline-flex cursor-pointer items-center text-xs text-primary hover:underline"
                       onClick={() =>
-                        window.electron.openURL("https://ascendara.app/analytics")
+                        window.electron.openURL("https://QuadDown.app/analytics")
                       }
                     >
                       {t("common.learnMore")}
@@ -3013,7 +3013,7 @@ function Settings() {
                   <div className="flex items-center justify-between space-x-4">
                     <div className="space-y-1">
                       <Label className="text-sm font-medium">
-                        {t("settings.ascendaraToggleAnalytics")}
+                        {t("settings.QuadDownToggleAnalytics")}
                       </Label>
                     </div>
                     <Switch
@@ -3032,7 +3032,7 @@ function Settings() {
               <div className="mb-2 flex items-center gap-2">
                 <History className="mb-2 h-5 w-5 text-primary" />
                 <h2 className="text-xl font-semibold text-primary">
-                  {t("settings.ascendaraTimechine")}
+                  {t("settings.QuadDownTimechine")}
                 </h2>
               </div>
               <div className="space-y-6">
@@ -3042,7 +3042,7 @@ function Settings() {
                     <a
                       onClick={() =>
                         window.electron.openURL(
-                          "https://ascendara.app/docs/features/overview#ascendara-timemachine"
+                          "https://QuadDown.app/docs/features/overview#QuadDown-timemachine"
                         )
                       }
                       className="inline-flex cursor-pointer items-center text-xs text-primary hover:underline"
@@ -3054,14 +3054,14 @@ function Settings() {
                   <div className="flex items-center justify-between space-x-4">
                     <div className="space-y-1">
                       <Label className="text-sm font-medium">
-                        {t("settings.enableAscendaraTimechine")}
+                        {t("settings.enableQuadDownTimechine")}
                       </Label>
                     </div>
                     <Switch
                       checked={settings.showOldDownloadLinks}
                       onCheckedChange={value => {
                         handleSettingChange("showOldDownloadLinks", value);
-                        analytics.trackFeatureUsage("ascendaraTimechine", {
+                        analytics.trackFeatureUsage("QuadDownTimechine", {
                           enabled: value,
                         });
                       }}
@@ -3076,18 +3076,18 @@ function Settings() {
               <div className="mb-2 flex items-center gap-2">
                 <Package className="mb-2 h-5 w-5 text-primary" />
                 <h2 className="text-lg font-semibold text-primary">
-                  {t("settings.ascendaraWorkshopDownloader")}
+                  {t("settings.QuadDownWorkshopDownloader")}
                 </h2>
               </div>
               <div className="space-y-6">
                 <div className="space-y-4">
                   <p className="text-sm text-muted-foreground">
-                    {t("settings.ascendaraWorkshopDownloaderDescription")}&nbsp;
+                    {t("settings.QuadDownWorkshopDownloaderDescription")}&nbsp;
                     <a
                       className="inline-flex cursor-pointer items-center text-xs text-primary hover:underline"
                       onClick={() =>
                         window.electron.openURL(
-                          "https://ascendara.app/docs/features/overview#ascendara-workshop-downloader"
+                          "https://QuadDown.app/docs/features/overview#QuadDown-workshop-downloader"
                         )
                       }
                     >
@@ -3098,7 +3098,7 @@ function Settings() {
                   <div className="flex items-center justify-between space-x-4">
                     <div className="space-y-1">
                       <Label className="text-sm font-medium">
-                        {t("settings.ascendaraWorkshopDownloaderEnable")}
+                        {t("settings.QuadDownWorkshopDownloaderEnable")}
                       </Label>
                     </div>
                     <TooltipProvider>
@@ -3111,7 +3111,7 @@ function Settings() {
                               onCheckedChange={value => {
                                 handleSettingChange("viewWorkshopPage", value);
                                 analytics.trackFeatureUsage(
-                                  "ascendaraWorkshopDownloader",
+                                  "QuadDownWorkshopDownloader",
                                   { enabled: value }
                                 );
                               }}
@@ -3625,7 +3625,7 @@ function Settings() {
             <AlertDialogCancel className="text-primary">{t("settings.ascendPromoDialog.maybeLater")}</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => {
-                window.electron?.openURL("https://ascendara.app/ascend");
+                window.electron?.openURL("https://QuadDown.app/ascend");
                 setShowAscendPromoDialog(false);
               }}
             >
@@ -4372,7 +4372,7 @@ function Settings() {
               {t("settings.communityThemesDescription")}&nbsp;
               <a
                 className="cursor-pointer text-primary hover:underline"
-                onClick={() => window.electron.openURL("https://ascendara.app/discord")}
+                onClick={() => window.electron.openURL("https://QuadDown.app/discord")}
               >
                 {t("settings.joinDiscord")}
                 <ExternalLink className="mb-1 ml-1 inline-block h-3 w-3" />
@@ -4495,7 +4495,7 @@ function Settings() {
               {t("settings.supportCodeDesc")}&nbsp;
               <a
                 className="cursor-pointer text-primary hover:underline"
-                onClick={() => window.electron.openURL("https://ascendara.app/discord")}
+                onClick={() => window.electron.openURL("https://QuadDown.app/discord")}
               >
                 {t("settings.joinDiscord")}
                 <ExternalLink className="mb-1 ml-1 inline-block h-3 w-3" />
@@ -4601,7 +4601,7 @@ function Settings() {
                 </li>
                 <li>
                   {t("settings.logWarningActivity") ||
-                    "Ascendara, Downloader, and Game Handler activity"}
+                    "QuadDown, Downloader, and Game Handler activity"}
                 </li>
               </ul>
               <p className="text-sm">
@@ -4630,7 +4630,7 @@ function Settings() {
                 try {
                   // Step 1: Validate the support code
                   const validateResponse = await fetch(
-                    "https://api.ascendara.app/support/validate",
+                    "https://api.QuadDown.app/support/validate",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -4656,7 +4656,7 @@ function Settings() {
                   // Step 2: Get app token
                   const AUTHORIZATION = await window.electron.getAPIKey();
                   const tokenResponse = await fetch(
-                    "https://api.ascendara.app/auth/token",
+                    "https://api.QuadDown.app/auth/token",
                     {
                       headers: { Authorization: AUTHORIZATION },
                     }

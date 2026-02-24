@@ -1,4 +1,4 @@
-// Firebase SDK initialization for Ascendara account management
+// Firebase SDK initialization for QuadDown account management
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
 import {
@@ -468,7 +468,7 @@ export const deleteAccount = async password => {
     const userData = userDoc.exists() ? userDoc.data() : {};
 
     // Send deletion request to API
-    const response = await fetch("https://api.ascendara.app/account/request-deletion", {
+    const response = await fetch("https://api.QuadDown.app/account/request-deletion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -2563,13 +2563,13 @@ export const getNotifications = async () => {
 };
 
 /**
- * Get Ascendara auth token
+ * Get QuadDown auth token
  * @returns {Promise<string>}
  */
 const getAuthToken = async () => {
   try {
     const AUTHORIZATION = await window.electron.getAPIKey();
-    const response = await fetch("https://api.ascendara.app/auth/token", {
+    const response = await fetch("https://api.QuadDown.app/auth/token", {
       headers: {
         Authorization: AUTHORIZATION,
       },
@@ -2609,7 +2609,7 @@ export const uploadBackup = async (file, gameName, backupName) => {
     formData.append("userId", user.uid);
     formData.append("token", token);
 
-    const response = await fetch("https://api.ascendara.app/ascend/backups/upload", {
+    const response = await fetch("https://api.QuadDown.app/ascend/backups/upload", {
       method: "POST",
       body: formData,
     });
@@ -2645,7 +2645,7 @@ export const listBackups = async (gameName = null) => {
     }
 
     const token = await getAuthToken();
-    const url = new URL("https://api.ascendara.app/ascend/backups/list");
+    const url = new URL("https://api.QuadDown.app/ascend/backups/list");
     url.searchParams.append("userId", user.uid);
     if (gameName) {
       url.searchParams.append("gameName", gameName);
@@ -2693,7 +2693,7 @@ export const getBackupDownloadUrl = async backupId => {
     }
 
     const token = await getAuthToken();
-    const url = new URL(`https://api.ascendara.app/ascend/backups/download/${backupId}`);
+    const url = new URL(`https://api.QuadDown.app/ascend/backups/download/${backupId}`);
     url.searchParams.append("userId", user.uid);
 
     const response = await fetch(url, {
@@ -2740,7 +2740,7 @@ export const deleteBackup = async backupId => {
     }
 
     const token = await getAuthToken();
-    const url = new URL(`https://api.ascendara.app/ascend/backups/delete/${backupId}`);
+    const url = new URL(`https://api.QuadDown.app/ascend/backups/delete/${backupId}`);
     url.searchParams.append("userId", user.uid);
 
     const response = await fetch(url, {

@@ -185,7 +185,7 @@ function printDevModeIntro(appVersion, nodeEnv, isDev = true) {
     `${colors.cyan}${colors.bright}  ╔═══════════════════════════════════════════╗${colors.reset}`
   );
   console.log(
-    `${colors.cyan}${colors.bright}  ║           ASCENDARA DEVELOPER MODE        ║${colors.reset}`
+    `${colors.cyan}${colors.bright}  ║           QuadDown DEVELOPER MODE        ║${colors.reset}`
   );
   console.log(
     `${colors.cyan}${colors.bright}  ║           Version: ${appVersion} (${nodeEnv})${" ".repeat(Math.max(0, 15 - appVersion.length - nodeEnv.length))}    ║${colors.reset}`
@@ -215,7 +215,7 @@ function printDevModeIntro(appVersion, nodeEnv, isDev = true) {
 
   // Documentation
   console.log(`${colors.yellow}  📚 DOCUMENTATION${colors.reset}`);
-  console.log("    • Docs: https://ascendara.app/docs");
+  console.log("    • Docs: https://QuadDown.app/docs");
   console.log("");
 }
 

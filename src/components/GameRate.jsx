@@ -52,7 +52,7 @@ const GameRate = ({ game, isOpen, onClose }) => {
   const getToken = async () => {
     try {
       const AUTHORIZATION = await window.electron.getAPIKey();
-      const response = await fetch("https://api.ascendara.app/auth/token", {
+      const response = await fetch("https://api.QuadDown.app/auth/token", {
         headers: {
           Authorization: AUTHORIZATION,
         },
@@ -83,7 +83,7 @@ const GameRate = ({ game, isOpen, onClose }) => {
       // Get a fresh token for each request to ensure timestamp validity
       const freshToken = await getToken();
 
-      const response = await fetch("https://api.ascendara.app/app/v2/gamerate", {
+      const response = await fetch("https://api.QuadDown.app/app/v2/gamerate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

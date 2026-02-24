@@ -11,7 +11,7 @@ const { initializeDiscordRPC, destroyDiscordRPC } = require("./discord-rpc");
 
 class SettingsManager {
   constructor() {
-    this.filePath = path.join(app.getPath("userData"), "ascendarasettings.json");
+    this.filePath = path.join(app.getPath("userData"), "QuadDownsettings.json");
     this.sensitiveKeys = ["twitchSecret", "twitchClientId", "torboxApiKey"];
     this.defaultSettings = {
       downloadDirectory: "",

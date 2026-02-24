@@ -302,9 +302,9 @@ const Library = () => {
     const handleFoldersUpdated = () => {
       loadGames();
     };
-    window.addEventListener("ascendara:folders-updated", handleFoldersUpdated);
+    window.addEventListener("QuadDown:folders-updated", handleFoldersUpdated);
     return () => {
-      window.removeEventListener("ascendara:folders-updated", handleFoldersUpdated);
+      window.removeEventListener("QuadDown:folders-updated", handleFoldersUpdated);
     };
   }, []);
 
@@ -604,7 +604,7 @@ const Library = () => {
                   }
                 } else {
                   // Fetch from API using gameID
-                  const imageUrl = `https://api.ascendara.app/v3/image/${game.gameID}`;
+                  const imageUrl = `https://api.QuadDown.app/v3/image/${game.gameID}`;
                   const response = await fetch(imageUrl);
                   if (response.ok) {
                     const blob = await response.blob();
@@ -1421,7 +1421,7 @@ const Library = () => {
                           <div className="space-y-2">
                             {/* Always show the main storage bar */}
                             <div className="relative mb-2 h-2">
-                              {/* Ascendara Games Space */}
+                              {/* QuadDown Games Space */}
                               <TooltipProvider>
                                 <Tooltip>
                                   <TooltipTrigger asChild>
@@ -1496,7 +1496,7 @@ const Library = () => {
 
                                     {/* Storage bar for this directory */}
                                     <div className="relative h-2">
-                                      {/* Ascendara Games Space */}
+                                      {/* QuadDown Games Space */}
                                       <TooltipProvider>
                                         <Tooltip>
                                           <TooltipTrigger asChild>
@@ -1578,7 +1578,7 @@ const Library = () => {
                         storageInfo.directories.length === 0) && (
                         <div className="space-y-2">
                           <div className="relative mb-2">
-                            {/* Ascendara Games Space */}
+                            {/* QuadDown Games Space */}
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
@@ -2626,7 +2626,7 @@ const PlayLaterGameCard = memo(({ game, onDownload, onRemove }) => {
       if (game.imgID) {
         try {
           const response = await fetch(
-            `https://api.ascendara.app/v2/image/${game.imgID}`
+            `https://api.QuadDown.app/v2/image/${game.imgID}`
           );
           if (response.ok && isMounted) {
             const blob = await response.blob();
@@ -2828,7 +2828,7 @@ const AddGameForm = ({ onSuccess }) => {
         if (settings.usingLocalIndex && settings.localIndex) {
           try {
             // Load the local index JSON file
-            const indexPath = `${settings.localIndex}/ascendara_games.json`;
+            const indexPath = `${settings.localIndex}/QuadDown_games.json`;
             const indexData = await window.electron.ipcRenderer.readFile(
               indexPath,
               "utf8"
@@ -3086,7 +3086,7 @@ const AddGameForm = ({ onSuccess }) => {
                       className="cursor-pointer text-primary hover:underline"
                       onClick={() =>
                         window.electron.openURL(
-                          "https://ascendara.app/docs/features/overview#importing-from-steam"
+                          "https://QuadDown.app/docs/features/overview#importing-from-steam"
                         )
                       }
                     >

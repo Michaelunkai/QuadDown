@@ -1,5 +1,5 @@
 //=============================================================================
-// Ascendara Preload Script
+// QuadDown Preload Script
 //=============================================================================
 // This script acts as a secure bridge between Electron's main and renderer processes.
 // It exposes specific main process functionality to the renderer process through
@@ -8,7 +8,7 @@
 // Note: This file is crucial for security as it controls what main process
 // functionality is available to the frontend.
 //
-// Learn more about Developing Ascendara at https://ascendara.app/docs/developer/overview
+// Learn more about Developing QuadDown at https://QuadDown.app/docs/developer/overview
 //=============================================================================
 
 const { contextBridge, ipcRenderer } = require("electron");
@@ -371,11 +371,11 @@ contextBridge.exposeInMainWorld("electron", {
   // UPDATES
   //===========================================================================
   checkForUpdates: () => ipcRenderer.invoke("check-for-updates"),
-  updateAscendara: () => ipcRenderer.invoke("update-ascendara"),
+  updateQuadDown: () => ipcRenderer.invoke("update-QuadDown"),
   isUpdateDownloaded: () => ipcRenderer.invoke("is-update-downloaded"),
   isBrokenVersion: () => ipcRenderer.invoke("is-broken-version"),
   deleteInstaller: () => ipcRenderer.invoke("delete-installer"),
-  uninstallAscendara: () => ipcRenderer.invoke("uninstall-ascendara"),
+  uninstallQuadDown: () => ipcRenderer.invoke("uninstall-QuadDown"),
   switchBranch: branch => ipcRenderer.invoke("switch-branch", branch),
   onUpdateAvailable: callback => ipcRenderer.on("update-available", callback),
   onUpdateReady: callback => ipcRenderer.on("update-ready", callback),

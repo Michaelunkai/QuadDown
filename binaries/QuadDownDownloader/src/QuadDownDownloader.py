@@ -1,10 +1,10 @@
 # ==============================================================================
-# Ascendara Downloader
+# QuadDown Downloader
 # ==============================================================================
-# High-performance multi-threaded downloader for Ascendara.
+# High-performance multi-threaded downloader for QuadDown.
 # Handles game downloads, and extracting processes with support for
 # resume and verification. Read more about the Download Manager Tool here:
-# https://ascendara.app/docs/binary-tool/downloader
+# https://QuadDown.app/docs/binary-tool/downloader
 
 
 
@@ -39,16 +39,16 @@ from urllib3.util.retry import Retry
 # Logging Setup
 
 
-def get_ascendara_log_path():
+def get_QuadDown_log_path():
     if sys.platform == "win32":
         appdata = os.getenv("APPDATA")
     else:
         appdata = os.path.expanduser("~/.config")
-    ascendara_dir = os.path.join(appdata, "Ascendara by tagoWorks")
-    os.makedirs(ascendara_dir, exist_ok=True)
-    return os.path.join(ascendara_dir, "downloadmanager.log")
+    QuadDown_dir = os.path.join(appdata, "QuadDown by tagoWorks")
+    os.makedirs(QuadDown_dir, exist_ok=True)
+    return os.path.join(QuadDown_dir, "downloadmanager.log")
 
-LOG_PATH = get_ascendara_log_path()
+LOG_PATH = get_QuadDown_log_path()
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(message)s",
@@ -57,7 +57,7 @@ logging.basicConfig(
         logging.StreamHandler(sys.stdout)
     ]
 )
-logging.info(f"[AscendaraDownloaderV2] Logging to {LOG_PATH}")
+logging.info(f"[QuadDownDownloaderV2] Logging to {LOG_PATH}")
 
 
 # Crash Reporter
@@ -65,7 +65,7 @@ logging.info(f"[AscendaraDownloaderV2] Logging to {LOG_PATH}")
 
 def _launch_crash_reporter_on_exit(error_code, error_message):
     try:
-        crash_reporter_path = os.path.join('./AscendaraCrashReporter.exe')
+        crash_reporter_path = os.path.join('./QuadDownCrashReporter.exe')
         if os.path.exists(crash_reporter_path):
             kwargs = {"creationflags": subprocess.CREATE_NO_WINDOW} if sys.platform == "win32" else {}
             subprocess.Popen(
@@ -89,7 +89,7 @@ def launch_crash_reporter(error_code, error_message):
 def _launch_notification(theme, title, message):
     try:
         exe_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-        notification_helper_path = os.path.join(exe_dir, 'AscendaraNotificationHelper.exe')
+        notification_helper_path = os.path.join(exe_dir, 'QuadDownNotificationHelper.exe')
         logging.debug(f"Looking for notification helper at: {notification_helper_path}")
         
         if os.path.exists(notification_helper_path):
@@ -151,25 +151,25 @@ def safe_write_json(filepath: str, data: Dict[str, Any]):
                 pass
 
 def get_settings_path() -> Optional[str]:
-    """Get the path to Ascendara settings file."""
+    """Get the path to QuadDown settings file."""
     if sys.platform == 'win32':
         appdata = os.environ.get('APPDATA')
         if appdata:
-            candidate = os.path.join(appdata, 'Electron', 'ascendarasettings.json')
+            candidate = os.path.join(appdata, 'Electron', 'QuadDownsettings.json')
             if os.path.exists(candidate):
                 return candidate
     elif sys.platform == 'darwin':
-        candidate = os.path.join(os.path.expanduser('~/Library/Application Support/ascendara'), 'ascendarasettings.json')
+        candidate = os.path.join(os.path.expanduser('~/Library/Application Support/QuadDown'), 'QuadDownsettings.json')
         if os.path.exists(candidate):
             return candidate
     else:
-        candidate = os.path.join(os.path.expanduser('~/.ascendara'), 'ascendarasettings.json')
+        candidate = os.path.join(os.path.expanduser('~/.QuadDown'), 'QuadDownsettings.json')
         if os.path.exists(candidate):
             return candidate
     return None
 
 def load_settings() -> Dict[str, Any]:
-    """Load Ascendara settings."""
+    """Load QuadDown settings."""
     settings_path = get_settings_path()
     if settings_path and os.path.exists(settings_path):
         try:
@@ -546,7 +546,7 @@ class RobustDownloader:
         self.gameID = gameID
         self.download_dir = os.path.join(download_dir, sanitize_folder_name(game))
         os.makedirs(self.download_dir, exist_ok=True)
-        self.game_info_path = os.path.join(self.download_dir, f"{sanitize_folder_name(game)}.ascendara.json")
+        self.game_info_path = os.path.join(self.download_dir, f"{sanitize_folder_name(game)}.QuadDown.json")
         self.withNotification = None
         
         # Initialize or update game info
@@ -800,7 +800,7 @@ class RobustDownloader:
         self._files_extracted_count = 0
         self._last_progress_update = 0  # Track last JSON write time
         
-        watching_path = os.path.join(self.download_dir, "filemap.ascendara.json")
+        watching_path = os.path.join(self.download_dir, "filemap.QuadDown.json")
         watching_data = {}
         archive_exts = {'.rar', '.zip'}
         
@@ -1135,9 +1135,9 @@ class RobustDownloader:
     def _flatten_directories(self):
         """Flatten nested directories that should be at root level."""
         protected_files = {
-            f"{sanitize_folder_name(self.game)}.ascendara.json",
-            "filemap.ascendara.json",
-            "game.ascendara.json",
+            f"{sanitize_folder_name(self.game)}.QuadDown.json",
+            "filemap.QuadDown.json",
+            "game.QuadDown.json",
             "header.jpg",
             "header.png",
             "header.webp"
@@ -1155,7 +1155,7 @@ class RobustDownloader:
         subdirs = []
         for item in os.listdir(self.download_dir):
             item_path = os.path.join(self.download_dir, item)
-            if os.path.isdir(item_path) and not item.endswith('.ascendara') and item != '_CommonRedist':
+            if os.path.isdir(item_path) and not item.endswith('.QuadDown') and item != '_CommonRedist':
                 subdirs.append(item_path)
         
         logging.info(f"[RobustDownloader] Found {len(subdirs)} subdirectories")
@@ -1190,7 +1190,7 @@ class RobustDownloader:
             root_files = [f for f in os.listdir(self.download_dir) 
                          if os.path.isfile(os.path.join(self.download_dir, f)) 
                          and f not in protected_files
-                         and not f.endswith('.ascendara.json')]
+                         and not f.endswith('.QuadDown.json')]
             
             if len(root_files) == 0:
                 subdir_contents = os.listdir(subdirs[0])
@@ -1272,7 +1272,7 @@ class RobustDownloader:
             verify_errors = []
             verified_count = 0
             for file_path, file_info in watching_data.items():
-                if os.path.basename(file_path) == 'filemap.ascendara.json':
+                if os.path.basename(file_path) == 'filemap.QuadDown.json':
                     continue
                 
                 full_path = os.path.join(self.download_dir, file_path)
@@ -1328,7 +1328,7 @@ class RobustDownloader:
             elif behavior == 'shutdown':
                 logging.info("[RobustDownloader] Shutting down computer")
                 if sys.platform == 'win32':
-                    os.system('shutdown /s /t 60 /c "Ascendara download complete - shutting down in 60 seconds"')
+                    os.system('shutdown /s /t 60 /c "QuadDown download complete - shutting down in 60 seconds"')
                 elif sys.platform == 'darwin':
                     os.system('osascript -e "tell app \\"System Events\\" to shut down"')
             else:
@@ -1351,7 +1351,7 @@ def parse_boolean(value):
         raise ValueError(f"Invalid boolean value: {value}")
 
 def main():
-    parser = ArgumentParser(description="Ascendara Downloader V2 - Robust Chunked Downloader")
+    parser = ArgumentParser(description="QuadDown Downloader V2 - Robust Chunked Downloader")
     parser.add_argument("url", help="Download URL")
     parser.add_argument("game", help="Name of the game")
     parser.add_argument("online", type=parse_boolean, help="Is the game online (true/false)?")
@@ -1373,7 +1373,7 @@ def main():
         )
         downloader.download(args.url, withNotification=args.withNotification)
     except Exception as e:
-        logging.error(f"[AscendaraDownloaderV2] Fatal error: {e}", exc_info=True)
+        logging.error(f"[QuadDownDownloaderV2] Fatal error: {e}", exc_info=True)
         launch_crash_reporter(1, str(e))
         raise
 

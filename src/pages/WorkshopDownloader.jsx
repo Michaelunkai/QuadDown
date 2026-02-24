@@ -274,7 +274,7 @@ const WorkshopDownloader = () => {
                 className="cursor-pointer items-center text-primary hover:underline"
                 onClick={() =>
                   window.electron.openURL(
-                    "https://ascendara.app/docs/features/overview#ascendara-workshop-downloader"
+                    "https://QuadDown.app/docs/features/overview#QuadDown-workshop-downloader"
                   )
                 }
               >

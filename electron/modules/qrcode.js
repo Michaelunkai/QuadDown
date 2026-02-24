@@ -40,7 +40,7 @@ async function generateQRCode(text, options = {}) {
  * @returns {Promise<string>} - Data URL of the generated QR code
  */
 async function generateWebappQRCode(code) {
-  const url = `https://webview.ascendara.app/?code=${code}`;
+  const url = `https://webview.QuadDown.app/?code=${code}`;
   return generateQRCode(url);
 }
 

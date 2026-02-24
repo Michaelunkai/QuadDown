@@ -19,7 +19,7 @@ function registerThemeHandlers() {
     try {
       console.log("Saving custom theme:", JSON.stringify(customTheme));
 
-      const filePath = path.join(app.getPath("userData"), "ascendarasettings.json");
+      const filePath = path.join(app.getPath("userData"), "QuadDownsettings.json");
       const existingSettings = fs.readJsonSync(filePath);
       existingSettings.customTheme = customTheme;
       fs.writeJsonSync(filePath, existingSettings, { spaces: 2 });
@@ -38,7 +38,7 @@ function registerThemeHandlers() {
     try {
       const result = await dialog.showSaveDialog({
         title: "Export Custom Theme",
-        defaultPath: "ascendaratheme.json",
+        defaultPath: "QuadDowntheme.json",
         filters: [{ name: "JSON Files", extensions: ["json"] }],
       });
 

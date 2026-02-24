@@ -28,7 +28,7 @@ let publicIndexDownloading = false;
  */
 async function createIndexZip(indexPath) {
   const zipPath = path.join(indexPath, "shared_index.zip");
-  const gamesJsonPath = path.join(indexPath, "ascendara_games.json");
+  const gamesJsonPath = path.join(indexPath, "QuadDown_games.json");
   const imgsDir = path.join(indexPath, "imgs");
 
   // Remove existing zip if present
@@ -54,9 +54,9 @@ async function createIndexZip(indexPath) {
 
     // Add the games JSON file
     if (fs.existsSync(gamesJsonPath)) {
-      archive.file(gamesJsonPath, { name: "ascendara_games.json" });
+      archive.file(gamesJsonPath, { name: "QuadDown_games.json" });
     } else {
-      reject(new Error("ascendara_games.json not found"));
+      reject(new Error("QuadDown_games.json not found"));
       return;
     }
 
@@ -76,7 +76,7 @@ async function createIndexZip(indexPath) {
 async function getAuthToken() {
   return new Promise((resolve, reject) => {
     const options = {
-      hostname: "api.ascendara.app",
+      hostname: "api.QuadDown.app",
       port: 443,
       path: "/auth/token",
       method: "GET",
@@ -122,7 +122,7 @@ async function getAuthToken() {
  * @returns {Promise<object>} - Response from server
  */
 async function uploadChunk(chunkBuffer, sessionId, chunkIndex, totalChunks, authToken) {
-  const boundary = "----AscendaraChunk" + Date.now();
+  const boundary = "----QuadDownChunk" + Date.now();
 
   const header = `--${boundary}\r\nContent-Disposition: form-data; name="chunk"; filename="chunk_${chunkIndex}.bin"\r\nContent-Type: application/octet-stream\r\n\r\n`;
   const footer = `\r\n--${boundary}--\r\n`;
@@ -135,7 +135,7 @@ async function uploadChunk(chunkBuffer, sessionId, chunkIndex, totalChunks, auth
 
   return new Promise((resolve, reject) => {
     const options = {
-      hostname: "api.ascendara.app",
+      hostname: "api.QuadDown.app",
       port: 443,
       path: `/localindex/upload-chunk?sessionId=${sessionId}&chunkIndex=${chunkIndex}&totalChunks=${totalChunks}`,
       method: "POST",
@@ -279,7 +279,7 @@ function registerLocalRefreshHandlers() {
   const settingsManager = getSettingsManager();
 
   ipcMain.handle("get-default-local-index-path", () => {
-    return path.join(app.getPath("appData"), "ascendara", "localindex");
+    return path.join(app.getPath("appData"), "QuadDown", "localindex");
   });
 
   ipcMain.handle(
@@ -306,7 +306,7 @@ function registerLocalRefreshHandlers() {
         if (isWindows) {
           try {
             require("child_process").execSync(
-              "taskkill /IM AscendaraLocalRefresh.exe /F",
+              "taskkill /IM QuadDownLocalRefresh.exe /F",
               {
                 stdio: "ignore",
               }
@@ -348,7 +348,7 @@ function registerLocalRefreshHandlers() {
           if (isDev) {
             executablePath = "python";
             args = [
-              "./binaries/AscendaraLocalRefresh/src/AscendaraLocalRefresh.py",
+              "./binaries/QuadDownLocalRefresh/src/QuadDownLocalRefresh.py",
               "--output",
               outputPath,
               "--per-page",
@@ -365,7 +365,7 @@ function registerLocalRefreshHandlers() {
           } else {
             executablePath = path.join(
               appDirectory,
-              "/resources/AscendaraLocalRefresh.exe"
+              "/resources/QuadDownLocalRefresh.exe"
             );
             args = [
               "--output",
@@ -387,7 +387,7 @@ function registerLocalRefreshHandlers() {
           if (isDev) {
             executablePath = getPythonPath();
             args = [
-              "./binaries/AscendaraLocalRefresh/src/AscendaraLocalRefresh.py",
+              "./binaries/QuadDownLocalRefresh/src/QuadDownLocalRefresh.py",
               "--output",
               outputPath,
               "--per-page",
@@ -398,7 +398,7 @@ function registerLocalRefreshHandlers() {
               "32",
             ];
           } else {
-            executablePath = path.join(process.resourcesPath, "AscendaraLocalRefresh");
+            executablePath = path.join(process.resourcesPath, "QuadDownLocalRefresh");
             args = [
               "--output",
               outputPath,
@@ -438,10 +438,10 @@ function registerLocalRefreshHandlers() {
 
                 if (isWindows) {
                   const notificationHelperPath = isDev
-                    ? "./binaries/AscendaraNotificationHelper/dist/AscendaraNotificationHelper.exe"
+                    ? "./binaries/QuadDownNotificationHelper/dist/QuadDownNotificationHelper.exe"
                     : path.join(
                         appDirectory,
-                        "/resources/AscendaraNotificationHelper.exe"
+                        "/resources/QuadDownNotificationHelper.exe"
                       );
                   const notifProcess = spawn(
                     notificationHelperPath,
@@ -647,7 +647,7 @@ function registerLocalRefreshHandlers() {
 
       if (isWindows) {
         try {
-          require("child_process").execSync("taskkill /IM AscendaraLocalRefresh.exe /F", {
+          require("child_process").execSync("taskkill /IM QuadDownLocalRefresh.exe /F", {
             stdio: "ignore",
           });
         } catch (e) {}
@@ -663,8 +663,8 @@ function registerLocalRefreshHandlers() {
       if (localIndexPath) {
         const imgsDir = path.join(localIndexPath, "imgs");
         const imgsBackupDir = path.join(localIndexPath, "imgs_backup");
-        const gamesFile = path.join(localIndexPath, "ascendara_games.json");
-        const gamesBackupFile = path.join(localIndexPath, "ascendara_games_backup.json");
+        const gamesFile = path.join(localIndexPath, "QuadDown_games.json");
+        const gamesBackupFile = path.join(localIndexPath, "QuadDown_games_backup.json");
 
         if (fs.existsSync(imgsBackupDir)) {
           try {
@@ -716,13 +716,13 @@ function registerLocalRefreshHandlers() {
         try {
           if (isWindows) {
             const result = require("child_process").execSync(
-              'tasklist /FI "IMAGENAME eq AscendaraLocalRefresh.exe" /FO CSV /NH',
+              'tasklist /FI "IMAGENAME eq QuadDownLocalRefresh.exe" /FO CSV /NH',
               { encoding: "utf8", stdio: ["pipe", "pipe", "ignore"] }
             );
-            isRunning = result.toLowerCase().includes("ascendaralocalrefresh.exe");
+            isRunning = result.toLowerCase().includes("QuadDownlocalrefresh.exe");
           } else {
             try {
-              require("child_process").execSync("pgrep -f AscendaraLocalRefresh", {
+              require("child_process").execSync("pgrep -f QuadDownLocalRefresh", {
                 stdio: "ignore",
               });
               isRunning = true;
@@ -816,7 +816,7 @@ function registerLocalRefreshHandlers() {
         console.log("Getting download URL from API...");
         const apiResponse = await new Promise((resolve, reject) => {
           const options = {
-            hostname: "api.ascendara.app",
+            hostname: "api.QuadDown.app",
             port: 443,
             path: "/localindex/latest",
             method: "GET",
@@ -861,7 +861,7 @@ function registerLocalRefreshHandlers() {
           console.log("Using R2 download URL:", downloadUrl);
         } else {
           // Fallback to direct API download (legacy)
-          downloadUrl = "https://api.ascendara.app/localindex/latest";
+          downloadUrl = "https://api.QuadDown.app/localindex/latest";
           console.log("Using legacy API download");
         }
 
@@ -981,8 +981,8 @@ function registerLocalRefreshHandlers() {
         }
         console.log(`Downloaded file size: ${fileStats.size} bytes`);
 
-        // Spawn AscendaraLocalRefresh binary to extract the zip (runs in separate process)
-        console.log("Starting extraction with AscendaraLocalRefresh binary...");
+        // Spawn QuadDownLocalRefresh binary to extract the zip (runs in separate process)
+        console.log("Starting extraction with QuadDownLocalRefresh binary...");
 
         let executablePath;
         let args;
@@ -991,7 +991,7 @@ function registerLocalRefreshHandlers() {
           if (isDev) {
             executablePath = "python";
             args = [
-              "./binaries/AscendaraLocalRefresh/src/AscendaraLocalRefresh.py",
+              "./binaries/QuadDownLocalRefresh/src/QuadDownLocalRefresh.py",
               "--extract-shared-index",
               "--zip-path",
               zipPath,
@@ -1001,7 +1001,7 @@ function registerLocalRefreshHandlers() {
           } else {
             executablePath = path.join(
               appDirectory,
-              "/resources/AscendaraLocalRefresh.exe"
+              "/resources/QuadDownLocalRefresh.exe"
             );
             args = [
               "--extract-shared-index",
@@ -1015,7 +1015,7 @@ function registerLocalRefreshHandlers() {
           if (isDev) {
             executablePath = getPythonPath();
             args = [
-              "./binaries/AscendaraLocalRefresh/src/AscendaraLocalRefresh.py",
+              "./binaries/QuadDownLocalRefresh/src/QuadDownLocalRefresh.py",
               "--extract-shared-index",
               "--zip-path",
               zipPath,
@@ -1023,7 +1023,7 @@ function registerLocalRefreshHandlers() {
               outputPath,
             ];
           } else {
-            executablePath = path.join(process.resourcesPath, "AscendaraLocalRefresh");
+            executablePath = path.join(process.resourcesPath, "QuadDownLocalRefresh");
             args = [
               "--extract-shared-index",
               "--zip-path",
@@ -1108,7 +1108,7 @@ function registerLocalRefreshHandlers() {
         }
 
         // Remove backup files
-        const gamesBackup = path.join(outputPath, "ascendara_games_backup.json");
+        const gamesBackup = path.join(outputPath, "QuadDown_games_backup.json");
         const imgsBackup = path.join(outputPath, "imgs_backup");
 
         if (fs.existsSync(gamesBackup)) {

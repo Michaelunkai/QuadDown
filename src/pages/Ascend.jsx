@@ -198,7 +198,7 @@ const GoogleIcon = ({ className }) => (
 // Helper function to get auth token for API calls
 const getAuthToken = async () => {
   const AUTHORIZATION = await window.electron.getAPIKey();
-  const response = await fetch("https://api.ascendara.app/auth/token", {
+  const response = await fetch("https://api.QuadDown.app/auth/token", {
     headers: { Authorization: AUTHORIZATION },
   });
   if (!response.ok) throw new Error("Failed to obtain token");
@@ -697,7 +697,7 @@ const Ascend = () => {
           // Load connected devices
           const firebaseToken = await user.getIdToken();
           const devicesResponse = await fetch(
-            `https://monitor.ascendara.app/connected-devices/${user.uid}`,
+            `https://monitor.QuadDown.app/connected-devices/${user.uid}`,
             {
               method: "GET",
               headers: {
@@ -711,7 +711,7 @@ const Ascend = () => {
             // Disconnect each device
             for (const device of devicesData.devices) {
               try {
-                await fetch("https://monitor.ascendara.app/disconnect-device", {
+                await fetch("https://monitor.QuadDown.app/disconnect-device", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
@@ -824,7 +824,7 @@ const Ascend = () => {
       const AUTHORIZATION = await window.electron.getAPIKey();
       const userId = user?.uid || "";
       const response = await fetch(
-        `https://api.ascendara.app/ascend/leaderboard${userId ? `?userId=${userId}` : ""}`,
+        `https://api.QuadDown.app/ascend/leaderboard${userId ? `?userId=${userId}` : ""}`,
         {
           headers: { Authorization: AUTHORIZATION },
         }
@@ -849,7 +849,7 @@ const Ascend = () => {
   const loadUpcomingChangelog = async () => {
     setLoadingUpcoming(true);
     try {
-      const response = await fetch("https://api.ascendara.app/json/changelog/v2");
+      const response = await fetch("https://api.QuadDown.app/json/changelog/v2");
       if (response.ok) {
         const data = await response.json();
         // Filter to only show entries where release is false (unreleased)
@@ -938,7 +938,7 @@ const Ascend = () => {
             } else {
               // Fetch image from API using gameID
               const response = await fetch(
-                `https://api.ascendara.app/v3/image/${game.gameID}`
+                `https://api.QuadDown.app/v3/image/${game.gameID}`
               );
               if (response.ok) {
                 const blob = await response.blob();
@@ -1559,7 +1559,7 @@ const Ascend = () => {
     setIsReportingUser(true);
     try {
       const AUTHORIZATION = await window.electron.getAPIKey();
-      const response = await fetch("https://api.ascendara.app/auth/token", {
+      const response = await fetch("https://api.QuadDown.app/auth/token", {
         headers: {
           Authorization: AUTHORIZATION,
         },
@@ -1571,7 +1571,7 @@ const Ascend = () => {
 
       const { token: authToken } = await response.json();
 
-      const reportResponse = await fetch("https://api.ascendara.app/app/report", {
+      const reportResponse = await fetch("https://api.QuadDown.app/app/report", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1587,7 +1587,7 @@ const Ascend = () => {
 
       if (!reportResponse.ok) {
         if (reportResponse.status === 401) {
-          const newTokenResponse = await fetch("https://api.ascendara.app/auth/token", {
+          const newTokenResponse = await fetch("https://api.QuadDown.app/auth/token", {
             headers: {
               Authorization: AUTHORIZATION,
             },
@@ -1599,7 +1599,7 @@ const Ascend = () => {
 
           const { token: newAuthToken } = await newTokenResponse.json();
 
-          const retryResponse = await fetch("https://api.ascendara.app/app/report", {
+          const retryResponse = await fetch("https://api.QuadDown.app/app/report", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -1822,7 +1822,7 @@ const Ascend = () => {
       }
 
       const productResponse = await fetch(
-        "https://api.ascendara.app/stripe/products/prod_TZdRiUAwPpMEjW"
+        "https://api.QuadDown.app/stripe/products/prod_TZdRiUAwPpMEjW"
       );
       if (!productResponse.ok) {
         toast.error(t("ascend.settings.checkoutError"));
@@ -1870,7 +1870,7 @@ const Ascend = () => {
 
       const authToken = await getAuthToken();
       const response = await fetch(
-        "https://api.ascendara.app/stripe/create-checkout-session",
+        "https://api.QuadDown.app/stripe/create-checkout-session",
         {
           method: "POST",
           headers: {
@@ -1880,8 +1880,8 @@ const Ascend = () => {
           body: JSON.stringify({
             userId: user.uid,
             priceId: priceId,
-            successUrl: "ascendara://checkout-success?session_id={CHECKOUT_SESSION_ID}",
-            cancelUrl: "ascendara://checkout-canceled",
+            successUrl: "QuadDown://checkout-success?session_id={CHECKOUT_SESSION_ID}",
+            cancelUrl: "QuadDown://checkout-canceled",
           }),
         }
       );
@@ -1901,7 +1901,7 @@ const Ascend = () => {
   const handleManageSubscription = async () => {
     try {
       const authToken = await getAuthToken();
-      const response = await fetch("https://api.ascendara.app/stripe/customer-portal", {
+      const response = await fetch("https://api.QuadDown.app/stripe/customer-portal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1909,7 +1909,7 @@ const Ascend = () => {
         },
         body: JSON.stringify({
           userId: user.uid,
-          returnUrl: "ascendara://checkout-canceled",
+          returnUrl: "QuadDown://checkout-canceled",
         }),
       });
       if (response.ok) {
@@ -1928,7 +1928,7 @@ const Ascend = () => {
   const handleViewInvoices = async () => {
     try {
       const authToken = await getAuthToken();
-      const response = await fetch("https://api.ascendara.app/stripe/customer-portal", {
+      const response = await fetch("https://api.QuadDown.app/stripe/customer-portal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1936,7 +1936,7 @@ const Ascend = () => {
         },
         body: JSON.stringify({
           userId: user.uid,
-          returnUrl: "ascendara://checkout-canceled",
+          returnUrl: "QuadDown://checkout-canceled",
         }),
       });
       if (response.ok) {
@@ -1968,7 +1968,7 @@ const Ascend = () => {
       console.log(`Verifying checkout (attempt ${retryCount + 1}/${MAX_RETRIES + 1})...`);
 
       const authToken = await getAuthToken();
-      const response = await fetch("https://api.ascendara.app/stripe/verify-checkout", {
+      const response = await fetch("https://api.QuadDown.app/stripe/verify-checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2528,7 +2528,7 @@ const Ascend = () => {
     try {
       // Get Firebase ID token directly from the user object
       const firebaseToken = await user.getIdToken();
-      const response = await fetch("https://monitor.ascendara.app/generate-code", {
+      const response = await fetch("https://monitor.QuadDown.app/generate-code", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2578,7 +2578,7 @@ const Ascend = () => {
         const statusPollTimer = setInterval(async () => {
           try {
             const statusResponse = await fetch(
-              `https://monitor.ascendara.app/connection-status/${data.code}`
+              `https://monitor.QuadDown.app/connection-status/${data.code}`
             );
             const statusData = await statusResponse.json();
 
@@ -2662,7 +2662,7 @@ const Ascend = () => {
     try {
       const firebaseToken = await user.getIdToken();
       const response = await fetch(
-        `https://monitor.ascendara.app/connected-devices/${user.uid}`,
+        `https://monitor.QuadDown.app/connected-devices/${user.uid}`,
         {
           method: "GET",
           headers: {
@@ -2695,7 +2695,7 @@ const Ascend = () => {
     setDisconnectingDevice(sessionId);
     try {
       const firebaseToken = await user.getIdToken();
-      const response = await fetch("https://monitor.ascendara.app/disconnect-device", {
+      const response = await fetch("https://monitor.QuadDown.app/disconnect-device", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2789,20 +2789,20 @@ const Ascend = () => {
             </h1>
             <p className="text-muted-foreground">
               {t("ascend.updateRequired.description") ||
-                "Please update Ascendara to the latest version to access Ascend features."}
+                "Please update QuadDown to the latest version to access Ascend features."}
             </p>
           </div>
 
           <div className="rounded-xl border border-border/50 bg-card/50 p-4 text-center">
             <p className="text-sm text-muted-foreground">
               {t("ascend.updateRequired.info") ||
-                "Ascend requires the latest version of Ascendara to ensure security and compatibility."}
+                "Ascend requires the latest version of QuadDown to ensure security and compatibility."}
             </p>
           </div>
 
           <div className="space-y-3">
             <Button
-              onClick={() => window.electron?.openURL("https://ascendara.app/")}
+              onClick={() => window.electron?.openURL("https://QuadDown.app/")}
               className="h-11 w-full text-secondary"
             >
               <ExternalLink className="mr-2 h-4 w-4" />
@@ -5464,7 +5464,7 @@ const Ascend = () => {
                         </h3>
                         <p className="mt-1 text-sm text-muted-foreground">
                           {t("ascend.settings.connectYourPhoneDescription") ||
-                            "Access your Ascendara library and stats from any device by connecting through monitor.ascendara.app"}
+                            "Access your QuadDown library and stats from any device by connecting through monitor.QuadDown.app"}
                         </p>
                         <div className="mt-3 flex items-start gap-2 rounded-lg bg-primary/10 px-3 py-2 ring-1 ring-primary/20">
                           <svg
@@ -5486,12 +5486,12 @@ const Ascend = () => {
                                 "End-to-end encrypted."}
                             </span>{" "}
                             {t("ascend.settings.securityDescription") ||
-                              "Commands are sent through a secure API, and your Ascendara app decides whether and how to execute them."}
+                              "Commands are sent through a secure API, and your QuadDown app decides whether and how to execute them."}
                             &nbsp;
                             <a
                               className="inline-flex cursor-pointer items-center text-xs text-primary hover:underline"
                               onClick={() =>
-                                window.electron.openURL("https://ascendara.app/webview")
+                                window.electron.openURL("https://QuadDown.app/webview")
                               }
                             >
                               {t("common.learnMore")}
@@ -5902,7 +5902,7 @@ const Ascend = () => {
                           <div>
                             <p className="text-sm font-medium">
                               {t("ascend.settings.verifiedThankYou") ||
-                                "Thank you for being part of Ascendara!"}
+                                "Thank you for being part of QuadDown!"}
                             </p>
                             <p className="text-xs text-muted-foreground">
                               {t("ascend.settings.verifiedThankYouSub") ||
@@ -6477,7 +6477,7 @@ const Ascend = () => {
                       variant="outline"
                       className="w-full gap-2 border-[#5865F2]/30 bg-[#5865F2]/5 hover:bg-[#5865F2]/10"
                       onClick={() =>
-                        window.electron?.openURL("https://ascendara.app/discord")
+                        window.electron?.openURL("https://QuadDown.app/discord")
                       }
                     >
                       <ExternalLink className="h-4 w-4" />
@@ -7227,7 +7227,7 @@ const Ascend = () => {
                     </h1>
                     <p className="text-muted-foreground">
                       {t("ascend.leaderboard.subtitle") ||
-                        "Top players in the Ascendara community"}
+                        "Top players in the QuadDown community"}
                     </p>
                   </div>
                   <Button
@@ -8777,7 +8777,7 @@ const Ascend = () => {
                         </h1>
                         <p className="mt-2 text-muted-foreground">
                           {t("ascend.premium.subtitle") ||
-                            "Unlock the full potential of Ascendara with these exclusive features"}
+                            "Unlock the full potential of QuadDown with these exclusive features"}
                         </p>
                       </div>
                     </div>
@@ -8804,7 +8804,7 @@ const Ascend = () => {
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground">
                       {t("ascend.premium.friends.description") ||
-                        "Send and accept friend requests, build your gaming network, and see when your friends are online. Connect with other Ascendara users and grow your community."}
+                        "Send and accept friend requests, build your gaming network, and see when your friends are online. Connect with other QuadDown users and grow your community."}
                     </p>
                   </div>
                 </motion.div>
@@ -8849,7 +8849,7 @@ const Ascend = () => {
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground">
                       {t("ascend.premium.chat.description") ||
-                        "Chat directly with your friends within Ascendara. Share game recommendations, coordinate play sessions, and stay connected with your gaming circle."}
+                        "Chat directly with your friends within QuadDown. Share game recommendations, coordinate play sessions, and stay connected with your gaming circle."}
                     </p>
                   </div>
                 </motion.div>
@@ -8983,7 +8983,7 @@ const Ascend = () => {
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground">
                       {t("ascend.premium.upcoming.description") ||
-                        "Get an exclusive preview of what's coming in the next Ascendara update. Stay ahead of the curve and know what new features are on the horizon."}
+                        "Get an exclusive preview of what's coming in the next QuadDown update. Stay ahead of the curve and know what new features are on the horizon."}
                     </p>
                   </div>
                 </motion.div>
@@ -9005,7 +9005,7 @@ const Ascend = () => {
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground">
                       {t("ascend.premium.nexusMods.description") ||
-                        "Seamlessly manage your Nexus mods for supported games. Browse, install, and organize mods directly within Ascendara."}
+                        "Seamlessly manage your Nexus mods for supported games. Browse, install, and organize mods directly within QuadDown."}
                     </p>
                   </div>
                 </motion.div>
@@ -9072,7 +9072,7 @@ const Ascend = () => {
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground">
                       {t("ascend.premium.downloadQueue.description") ||
-                        "Queue multiple downloads and let Ascendara handle them automatically. Start downloads and come back when they're all ready."}
+                        "Queue multiple downloads and let QuadDown handle them automatically. Start downloads and come back when they're all ready."}
                     </p>
                   </div>
                 </motion.div>
@@ -9536,7 +9536,7 @@ const Ascend = () => {
                     {t("account.pricingDetails")}{" "}
                     <a
                       onClick={() =>
-                        window.electron.openURL("https://ascendara.app/ascend?ref=app")
+                        window.electron.openURL("https://QuadDown.app/ascend?ref=app")
                       }
                       className="inline-flex cursor-pointer items-center text-primary hover:underline"
                     >
@@ -9611,7 +9611,7 @@ const Ascend = () => {
                           variant="ghost"
                           className="h-7 text-xs"
                           onClick={() =>
-                            window.electron?.openURL("https://discord.gg/ascendara")
+                            window.electron?.openURL("https://discord.gg/QuadDown")
                           }
                         >
                           {t("account.errors.getSupport")}
@@ -9646,7 +9646,7 @@ const Ascend = () => {
                           variant="ghost"
                           className="h-7 text-xs"
                           onClick={() =>
-                            window.electron?.openURL("https://discord.gg/ascendara")
+                            window.electron?.openURL("https://discord.gg/QuadDown")
                           }
                         >
                           {t("account.errors.getSupport")}
@@ -9693,7 +9693,7 @@ const Ascend = () => {
                         <a
                           onClick={() =>
                             window.electron?.openURL(
-                              "https://ascendara.app/docs/features/ascend#privacy,-security-&-abuse-prevention"
+                              "https://QuadDown.app/docs/features/ascend#privacy,-security-&-abuse-prevention"
                             )
                           }
                           className="inline-flex cursor-pointer items-center text-[10px] font-medium text-primary hover:underline"
@@ -9953,7 +9953,7 @@ const Ascend = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        window.electron?.openURL("https://ascendara.app/ascend/terms")
+                        window.electron?.openURL("https://QuadDown.app/ascend/terms")
                       }
                       className="font-medium text-primary hover:underline"
                     >
@@ -9963,7 +9963,7 @@ const Ascend = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        window.electron?.openURL("https://ascendara.app/ascend/privacy")
+                        window.electron?.openURL("https://QuadDown.app/ascend/privacy")
                       }
                       className="font-medium text-primary hover:underline"
                     >
@@ -9987,7 +9987,7 @@ const Ascend = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        window.electron?.openURL("https://ascendara.app/discord")
+                        window.electron?.openURL("https://QuadDown.app/discord")
                       }
                       className="text-xs text-muted-foreground transition-colors hover:text-primary"
                     >

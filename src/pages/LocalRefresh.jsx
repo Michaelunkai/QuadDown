@@ -236,7 +236,7 @@ const LocalRefresh = () => {
     const checkApiHealth = async () => {
       setCheckingApi(true);
       try {
-        const healthResponse = await fetch("https://api.ascendara.app/health");
+        const healthResponse = await fetch("https://api.QuadDown.app/health");
         const healthData = await healthResponse.json();
         const isHealthy = healthData.status === "healthy";
         setApiAvailable(isHealthy);
@@ -244,7 +244,7 @@ const LocalRefresh = () => {
         // If API is healthy, fetch index metadata
         if (isHealthy) {
           try {
-            const infoResponse = await fetch("https://api.ascendara.app/localindex/info");
+            const infoResponse = await fetch("https://api.QuadDown.app/localindex/info");
             const infoData = await infoResponse.json();
             if (infoData.success) {
               setIndexInfo({
@@ -355,10 +355,10 @@ const LocalRefresh = () => {
         imageCacheService.invalidateSettingsCache();
         await imageCacheService.clearCache(true); // Skip auto-refresh, we'll reload manually
         gameService.clearMemoryCache();
-        localStorage.removeItem("ascendara_games_cache");
-        localStorage.removeItem("local_ascendara_games_timestamp");
-        localStorage.removeItem("local_ascendara_metadata_cache");
-        localStorage.removeItem("local_ascendara_last_updated");
+        localStorage.removeItem("QuadDown_games_cache");
+        localStorage.removeItem("local_QuadDown_games_timestamp");
+        localStorage.removeItem("local_QuadDown_metadata_cache");
+        localStorage.removeItem("local_QuadDown_last_updated");
 
         toast.success(
           t("localRefresh.refreshComplete") || "Game list refresh completed!"
@@ -735,10 +735,10 @@ const LocalRefresh = () => {
     imageCacheService.invalidateSettingsCache();
     await imageCacheService.clearCache(true);
     gameService.clearMemoryCache();
-    localStorage.removeItem("ascendara_games_cache");
-    localStorage.removeItem("local_ascendara_games_timestamp");
-    localStorage.removeItem("local_ascendara_metadata_cache");
-    localStorage.removeItem("local_ascendara_last_updated");
+    localStorage.removeItem("QuadDown_games_cache");
+    localStorage.removeItem("local_QuadDown_games_timestamp");
+    localStorage.removeItem("local_QuadDown_metadata_cache");
+    localStorage.removeItem("local_QuadDown_last_updated");
     await updateSetting("usingLocalIndex", true);
     toast.success(t("localRefresh.switchedToLocal"));
     window.location.reload();
@@ -793,7 +793,7 @@ const LocalRefresh = () => {
                 <a
                   onClick={() =>
                     window.electron.openURL(
-                      "https://ascendara.app/docs/features/refreshing-index"
+                      "https://QuadDown.app/docs/features/refreshing-index"
                     )
                   }
                   className="inline-flex cursor-pointer items-center text-xs text-primary hover:underline"
@@ -848,7 +848,7 @@ const LocalRefresh = () => {
                         <a
                           onClick={() =>
                             window.electron.openURL(
-                              "https://ascendara.app/docs/features/refreshing-index#community-shared-index"
+                              "https://QuadDown.app/docs/features/refreshing-index#community-shared-index"
                             )
                           }
                           className="inline-flex cursor-pointer items-center text-xs text-primary hover:underline"

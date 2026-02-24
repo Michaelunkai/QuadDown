@@ -700,7 +700,7 @@ const Search = memo(() => {
     try {
       // Get auth token
       const AUTHORIZATION = await window.electron.getAPIKey();
-      const response = await fetch("https://api.ascendara.app/auth/token", {
+      const response = await fetch("https://api.QuadDown.app/auth/token", {
         headers: {
           Authorization: AUTHORIZATION,
         },
@@ -714,7 +714,7 @@ const Search = memo(() => {
 
       // Send the refresh request
       const refreshResponse = await fetch(
-        "https://api.ascendara.app/app/request-refresh",
+        "https://api.QuadDown.app/app/request-refresh",
         {
           method: "POST",
           headers: {
@@ -848,7 +848,7 @@ const Search = memo(() => {
                               {t("search.indexedInformationDescription")}{" "}
                               <a
                                 onClick={() =>
-                                  window.electron.openURL("https://ascendara.app/dmca")
+                                  window.electron.openURL("https://QuadDown.app/dmca")
                                 }
                                 className="cursor-pointer text-primary hover:underline"
                               >

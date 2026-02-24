@@ -1,11 +1,11 @@
 import { getCurrentStatus } from "./serverStatus";
 import { sanitizeText } from "@/lib/utils";
 
-const API_URL = "https://api.ascendara.app";
-const CACHE_KEY = "ascendara_games_cache";
-const CACHE_TIMESTAMP_KEY = "local_ascendara_games_timestamp";
-const METADATA_CACHE_KEY = "local_ascendara_metadata_cache";
-const LAST_UPDATED_KEY = "local_ascendara_last_updated";
+const API_URL = "https://api.QuadDown.app";
+const CACHE_KEY = "QuadDown_games_cache";
+const CACHE_TIMESTAMP_KEY = "local_QuadDown_games_timestamp";
+const METADATA_CACHE_KEY = "local_QuadDown_metadata_cache";
+const LAST_UPDATED_KEY = "local_QuadDown_last_updated";
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
 // Memory cache to avoid localStorage reads
@@ -144,7 +144,7 @@ const gameService = {
   async fetchDataFromLocalIndex(localIndexPath) {
     try {
       console.log("[GameService] Loading local index from:", localIndexPath);
-      const filePath = `${localIndexPath}/ascendara_games.json`;
+      const filePath = `${localIndexPath}/QuadDown_games.json`;
       const fileContent = await window.electron.ipcRenderer.readFile(filePath);
       const data = JSON.parse(fileContent);
 
@@ -211,7 +211,7 @@ const gameService = {
       };
     } catch (error) {
       console.warn("Primary API failed, trying backup CDN:", error);
-      const backupEndpoint = "https://cdn.ascendara.app/files/data.json";
+      const backupEndpoint = "https://cdn.QuadDown.app/files/data.json";
 
       try {
         const response = await fetch(backupEndpoint, {

@@ -1,6 +1,6 @@
 /**
  * Protocol Module
- * Handles protocol URL handling (ascendara://)
+ * Handles protocol URL handling (QuadDown://)
  */
 
 const { BrowserWindow, app } = require("electron");
@@ -21,7 +21,7 @@ function handleProtocolUrl(url) {
   if (!url) return;
 
   const cleanUrl = url.trim();
-  if (!cleanUrl.startsWith("ascendara://")) return;
+  if (!cleanUrl.startsWith("QuadDown://")) return;
 
   const existingWindow = BrowserWindow.getAllWindows().find(win => win);
 
@@ -48,11 +48,11 @@ function handleProtocolUrl(url) {
         try {
           const normalizedUrl = cleanUrl
             .replace(
-              "ascendara://checkout-success/",
+              "QuadDown://checkout-success/",
               "https://placeholder/checkout-success"
             )
             .replace(
-              "ascendara://checkout-success",
+              "QuadDown://checkout-success",
               "https://placeholder/checkout-success"
             );
           const urlParams = new URL(normalizedUrl);
@@ -185,18 +185,18 @@ function setupSingleInstance() {
 
   // Register protocol handler
   if (process.defaultApp || isDev) {
-    app.setAsDefaultProtocolClient("ascendara", process.execPath, [
+    app.setAsDefaultProtocolClient("QuadDown", process.execPath, [
       path.resolve(process.argv[1]),
     ]);
   } else {
-    app.setAsDefaultProtocolClient("ascendara");
+    app.setAsDefaultProtocolClient("QuadDown");
   }
 
   // Handle second instance
   app.on("second-instance", (event, commandLine, workingDirectory) => {
     console.log("Second instance detected with args:", commandLine);
 
-    const protocolUrl = commandLine.find(arg => arg.startsWith("ascendara://"));
+    const protocolUrl = commandLine.find(arg => arg.startsWith("QuadDown://"));
     if (protocolUrl) {
       handleProtocolUrl(protocolUrl);
     }

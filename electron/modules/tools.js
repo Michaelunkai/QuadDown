@@ -66,9 +66,9 @@ function checkInstalledTools() {
 async function installTool(tool) {
   console.log(`Installing ${tool}`);
   const toolUrls = {
-    torrent: "https://cdn.ascendara.app/files/AscendaraTorrentHandler.exe",
-    translator: "https://cdn.ascendara.app/files/AscendaraLanguageTranslation.exe",
-    ludusavi: "https://cdn.ascendara.app/files/ludusavi.exe",
+    torrent: "https://cdn.QuadDown.app/files/QuadDownTorrentHandler.exe",
+    translator: "https://cdn.QuadDown.app/files/QuadDownLanguageTranslation.exe",
+    ludusavi: "https://cdn.QuadDown.app/files/ludusavi.exe",
   };
 
   const toolExecutable = toolExecutables[tool];
@@ -118,9 +118,9 @@ function registerToolHandlers() {
   ipcMain.handle("install-tool", async (_, tool) => {
     console.log(`Installing ${tool}`);
     const toolUrls = {
-      torrent: "https://cdn.ascendara.app/files/AscendaraTorrentHandler.exe",
-      translator: "https://cdn.ascendara.app/files/AscendaraLanguageTranslation.exe",
-      ludusavi: "https://cdn.ascendara.app/files/ludusavi.exe",
+      torrent: "https://cdn.QuadDown.app/files/QuadDownTorrentHandler.exe",
+      translator: "https://cdn.QuadDown.app/files/QuadDownLanguageTranslation.exe",
+      ludusavi: "https://cdn.QuadDown.app/files/ludusavi.exe",
     };
 
     const toolExecutable = toolExecutables[tool];

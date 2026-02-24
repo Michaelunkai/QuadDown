@@ -33,7 +33,7 @@ let isBrokenVersion = false;
  */
 async function checkBrokenVersion() {
   try {
-    const response = await axios.get("https://api.ascendara.app/app/brokenversions");
+    const response = await axios.get("https://api.QuadDown.app/app/brokenversions");
     const brokenVersions = response.data;
     isBrokenVersion = brokenVersions.includes(appVersion);
     console.log(
@@ -49,7 +49,7 @@ async function checkBrokenVersion() {
  */
 async function getSettings() {
   try {
-    const filePath = path.join(app.getPath("userData"), "ascendarasettings.json");
+    const filePath = path.join(app.getPath("userData"), "QuadDownsettings.json");
     console.log("Reading settings from:", filePath);
 
     if (!fs.existsSync(filePath)) {
@@ -106,18 +106,18 @@ async function checkVersionAndUpdate() {
     let latestVersion;
 
     if (currentBranch === "live") {
-      const response = await axios.get("https://api.ascendara.app/");
+      const response = await axios.get("https://api.QuadDown.app/");
       latestVersion = response.data.appVer;
     } else {
       // For public-testing and experimental, check branch-specific versions
       // If the branch no longer exists or version matches live, treat as up-to-date
       try {
-        const response = await axios.get("https://api.ascendara.app/branch-versions");
+        const response = await axios.get("https://api.QuadDown.app/branch-versions");
         const branchData = response.data;
         latestVersion = branchData[currentBranch] || branchData.live || appVersion;
       } catch {
         // Fallback to live API if branch-versions endpoint fails
-        const response = await axios.get("https://api.ascendara.app/");
+        const response = await axios.get("https://api.QuadDown.app/");
         latestVersion = response.data.appVer;
       }
     }
@@ -160,7 +160,7 @@ async function checkReferenceLanguage() {
       return;
     }
     const extraLangVer = timestamp["extraLangVer"];
-    const langVerResponse = await axios.get(`https://api.ascendara.app/language/version`);
+    const langVerResponse = await axios.get(`https://api.QuadDown.app/language/version`);
     console.log(
       "Lang Version Check: Current=",
       extraLangVer,
@@ -191,7 +191,7 @@ async function getNewLangKeys() {
     const languageFiles = fs.readdirSync(LANG_DIR).filter(file => file.endsWith(".json"));
 
     // Fetch reference English translations from API
-    const response = await fetch("https://api.ascendara.app/language/en");
+    const response = await fetch("https://api.QuadDown.app/language/en");
     if (!response.ok) {
       throw new Error("Failed to fetch reference English translations");
     }
@@ -234,21 +234,21 @@ async function getNewLangKeys() {
           if (isWindows) {
             translatorExePath = isDev
               ? path.join(
-                  "./binaries/AscendaraLanguageTranslation/dist/AscendaraLanguageTranslation.exe"
+                  "./binaries/QuadDownLanguageTranslation/dist/QuadDownLanguageTranslation.exe"
                 )
-              : path.join(appDirectory, "/resources/AscendaraLanguageTranslation.exe");
+              : path.join(appDirectory, "/resources/QuadDownLanguageTranslation.exe");
             args = [langCode, "--updateKeys"];
           } else if (isDev) {
             translatorExePath = getPythonPath();
             args = [
-              "./binaries/AscendaraLanguageTranslation/src/AscendaraLanguageTranslation.py",
+              "./binaries/QuadDownLanguageTranslation/src/QuadDownLanguageTranslation.py",
               langCode,
               "--updateKeys",
             ];
           } else {
             translatorExePath = path.join(
               appDirectory,
-              "/resources/AscendaraLanguageTranslation"
+              "/resources/QuadDownLanguageTranslation"
             );
             args = [langCode, "--updateKeys"];
           }
@@ -318,9 +318,9 @@ async function downloadUpdateInBackground() {
 
     // Custom headers for app identification
     const headers = {
-      "X-Ascendara-Client": "app",
-      "X-Ascendara-Version": appVersion,
-      "X-Ascendara-Platform": isWindows ? "windows" : "linux",
+      "X-QuadDown-Client": "app",
+      "X-QuadDown-Version": appVersion,
+      "X-QuadDown-Platform": isWindows ? "windows" : "linux",
     };
 
     // Get current branch to download correct update
@@ -330,12 +330,12 @@ async function downloadUpdateInBackground() {
     // Determine update URL based on branch
     let updateUrl;
     if (currentBranch === "live") {
-      updateUrl = `https://lfs.ascendara.app/download?update`;
+      updateUrl = `https://lfs.QuadDown.app/download?update`;
     } else {
-      updateUrl = `https://lfs.ascendara.app/download?branch=${currentBranch}`;
+      updateUrl = `https://lfs.QuadDown.app/download?branch=${currentBranch}`;
     }
-    const tempDir = path.join(os.tmpdir(), "ascendarainstaller");
-    const installerPath = path.join(tempDir, "AscendaraInstaller.exe");
+    const tempDir = path.join(os.tmpdir(), "QuadDowninstaller");
+    const installerPath = path.join(tempDir, "QuadDownInstaller.exe");
 
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir);
@@ -424,7 +424,7 @@ function registerUpdateHandlers() {
     }
   });
 
-  ipcMain.handle("update-ascendara", async () => {
+  ipcMain.handle("update-QuadDown", async () => {
     if (isLatest) return;
 
     if (!updateDownloaded) {
@@ -441,8 +441,8 @@ function registerUpdateHandlers() {
     }
 
     if (updateDownloaded) {
-      const tempDir = path.join(os.tmpdir(), "ascendarainstaller");
-      const installerPath = path.join(tempDir, "AscendaraInstaller.exe");
+      const tempDir = path.join(os.tmpdir(), "QuadDowninstaller");
+      const installerPath = path.join(tempDir, "QuadDownInstaller.exe");
 
       if (!fs.existsSync(installerPath)) {
         console.error("Installer not found at:", installerPath);
@@ -470,9 +470,9 @@ function registerUpdateHandlers() {
 
   ipcMain.handle("switch-branch", async (_, branch) => {
     const branchUrls = {
-      live: "https://lfs.ascendara.app/download?update",
-      "public-testing": "https://lfs.ascendara.app/download?branch=public-testing",
-      experimental: "https://lfs.ascendara.app/download?branch=experimental",
+      live: "https://lfs.QuadDown.app/download?update",
+      "public-testing": "https://lfs.QuadDown.app/download?branch=public-testing",
+      experimental: "https://lfs.QuadDown.app/download?branch=experimental",
     };
 
     const url = branchUrls[branch];
@@ -480,13 +480,13 @@ function registerUpdateHandlers() {
 
     try {
       const headers = {
-        "X-Ascendara-Client": "app",
-        "X-Ascendara-Version": appVersion,
-        "X-Ascendara-Platform": isWindows ? "windows" : "linux",
+        "X-QuadDown-Client": "app",
+        "X-QuadDown-Version": appVersion,
+        "X-QuadDown-Platform": isWindows ? "windows" : "linux",
       };
 
-      const tempDir = path.join(os.tmpdir(), "ascendarainstaller");
-      const installerPath = path.join(tempDir, "AscendaraBranchInstaller.exe");
+      const tempDir = path.join(os.tmpdir(), "QuadDowninstaller");
+      const installerPath = path.join(tempDir, "QuadDownBranchInstaller.exe");
 
       if (!fs.existsSync(tempDir)) {
         fs.mkdirSync(tempDir);

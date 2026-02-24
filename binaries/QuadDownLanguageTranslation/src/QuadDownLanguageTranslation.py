@@ -1,9 +1,9 @@
 # ==============================================================================
-# Ascendara Language Translation
+# QuadDown Language Translation
 # ==============================================================================
-# A command-line tool for translating Ascendara language files
+# A command-line tool for translating QuadDown language files
 # Read more about the Language Translator Tool here:
-# https://ascendara.app/docs/binary-tool/language-translator
+# https://QuadDown.app/docs/binary-tool/language-translator
 
 
 
@@ -55,7 +55,7 @@ rate_limiter = RateLimiter(8)
 
 def _launch_crash_reporter_on_exit(error_code, error_message):
     try:
-        crash_reporter_path = os.path.join('./AscendaraCrashReporter.exe')
+        crash_reporter_path = os.path.join('./QuadDownCrashReporter.exe')
         if os.path.exists(crash_reporter_path):
             kwargs = {"creationflags": subprocess.CREATE_NO_WINDOW} if sys.platform == "win32" else {}
             subprocess.Popen(
@@ -159,7 +159,7 @@ def generate_token(text):
 
 class TranslationProgress:
     def __init__(self, language_code):
-        self.progress_file = os.path.join(os.path.expanduser("~"), "translation_progress.ascendara.json")
+        self.progress_file = os.path.join(os.path.expanduser("~"), "translation_progress.QuadDown.json")
         self.language_code = language_code
         self.lock = Lock()
         self.total_strings = 0
@@ -286,7 +286,7 @@ def translate_dict(d, target_lang, progress):
     return result
 
 def get_english_translations():
-    """Get English translations from the Ascendara API"""
+    """Get English translations from the QuadDown API"""
     try:
         rate_limiter.wait()
         headers = {
@@ -294,7 +294,7 @@ def get_english_translations():
             'Accept': '*/*',
         }
         logging.debug("Fetching English translations from API...")
-        response = requests.get('https://api.ascendara.app/language/en', headers=headers, timeout=10)
+        response = requests.get('https://api.QuadDown.app/language/en', headers=headers, timeout=10)
         logging.debug(f"API Response status: {response.status_code}")
         response.raise_for_status()
         data = response.json()
@@ -327,11 +327,11 @@ def save_translations(translations, output_path):
         
         # Fetch and save language version
         try:
-            version_response = requests.get('https://api.ascendara.app/language/version', timeout=10)
+            version_response = requests.get('https://api.QuadDown.app/language/version', timeout=10)
             version_response.raise_for_status()
             version_data = version_response.json()
             
-            timestamp_path = os.path.join(os.path.expanduser('~'), 'timestamp.ascendara.json')
+            timestamp_path = os.path.join(os.path.expanduser('~'), 'timestamp.QuadDown.json')
             
             timestamp_data = {}
             if os.path.exists(timestamp_path):
@@ -353,7 +353,7 @@ def save_translations(translations, output_path):
         raise  # Let the main function handle the error
 
 def main():
-    parser = argparse.ArgumentParser(description='Translate Ascendara language files')
+    parser = argparse.ArgumentParser(description='Translate QuadDown language files')
     parser.add_argument('lang', help='Target language code (e.g., fr, de, es)')
     parser.add_argument('--output', '-o', help='Output file path', default=None)
     parser.add_argument('--updateKeys', action='store_true', help='Update specific keys in the language file')
@@ -373,11 +373,11 @@ def main():
             try:
                 # Load translations from platform-appropriate path
                 if sys.platform == 'win32':
-                    appdata_path = os.path.expandvars(r"%LOCALAPPDATA%\Ascendara")
+                    appdata_path = os.path.expandvars(r"%LOCALAPPDATA%\QuadDown")
                 elif sys.platform == 'darwin':
-                    appdata_path = os.path.join(os.path.expanduser('~/Library/Application Support'), 'ascendara')
+                    appdata_path = os.path.join(os.path.expanduser('~/Library/Application Support'), 'QuadDown')
                 else:
-                    appdata_path = os.path.join(os.path.expanduser('~/.ascendara'))
+                    appdata_path = os.path.join(os.path.expanduser('~/.QuadDown'))
                 output_path = os.path.join(appdata_path, f"{args.lang}.json")
                 
                 logging.debug(f"AppData path: {appdata_path}")
@@ -514,11 +514,11 @@ def main():
         
         # Save translations to platform-appropriate path
         if sys.platform == 'win32':
-            appdata_path = os.path.expandvars(r"%LOCALAPPDATA%\Ascendara\languages")
+            appdata_path = os.path.expandvars(r"%LOCALAPPDATA%\QuadDown\languages")
         elif sys.platform == 'darwin':
-            appdata_path = os.path.join(os.path.expanduser('~/Library/Application Support'), 'ascendara', 'languages')
+            appdata_path = os.path.join(os.path.expanduser('~/Library/Application Support'), 'QuadDown', 'languages')
         else:
-            appdata_path = os.path.join(os.path.expanduser('~/.ascendara'), 'languages')
+            appdata_path = os.path.join(os.path.expanduser('~/.QuadDown'), 'languages')
         os.makedirs(appdata_path, exist_ok=True)
         output_path = os.path.join(appdata_path, f"{args.lang}.json")
         

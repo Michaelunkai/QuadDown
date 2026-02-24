@@ -35,7 +35,7 @@ const ALL_SIDECARS = [
     name: "Achievement Watcher",
     description: "Track and view game achievements",
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraAchievementWatcher/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownAchievementWatcher/src",
   },
   {
     id: "ludusavi",
@@ -54,31 +54,31 @@ const ALL_SIDECARS = [
     name: "Torrent Handler",
     description: "Download and manage torrents",
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraTorrentHandler/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownTorrentHandler/src",
   },
   {
     id: "translator",
     name: "Language Translator",
-    description: "Automatically translate Ascendara UI text",
+    description: "Automatically translate QuadDown UI text",
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraLanguageTranslation/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownLanguageTranslation/src",
   },
   {
     id: "downloader",
     name: "Download Manager",
     description:
-      "Ascendara's download manager for downloading files from source providers",
+      "QuadDown's download manager for downloading files from source providers",
     builtIn: true,
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraDownloader/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownDownloader/src",
   },
   {
     id: "localrefresh",
     name: "Index Refresh Tool",
-    description: "Refresh Ascendara's index with the custom scraper",
+    description: "Refresh QuadDown's index with the custom scraper",
     builtIn: true,
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraLocalRefresh/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownLocalRefresh/src",
   },
   {
     id: "gofilehelper",
@@ -86,31 +86,31 @@ const ALL_SIDECARS = [
     description: "Download and manage files from the GoFile provider",
     builtIn: true,
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraDownloader/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownDownloader/src",
   },
   {
     id: "crashreporter",
     name: "Crash Reporter",
-    description: "Ascendara's crash reporter GUI for handling crashes",
+    description: "QuadDown's crash reporter GUI for handling crashes",
     builtIn: true,
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraCrashReporter/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownCrashReporter/src",
   },
   {
     id: "notification",
     name: "Notification Helper",
-    description: "Ascendara's notification helper for handling notifications",
+    description: "QuadDown's notification helper for handling notifications",
     builtIn: true,
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraNotificationHelper/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownNotificationHelper/src",
   },
   {
     id: "gamehandler",
     name: "Game Handler",
-    description: "Ascendara's game handler for handling game downloads",
+    description: "QuadDown's game handler for handling game downloads",
     builtIn: true,
     source:
-      "https://github.com/Ascendara/ascendara/tree/main/binaries/AscendaraGameHandler/src",
+      "https://github.com/QuadDown/QuadDown/tree/main/binaries/QuadDownGameHandler/src",
   },
 ];
 

@@ -8,7 +8,7 @@ const path = require("path");
 const { app } = require("electron");
 
 // Get the app data path for the log file
-const logPath = path.join(app.getPath("appData"), "Ascendara by tagoWorks", "debug.log");
+const logPath = path.join(app.getPath("appData"), "QuadDown by tagoWorks", "debug.log");
 
 // Ensure log directory exists
 if (!fs.existsSync(path.dirname(logPath))) {

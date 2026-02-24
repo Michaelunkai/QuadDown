@@ -12,7 +12,7 @@ class RatingQueueService {
     this.subscribers = new Map(); // gameID -> Set of callbacks
     this.delayBetweenRequests = 150; // ms between each request
     this.cacheExpiry = 30 * 60 * 1000; // 30 minutes cache
-    this.storageKey = "ascendara-ratings-cache";
+    this.storageKey = "QuadDown-ratings-cache";
     this.loadFromStorage();
   }
 
@@ -118,7 +118,7 @@ class RatingQueueService {
 
       try {
         const response = await fetch(
-          `https://api.ascendara.app/app/v2/gamerating/${gameID}`
+          `https://api.QuadDown.app/app/v2/gamerating/${gameID}`
         );
 
         if (response.ok) {

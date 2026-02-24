@@ -20,7 +20,7 @@ function registerLudusaviHandlers() {
     try {
       if (isWindows) {
         const ludusaviPath = isDev
-          ? path.join("./binaries/AscendaraGameHandler/dist/ludusavi.exe")
+          ? path.join("./binaries/QuadDownGameHandler/dist/ludusavi.exe")
           : path.join(appDirectory, "/resources/ludusavi.exe");
 
         const settings = settingsManager.getSettings();
@@ -168,7 +168,7 @@ function registerLudusaviHandlers() {
         fs.writeFileSync(gamesFilePath, JSON.stringify(gamesData, null, 2));
       } else {
         const gameDirectory = path.join(settings.downloadDirectory, game);
-        const gameInfoPath = path.join(gameDirectory, `${game}.ascendara.json`);
+        const gameInfoPath = path.join(gameDirectory, `${game}.QuadDown.json`);
         const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
         gameInfo.backups = true;
         fs.writeFileSync(gameInfoPath, JSON.stringify(gameInfo, null, 2));
@@ -197,7 +197,7 @@ function registerLudusaviHandlers() {
         fs.writeFileSync(gamesFilePath, JSON.stringify(gamesData, null, 2));
       } else {
         const gameDirectory = path.join(settings.downloadDirectory, game);
-        const gameInfoPath = path.join(gameDirectory, `${game}.ascendara.json`);
+        const gameInfoPath = path.join(gameDirectory, `${game}.QuadDown.json`);
         const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
         gameInfo.backups = false;
         fs.writeFileSync(gameInfoPath, JSON.stringify(gameInfo, null, 2));
@@ -225,7 +225,7 @@ function registerLudusaviHandlers() {
         return !!gameInfo.backups;
       } else {
         const gameDirectory = path.join(settings.downloadDirectory, game);
-        const gameInfoPath = path.join(gameDirectory, `${game}.ascendara.json`);
+        const gameInfoPath = path.join(gameDirectory, `${game}.QuadDown.json`);
         const gameInfoData = fs.readFileSync(gameInfoPath, "utf8");
         const gameInfo = JSON.parse(gameInfoData);
         return !!gameInfo.backups;

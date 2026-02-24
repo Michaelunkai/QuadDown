@@ -32,7 +32,7 @@ function createWindow() {
 
   const iconFile = process.platform === "linux" ? "icon.png" : "icon.ico";
   const mainWindow = new BrowserWindow({
-    title: "Ascendara",
+    title: "QuadDown",
     icon: path.join(__dirname, "..", iconFile),
     width: windowWidth,
     height: windowHeight,
@@ -88,13 +88,13 @@ function createWindow() {
           </style>
         </head>
         <body>
-          <h1>Failed to Load Ascendara</h1>
+          <h1>Failed to Load QuadDown</h1>
           <p>Error: ${errorDescription} (${errorCode})</p>
           <p>This may be caused by:</p>
           <p>• Missing Visual C++ Redistributables - <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" style="color: #3b82f6;">Download here</a></p>
           <p>• Antivirus blocking the app</p>
           <p>• Port 46859 being used by another application</p>
-          <p>Try restarting Ascendara or your computer.</p>
+          <p>Try restarting QuadDown or your computer.</p>
         </body>
       </html>
     `);

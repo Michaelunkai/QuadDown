@@ -1,7 +1,7 @@
 // Cache to store fetched versions
 const versionCache = new Map();
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
-const API_URL = "https://api.ascendara.app"; // Production API
+const API_URL = "https://api.QuadDown.app"; // Production API
 
 /**
  * Fetches a specific historical version of the games list

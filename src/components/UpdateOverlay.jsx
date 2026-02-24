@@ -43,7 +43,7 @@ const UpdateOverlay = () => {
         <p
           className={`text-base ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}
         >
-          {t("app.loading.ascendaraWillRestart")}
+          {t("app.loading.QuadDownWillRestart")}
         </p>
       </motion.div>
     </motion.div>

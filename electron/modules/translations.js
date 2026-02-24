@@ -13,7 +13,7 @@ const { isDev, isWindows, LANG_DIR, appDirectory } = require("./config");
 let currentTranslationProcess = null;
 const TRANSLATION_PROGRESS_FILE = path.join(
   os.homedir(),
-  "translation_progress.ascendara.json"
+  "translation_progress.QuadDown.json"
 );
 let translationWatcher = null;
 
@@ -32,7 +32,7 @@ function startTranslationWatcher(window) {
 
   try {
     translationWatcher = fs.watch(dir, (eventType, filename) => {
-      if (filename === "translation_progress.ascendara.json") {
+      if (filename === "translation_progress.QuadDown.json") {
         try {
           if (fs.existsSync(TRANSLATION_PROGRESS_FILE)) {
             const progress = JSON.parse(
@@ -69,9 +69,9 @@ function registerTranslationHandlers() {
 
       const translationExePath = isDev
         ? path.join(
-            "./binaries/AscendaraLanguageTranslation/dist/AscendaraLanguageTranslation.exe"
+            "./binaries/QuadDownLanguageTranslation/dist/QuadDownLanguageTranslation.exe"
           )
-        : path.join(appDirectory, "/resources/AscendaraLanguageTranslation.exe");
+        : path.join(appDirectory, "/resources/QuadDownLanguageTranslation.exe");
 
       if (!fs.existsSync(translationExePath)) {
         console.error("Translation executable not found at:", translationExePath);

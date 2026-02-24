@@ -1,6 +1,6 @@
 /**
  * Download Sync Service
- * Handles syncing download data to monitor.ascendara.app for webapp viewing
+ * Handles syncing download data to monitor.QuadDown.app for webapp viewing
  * Only active for users with Ascend subscription or trial
  */
 
@@ -142,7 +142,7 @@ const performSync = async downloadsArray => {
   const firebaseToken = await currentUser.getIdToken();
 
   // Sync to monitor endpoint
-  const response = await fetch("https://monitor.ascendara.app/downloads/sync", {
+  const response = await fetch("https://monitor.QuadDown.app/downloads/sync", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -184,7 +184,7 @@ export const checkDownloadCommands = async () => {
     console.log("[DownloadCommands] Checking for commands for user:", currentUser.uid);
 
     const response = await fetch(
-      `https://monitor.ascendara.app/downloads/commands/${currentUser.uid}`,
+      `https://monitor.QuadDown.app/downloads/commands/${currentUser.uid}`,
       {
         method: "GET",
         headers: {
@@ -249,7 +249,7 @@ export const acknowledgeCommand = async (
       status
     );
 
-    await fetch("https://monitor.ascendara.app/downloads/commands/acknowledge", {
+    await fetch("https://monitor.QuadDown.app/downloads/commands/acknowledge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -283,7 +283,7 @@ export const notifyDownloadStart = async (downloadId, downloadName) => {
   try {
     const firebaseToken = await currentUser.getIdToken();
 
-    const response = await fetch("https://monitor.ascendara.app/downloads/notify-start", {
+    const response = await fetch("https://monitor.QuadDown.app/downloads/notify-start", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

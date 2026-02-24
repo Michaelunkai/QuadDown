@@ -1239,7 +1239,7 @@ const Home = memo(() => {
                   <div
                     className="group cursor-pointer"
                     onClick={() =>
-                      window.electron.openURL("https://ascendara.app/discord")
+                      window.electron.openURL("https://QuadDown.app/discord")
                     }
                   >
                     <div className="flex h-20 w-20 flex-col items-center justify-center gap-1 rounded-xl border-2 border-border/40 bg-gradient-to-br from-card/80 to-card/40 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10">
@@ -1254,7 +1254,7 @@ const Home = memo(() => {
 
                   <div
                     className="group cursor-pointer"
-                    onClick={() => window.electron.openURL("https://ascendara.app/docs")}
+                    onClick={() => window.electron.openURL("https://QuadDown.app/docs")}
                   >
                     <div className="flex h-20 w-20 flex-col items-center justify-center gap-1 rounded-xl border-2 border-border/40 bg-gradient-to-br from-card/80 to-card/40 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10">
                       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
@@ -1488,7 +1488,7 @@ const Home = memo(() => {
               <Button
                 variant="outline"
                 className="gap-2"
-                onClick={() => window.electron.openURL("https://ascendara.app/support")}
+                onClick={() => window.electron.openURL("https://QuadDown.app/support")}
               >
                 <HandCoins className="h-4 w-4" />
                 {t("home.footer.donate")}
@@ -1497,7 +1497,7 @@ const Home = memo(() => {
                 variant="ghost"
                 className="gap-2 text-muted-foreground hover:text-foreground"
                 onClick={() =>
-                  window.electron.openURL("https://github.com/ascendara/ascendara")
+                  window.electron.openURL("https://github.com/QuadDown/QuadDown")
                 }
               >
                 <ExternalLink className="h-4 w-4" />

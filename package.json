@@ -1,12 +1,12 @@
 {
-  "name": "ascendara",
+  "name": "QuadDown",
   "version": "10.1.1",
   "main": "electron/app.js",
   "description": "Skip extracting files, navigating setup processes, or any unnecessary hassles.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ascendara/ascendara.git",
-    "baseUrl": "https://github.com/Ascendara/ascendara"
+    "url": "git+https://github.com/QuadDown/QuadDown.git",
+    "baseUrl": "https://github.com/QuadDown/QuadDown"
   },
   "license": "CC-BY-NC-1.0",
   "licenseFilename": "LICENSE",
@@ -35,8 +35,8 @@
     "build-react": "vite build && electron-builder --config.extraMetadata.main=electron/app.js",
     "electron": "electron ./electron/app.js --no-sandbox",
     "start": "concurrently \"vite\" \"wait-on tcp:5173 && electron ./electron/app.js --no-sandbox\"",
-    "dist": "python3 ./scripts/build_ascendara.py",
-    "dist-linux": "python3 ./scripts/build_ascendara_linux.py",
+    "dist": "python3 ./scripts/build_QuadDown.py",
+    "dist-linux": "python3 ./scripts/build_QuadDown_linux.py",
     "buildwithelectron": "electron-builder --config.extraMetadata.main=electron/app.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -144,7 +144,7 @@
   },
   "build": {
     "asar": true,
-    "appId": "com.tagoworks.ascendara",
+    "appId": "com.tagoworks.QuadDown",
     "files": [
       "build/**/*",
       "electron/**/*",
@@ -157,63 +157,63 @@
         "to": "public"
       },
       {
-        "from": "readme/logo/ico/ascendara_64x.ico",
+        "from": "readme/logo/ico/QuadDown_64x.ico",
         "to": "icon.ico"
       },
       {
-        "from": "binaries/AscendaraDownloader/dist/AscendaraDownloader.exe",
+        "from": "binaries/QuadDownDownloader/dist/QuadDownDownloader.exe",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraDownloader/dist/AscendaraGofileHelper.exe",
+        "from": "binaries/QuadDownDownloader/dist/QuadDownGofileHelper.exe",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraGameHandler/dist/AscendaraGameHandler.exe",
+        "from": "binaries/QuadDownGameHandler/dist/QuadDownGameHandler.exe",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraCrashReporter/dist/AscendaraCrashReporter.exe",
+        "from": "binaries/QuadDownCrashReporter/dist/QuadDownCrashReporter.exe",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraNotificationHelper/dist/AscendaraNotificationHelper.exe",
+        "from": "binaries/QuadDownNotificationHelper/dist/QuadDownNotificationHelper.exe",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraAchievementWatcher/dist/AscendaraAchievementWatcher.exe",
+        "from": "binaries/QuadDownAchievementWatcher/dist/QuadDownAchievementWatcher.exe",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraLocalRefresh/dist/AscendaraLocalRefresh.exe",
+        "from": "binaries/QuadDownLocalRefresh/dist/QuadDownLocalRefresh.exe",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraDownloader/src/debian/AscendaraDownloader.py",
+        "from": "binaries/QuadDownDownloader/src/debian/QuadDownDownloader.py",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraGameHandler/src/debian/AscendaraGameHandler.py",
+        "from": "binaries/QuadDownGameHandler/src/debian/QuadDownGameHandler.py",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraCrashReporter/src/debian/AscendaraCrashReporter.py",
+        "from": "binaries/QuadDownCrashReporter/src/debian/QuadDownCrashReporter.py",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraNotificationHelper/src/debian/AscendaraNotificationHelper.py",
+        "from": "binaries/QuadDownNotificationHelper/src/debian/QuadDownNotificationHelper.py",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraLanguageTranslation/src/debian/AscendaraLanguageTranslation.py",
+        "from": "binaries/QuadDownLanguageTranslation/src/debian/QuadDownLanguageTranslation.py",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraLocalRefresh/src/debian/AscendaraLocalRefresh.py",
+        "from": "binaries/QuadDownLocalRefresh/src/debian/QuadDownLocalRefresh.py",
         "to": "."
       },
       {
-        "from": "binaries/AscendaraTorrentHandler/src/debian/AscendaraTorrentHandler.py",
+        "from": "binaries/QuadDownTorrentHandler/src/debian/QuadDownTorrentHandler.py",
         "to": "."
       }
     ],
@@ -235,56 +235,56 @@
           ]
         }
       ],
-      "icon": "readme/logo/png/ascendara_512x.png",
+      "icon": "readme/logo/png/QuadDown_512x.png",
       "category": "Utility",
       "maintainer": "tagoWorks",
       "vendor": "tagoWorks",
       "synopsis": "Skip extracting files, navigating setup processes, or any unnecessary hassles.",
-      "description": "Ascendara is a desktop application that helps you skip extracting files, navigating setup processes, or any unnecessary hassles when installing software.",
+      "description": "QuadDown is a desktop application that helps you skip extracting files, navigating setup processes, or any unnecessary hassles when installing software.",
       "extraResources": [
         {
-          "from": "readme/logo/png/ascendara_512x.png",
+          "from": "readme/logo/png/QuadDown_512x.png",
           "to": "icon.png"
         },
         {
-          "from": "binaries/AscendaraDownloader/dist/AscendaraDownloader",
+          "from": "binaries/QuadDownDownloader/dist/QuadDownDownloader",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraDownloader/dist/AscendaraGofileHelper",
+          "from": "binaries/QuadDownDownloader/dist/QuadDownGofileHelper",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraGameHandler/dist/AscendaraGameHandler",
+          "from": "binaries/QuadDownGameHandler/dist/QuadDownGameHandler",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraCrashReporter/dist/AscendaraCrashReporter",
+          "from": "binaries/QuadDownCrashReporter/dist/QuadDownCrashReporter",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraNotificationHelper/dist/AscendaraNotificationHelper",
+          "from": "binaries/QuadDownNotificationHelper/dist/QuadDownNotificationHelper",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraLanguageTranslation/dist/AscendaraLanguageTranslation",
+          "from": "binaries/QuadDownLanguageTranslation/dist/QuadDownLanguageTranslation",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraLocalRefresh/dist/AscendaraLocalRefresh",
+          "from": "binaries/QuadDownLocalRefresh/dist/QuadDownLocalRefresh",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraTorrentHandler/dist/AscendaraTorrentHandler",
+          "from": "binaries/QuadDownTorrentHandler/dist/QuadDownTorrentHandler",
           "to": "."
         },
         {
-          "from": "binaries/AscendaraAchievementWatcher/dist/AscendaraAchievementWatcher",
+          "from": "binaries/QuadDownAchievementWatcher/dist/QuadDownAchievementWatcher",
           "to": "."
         }
       ]
     },
-    "productName": "Ascendara",
+    "productName": "QuadDown",
     "directories": {
       "output": "dist",
       "buildResources": "build"

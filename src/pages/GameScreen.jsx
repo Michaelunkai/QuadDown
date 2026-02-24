@@ -234,7 +234,7 @@ const ExecutableManagerDialog = ({ open, onClose, gameName, isCustom, t, onSave 
                   <button
                     onClick={() =>
                       window.electron.openURL(
-                        "https://ascendara.app/docs/troubleshooting/common-issues#executable-not-found-launch-error"
+                        "https://QuadDown.app/docs/troubleshooting/common-issues#executable-not-found-launch-error"
                       )
                     }
                     className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -418,7 +418,7 @@ const ErrorDialog = ({
           <span
             onClick={() => {
               window.electron.openURL(
-                "https://ascendara.app/docs/troubleshooting/common-issues#executable-not-found-launch-error"
+                "https://QuadDown.app/docs/troubleshooting/common-issues#executable-not-found-launch-error"
               );
             }}
             className="cursor-pointer hover:underline"
@@ -3529,7 +3529,7 @@ export default function GameScreen() {
               onClick={() => {
                 setShowVrWarning(false);
                 window.electron.openURL(
-                  "https://ascendara.app/docs/troubleshooting/vr-games"
+                  "https://QuadDown.app/docs/troubleshooting/vr-games"
                 );
               }}
             >

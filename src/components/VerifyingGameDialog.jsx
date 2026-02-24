@@ -54,7 +54,7 @@ const VerifyingGameDialog = ({ game, open, onOpenChange }) => {
 
       if (
         result.error?.includes("ENOENT") &&
-        result.error?.includes("filemap.ascendara.json")
+        result.error?.includes("filemap.QuadDown.json")
       ) {
         setIsLegacyGame(true);
       } else {
@@ -77,7 +77,7 @@ const VerifyingGameDialog = ({ game, open, onOpenChange }) => {
       console.error("Verification failed:", error);
       if (
         error.message?.includes("ENOENT") &&
-        error.message?.includes("filemap.ascendara.json")
+        error.message?.includes("filemap.QuadDown.json")
       ) {
         setIsLegacyGame(true);
       } else {
@@ -194,7 +194,7 @@ const VerifyingGameDialog = ({ game, open, onOpenChange }) => {
           className="inline-flex cursor-pointer items-center text-sm text-primary hover:underline"
           onClick={() => {
             window.electron.openURL(
-              "https://ascendara.app/docs/troubleshooting/common-issues#verification-issues"
+              "https://QuadDown.app/docs/troubleshooting/common-issues#verification-issues"
             );
           }}
         >

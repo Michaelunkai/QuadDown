@@ -1,4 +1,4 @@
-# This script counts the number of lines of code used in Ascendara, including
+# This script counts the number of lines of code used in QuadDown, including
 # all files in the src, installer, build, and binaries directories. It excludes
 # any whitespace lines (lines that are just indented) by default.
 

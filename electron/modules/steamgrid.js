@@ -9,18 +9,18 @@ const BASE_URL = "https://www.steamgriddb.com/api/v2";
 async function fetchGameAssets(gameName, gameDir) {
   // Check if we already have all the new assets
   const expectedFiles = [
-    "grid.ascendara.jpg",
-    "hero.ascendara.jpg",
-    "logo.ascendara.png",
+    "grid.QuadDown.jpg",
+    "hero.QuadDown.jpg",
+    "logo.QuadDown.png",
   ];
 
   // Verify if all files already exist
   const allExist = expectedFiles.every(file => {
     const base = file.split(".")[0]; // 'grid', 'hero', 'logo'
     return (
-      fs.existsSync(path.join(gameDir, base + ".ascendara.jpg")) ||
-      fs.existsSync(path.join(gameDir, base + ".ascendara.png")) ||
-      fs.existsSync(path.join(gameDir, base + ".ascendara.jpeg"))
+      fs.existsSync(path.join(gameDir, base + ".QuadDown.jpg")) ||
+      fs.existsSync(path.join(gameDir, base + ".QuadDown.png")) ||
+      fs.existsSync(path.join(gameDir, base + ".QuadDown.jpeg"))
     );
   });
 
@@ -28,11 +28,11 @@ async function fetchGameAssets(gameName, gameDir) {
     return true;
   }
 
-  // Check if game has legacy header.ascendara image
+  // Check if game has legacy header.QuadDown image
   const hasLegacyHeader =
-    fs.existsSync(path.join(gameDir, "header.ascendara.jpg")) ||
-    fs.existsSync(path.join(gameDir, "header.ascendara.png")) ||
-    fs.existsSync(path.join(gameDir, "header.ascendara.jpeg"));
+    fs.existsSync(path.join(gameDir, "header.QuadDown.jpg")) ||
+    fs.existsSync(path.join(gameDir, "header.QuadDown.png")) ||
+    fs.existsSync(path.join(gameDir, "header.QuadDown.jpeg"));
 
   if (hasLegacyHeader) {
     console.log(
@@ -66,16 +66,16 @@ async function fetchGameAssets(gameName, gameDir) {
       {
         type: "grids",
         dimensions: ["600x900"],
-        baseName: "grid.ascendara",
+        baseName: "grid.QuadDown",
         styles: "alternate",
       },
       {
         type: "heroes",
         dimensions: ["1920x620", "3840x1240"],
-        baseName: "hero.ascendara",
+        baseName: "hero.QuadDown",
         styles: "alternate",
       },
-      { type: "logos", baseName: "logo.ascendara", styles: "official" },
+      { type: "logos", baseName: "logo.QuadDown", styles: "official" },
     ];
 
     for (const item of downloads) {

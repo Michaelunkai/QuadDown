@@ -1,9 +1,9 @@
 # ==============================================================================
-# Ascendara Notification Helper
+# QuadDown Notification Helper
 # ==============================================================================
-# A command-line tool for handling Ascendara notifications
+# A command-line tool for handling QuadDown notifications
 # Read more about the Notification Helper Tool here:
-# https://ascendara.app/docs/binary-tool/notification-helper
+# https://QuadDown.app/docs/binary-tool/notification-helper
 
 
 
@@ -25,16 +25,16 @@ from PyQt6.QtWidgets import (
 )
 
 
-def get_ascendara_log_path():
+def get_QuadDown_log_path():
     if sys.platform == "win32":
         appdata = os.getenv("APPDATA")
     else:
         appdata = os.path.expanduser("~/.config")
-    ascendara_dir = os.path.join(appdata, "Ascendara by tagoWorks")
-    os.makedirs(ascendara_dir, exist_ok=True)
-    return os.path.join(ascendara_dir, "notificationhelper.log")
+    QuadDown_dir = os.path.join(appdata, "QuadDown by tagoWorks")
+    os.makedirs(QuadDown_dir, exist_ok=True)
+    return os.path.join(QuadDown_dir, "notificationhelper.log")
 
-LOG_PATH = get_ascendara_log_path()
+LOG_PATH = get_QuadDown_log_path()
 
 # Remove all handlers associated with the root logger object (for reloads)
 for handler in logging.root.handlers[:]:
@@ -48,7 +48,7 @@ logging.basicConfig(
         logging.StreamHandler(sys.stdout)
     ]
 )
-logging.info(f"[AscendaraNotificationHelper] Logging to {LOG_PATH}")
+logging.info(f"[QuadDownNotificationHelper] Logging to {LOG_PATH}")
 
 logger = logging.getLogger(__name__)
 
@@ -138,7 +138,7 @@ _icon_pixmap = None
 
 def _launch_crash_reporter_on_exit(error_code, error_message):
     try:
-        crash_reporter_path = os.path.join('./AscendaraCrashReporter.exe')
+        crash_reporter_path = os.path.join('./QuadDownCrashReporter.exe')
         if os.path.exists(crash_reporter_path):
             kwargs = {"creationflags": subprocess.CREATE_NO_WINDOW} if sys.platform == "win32" else {}
             subprocess.Popen(
@@ -331,7 +331,7 @@ class NotificationWindow(QWidget):
 
     def _handle_open(self):
         import subprocess
-        exe_path = os.path.join(os.path.dirname("../Ascendara.exe"))
+        exe_path = os.path.join(os.path.dirname("../QuadDown.exe"))
         try:
             subprocess.Popen([exe_path], shell=False)
             logger.info(f"Launched: {exe_path}")

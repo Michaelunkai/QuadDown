@@ -1,5 +1,5 @@
 /**
- * Library for managing game folders in the Ascendara application
+ * Library for managing game folders in the QuadDown application
  * Handles saving, loading, and manipulating folder data
  */
 
@@ -225,7 +225,7 @@ export const updateGameInFolders = (gameId, updatedProperties) => {
 
     // Dispatch an event to notify that folders have been updated
     try {
-      window.dispatchEvent(new CustomEvent("ascendara:game-updated-in-folders"));
+      window.dispatchEvent(new CustomEvent("QuadDown:game-updated-in-folders"));
     } catch (error) {
       console.error("Error dispatching game-updated-in-folders event:", error);
     }

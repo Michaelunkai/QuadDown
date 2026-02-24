@@ -39,7 +39,7 @@ export const settingsSearchData = [
   {
     id: "theme",
     title: "Theme",
-    description: "Change the appearance theme of Ascendara",
+    description: "Change the appearance theme of QuadDown",
     keywords: [
       "theme",
       "appearance",
@@ -103,7 +103,7 @@ export const settingsSearchData = [
   {
     id: "default-landing-page",
     title: "Default Landing Page",
-    description: "Set which page opens when Ascendara starts",
+    description: "Set which page opens when QuadDown starts",
     keywords: [
       "default",
       "landing",
@@ -119,10 +119,10 @@ export const settingsSearchData = [
   },
   {
     id: "auto-update",
-    title: "Ascendara Updates / Automatic Updates",
-    description: "Automatically download and install Ascendara updates",
+    title: "QuadDown Updates / Automatic Updates",
+    description: "Automatically download and install QuadDown updates",
     keywords: [
-      "ascendara",
+      "QuadDown",
       "updates",
       "auto",
       "automatic",
@@ -309,7 +309,7 @@ export const settingsSearchData = [
   {
     id: "quick-launch",
     title: "Quick Launch",
-    description: "Keep Ascendara running in background when closed",
+    description: "Keep QuadDown running in background when closed",
     keywords: [
       "quick",
       "launch",
@@ -327,7 +327,7 @@ export const settingsSearchData = [
   {
     id: "hide-on-game-launch",
     title: "Hide on Game Launch",
-    description: "Minimize Ascendara when launching a game",
+    description: "Minimize QuadDown when launching a game",
     keywords: [
       "hide",
       "minimize",
@@ -536,10 +536,10 @@ export const settingsSearchData = [
   },
   {
     id: "analytics",
-    title: "Ascendara Analytics / Analytics",
-    description: "Help improve Ascendara by sharing anonymous usage data",
+    title: "QuadDown Analytics / Analytics",
+    description: "Help improve QuadDown by sharing anonymous usage data",
     keywords: [
-      "ascendara",
+      "QuadDown",
       "analytics",
       "telemetry",
       "data",
@@ -553,10 +553,10 @@ export const settingsSearchData = [
   },
   {
     id: "timemachine",
-    title: "Ascendara Timemachine / Time Machine",
+    title: "QuadDown Timemachine / Time Machine",
     description: "Show old download links for games",
     keywords: [
-      "ascendara",
+      "QuadDown",
       "timemachine",
       "time",
       "machine",
@@ -572,7 +572,7 @@ export const settingsSearchData = [
   },
   {
     id: "workshop-downloader",
-    title: "Workshop Downloader / Ascendara Workshop Downloader",
+    title: "Workshop Downloader / QuadDown Workshop Downloader",
     description: "Download Steam Workshop items",
     keywords: [
       "workshop",
@@ -589,7 +589,7 @@ export const settingsSearchData = [
   {
     id: "components",
     title: "Components & Dependencies",
-    description: "Manage Ascendara components and dependencies",
+    description: "Manage QuadDown components and dependencies",
     keywords: [
       "components",
       "dependencies",

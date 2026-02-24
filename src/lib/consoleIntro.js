@@ -44,8 +44,8 @@ const printWelcome = () => {
   console.log(
     `%c
 ╔═══════════════════════════════════════╗
-║        ASCENDARA CONSOLE LOGS         ║
-║        https://ascendara.app/         ║
+║        QuadDown CONSOLE LOGS         ║
+║        https://QuadDown.app/         ║
 ╚═══════════════════════════════════════╝`,
     consoleStyles.welcome
   );
@@ -71,7 +71,7 @@ export const initializeConsole = analytics => {
   printWelcome();
 
   printHeader("About Console Logs");
-  printInfo("This console provides detailed insights into Ascendara's operations");
+  printInfo("This console provides detailed insights into QuadDown's operations");
   printInfo("All application activities are logged here for transparency");
 
   printHeader("Security Notice");
@@ -84,7 +84,7 @@ export const initializeConsole = analytics => {
   if ("isDummy" in analytics) {
     printAnalytics("Using dummy analytics service implementation");
   } else {
-    printAnalytics("Using Ascendara analytics service");
+    printAnalytics("Using QuadDown analytics service");
     printAnalytics("Real-time analytics and error tracking are active");
   }
 };

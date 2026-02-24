@@ -259,7 +259,7 @@ function ExtraLanguages() {
           <a
             onClick={() =>
               window.electron.openURL(
-                "https://ascendara.app/docs/developer/language-translator"
+                "https://QuadDown.app/docs/developer/language-translator"
               )
             }
             className="inline-flex cursor-pointer items-center text-xs text-primary hover:underline"

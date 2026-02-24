@@ -486,12 +486,12 @@ function registerSystemHandlers() {
     isInstalling = true;
 
     try {
-      const tempDir = path.join(os.tmpdir(), "ascendaradependencies");
+      const tempDir = path.join(os.tmpdir(), "QuadDowndependencies");
       if (!fs.existsSync(tempDir)) {
         fs.mkdirSync(tempDir);
       }
 
-      const zipUrl = "https://cdn.ascendara.app/files/deps.zip";
+      const zipUrl = "https://cdn.QuadDown.app/files/deps.zip";
       const zipPath = path.join(tempDir, "deps.zip");
       const res = await fetch(zipUrl);
       const arrayBuffer = await res.arrayBuffer();
@@ -666,7 +666,7 @@ function registerSystemHandlers() {
   });
 
   ipcMain.handle("delete-installer", () => {
-    const filePath = path.join(app.getPath("temp"), "ascendarainstaller.exe");
+    const filePath = path.join(app.getPath("temp"), "QuadDowninstaller.exe");
     try {
       fs.unlinkSync(filePath);
     } catch (error) {}
@@ -813,14 +813,14 @@ function registerSystemHandlers() {
 
       await new Promise((resolve, reject) => {
         const chmodCommand = [
-          `chmod +x "${isDev ? "./binaries/AscendaraCrashReporter/src/AscendaraCrashReporter.py" : path.join(resourcePath, "resources/AscendaraCrashReporter")}"`,
-          `chmod +x "${isDev ? "./binaries/AscendaraDownloader/src/AscendaraDownloader.py" : path.join(resourcePath, "resources/AscendaraDownloader")}"`,
-          `chmod +x "${isDev ? "./binaries/AscendaraDownloader/src/AscendaraGofileHelper.py" : path.join(resourcePath, "resources/AscendaraGofileHelper")}"`,
-          `chmod +x "${isDev ? "./binaries/AscendaraGameHandler/src/AscendaraGameHandler.py" : path.join(resourcePath, "resources/AscendaraGameHandler")}"`,
-          `chmod +x "${isDev ? "./binaries/AscendaraLanguageTranslation/src/AscendaraLanguageTranslation.py" : path.join(resourcePath, "resources/AscendaraLanguageTranslation")}"`,
-          `chmod +x "${isDev ? "./binaries/AscendaraLocalRefresh/src/AscendaraLocalRefresh.py" : path.join(resourcePath, "resources/AscendaraLocalRefresh")}"`,
-          `chmod +x "${isDev ? "./binaries/AscendaraTorrentHandler/src/AscendaraTorrentHandler.py" : path.join(resourcePath, "resources/AscendaraTorrentHandler")}"`,
-          `chmod +x "${isDev ? "./binaries/AscendaraAchievementWatcher/dist/AscendaraAchievementWatcher" : path.join(resourcePath, "resources/AscendaraAchievementWatcher")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownCrashReporter/src/QuadDownCrashReporter.py" : path.join(resourcePath, "resources/QuadDownCrashReporter")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownDownloader/src/QuadDownDownloader.py" : path.join(resourcePath, "resources/QuadDownDownloader")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownDownloader/src/QuadDownGofileHelper.py" : path.join(resourcePath, "resources/QuadDownGofileHelper")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownGameHandler/src/QuadDownGameHandler.py" : path.join(resourcePath, "resources/QuadDownGameHandler")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownLanguageTranslation/src/QuadDownLanguageTranslation.py" : path.join(resourcePath, "resources/QuadDownLanguageTranslation")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownLocalRefresh/src/QuadDownLocalRefresh.py" : path.join(resourcePath, "resources/QuadDownLocalRefresh")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownTorrentHandler/src/QuadDownTorrentHandler.py" : path.join(resourcePath, "resources/QuadDownTorrentHandler")}"`,
+          `chmod +x "${isDev ? "./binaries/QuadDownAchievementWatcher/dist/QuadDownAchievementWatcher" : path.join(resourcePath, "resources/QuadDownAchievementWatcher")}"`,
         ].join(" && ");
 
         exec(chmodCommand, error => {
@@ -915,11 +915,11 @@ function registerSystemHandlers() {
       updateStatus("Setting up virtual environment...");
       updateProgress(40);
 
-      const venvPath = path.join(os.homedir(), ".ascendara", "venv");
+      const venvPath = path.join(os.homedir(), ".QuadDown", "venv");
       const packages = ["requests", "psutil", "pypresence", "patool", "pySmartDL", "cloudscraper", "beautifulsoup4", "rarfile"];
 
       await new Promise((resolveVenv, rejectVenv) => {
-        exec(`mkdir -p "${path.join(os.homedir(), ".ascendara")}" && python3 -m venv "${venvPath}"`, (err, _stdout, stderr) => {
+        exec(`mkdir -p "${path.join(os.homedir(), ".QuadDown")}" && python3 -m venv "${venvPath}"`, (err, _stdout, stderr) => {
           if (err) {
             console.error("venv creation failed:", stderr);
             rejectVenv(err);

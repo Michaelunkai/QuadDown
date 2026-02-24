@@ -15,8 +15,8 @@ const { spawn } = require("child_process");
 
 // Get config from ENV or IPC
 const homeDir = process.env.USERPROFILE || process.env.HOME || require("os").homedir();
-const timestampFilePath = path.join(homeDir, "timestamp.ascendara.json");
-const STEAM_WEB_API_KEY = process.env.ASCENDARA_STEAM_WEB_API_KEY;
+const timestampFilePath = path.join(homeDir, "timestamp.QuadDown.json");
+const STEAM_WEB_API_KEY = process.env.QuadDown_STEAM_WEB_API_KEY;
 let watchdogRunning = false;
 
 async function updateWatchdogStatus(running) {
@@ -66,9 +66,9 @@ let sendNotification = async opts => {
       process.env.NODE_ENV === "development"
         ? path.join(
             path.dirname(process.execPath),
-            "../../AscendaraNotificationHelper/dist/AscendaraNotificationHelper.exe"
+            "../../QuadDownNotificationHelper/dist/QuadDownNotificationHelper.exe"
           )
-        : path.join(path.dirname(process.execPath), "AscendaraNotificationHelper.exe");
+        : path.join(path.dirname(process.execPath), "QuadDownNotificationHelper.exe");
     let args = [];
     args.push("--is-achievement");
     let settings = await getSettings();
@@ -145,7 +145,7 @@ var app = {
       // Create temporary file for monitor.getFolders()
       const tempFile = path.join(
         process.env.TEMP || process.env.TMP || "/tmp",
-        "ascendara_game_dirs.json"
+        "QuadDown_game_dirs.json"
       );
       await fs.writeFile(tempFile, JSON.stringify(gameDirList), "utf8");
 
@@ -376,12 +376,12 @@ var app = {
                           });
                         }
                         await track.save(appID, cache);
-                        // Update achievements.ascendara.json for the running game
+                        // Update achievements.QuadDown.json for the running game
                         try {
                           await updateAchievementsJsonForRunningGame(game, cache);
                         } catch (err) {
                           console.error(
-                            "Failed to update achievements.ascendara.json:",
+                            "Failed to update achievements.QuadDown.json:",
                             err
                           );
                         }
@@ -445,7 +445,7 @@ var app = {
   },
 };
 
-// Helper to update achievements.ascendara.json for the running game
+// Helper to update achievements.QuadDown.json for the running game
 async function updateAchievementsJsonForRunningGame(game, achievedCache) {
   // 1. Get settings
   const settings = await getSettings();
@@ -458,12 +458,12 @@ async function updateAchievementsJsonForRunningGame(game, achievedCache) {
   // 2. List subfolders in downloadDir
   const gameFolders = await fsPromises.readdir(downloadDir, { withFileTypes: true });
   let found = null;
-  // Check standard Ascendara-installed games
+  // Check standard QuadDown-installed games
   for (const dirent of gameFolders) {
     if (!dirent.isDirectory()) continue;
     const gameFolderPath = fsPath.join(downloadDir, dirent.name);
-    // Look for {gamename}.ascendara.json in this folder
-    const jsonPath = fsPath.join(gameFolderPath, `${dirent.name}.ascendara.json`);
+    // Look for {gamename}.QuadDown.json in this folder
+    const jsonPath = fsPath.join(gameFolderPath, `${dirent.name}.QuadDown.json`);
     try {
       const data = await fsPromises.readFile(jsonPath, "utf8");
       const parsed = JSON.parse(data);
@@ -501,7 +501,7 @@ async function updateAchievementsJsonForRunningGame(game, achievedCache) {
   }
   if (!found) {
     throw new Error(
-      "No running game folder found with isRunning: true (checked both Ascendara-installed and custom games)"
+      "No running game folder found with isRunning: true (checked both QuadDown-installed and custom games)"
     );
   }
   // 3. Build achievements data in the new format
@@ -581,8 +581,8 @@ async function updateAchievementsJsonForRunningGame(game, achievedCache) {
       throw new Error("Failed to update achievementWatcher in games.json: " + e);
     }
   } else {
-    // Standard game: write to achievements.ascendara.json as before
-    const outPath = fsPath.join(found.folder, "achievements.ascendara.json");
+    // Standard game: write to achievements.QuadDown.json as before
+    const outPath = fsPath.join(found.folder, "achievements.QuadDown.json");
     await fsPromises.writeFile(
       outPath,
       JSON.stringify({ achievements: achievementsJson, lastUpdated: now }, null, 2),

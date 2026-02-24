@@ -39,7 +39,7 @@ const FirstIndexDialog = ({ onClose }) => {
               </h2>
               <p className="text-muted-foreground">
                 {t("app.firstIndexDialog.message") ||
-                  "This version of Ascendara requires you to build a local game index. This is a one-time process that will allow you to browse and download games."}
+                  "This version of QuadDown requires you to build a local game index. This is a one-time process that will allow you to browse and download games."}
               </p>
             </div>
 

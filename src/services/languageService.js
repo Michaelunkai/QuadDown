@@ -87,7 +87,7 @@ const notifyLanguageListChange = () => {
 };
 
 /**
- * Downloads and registers a new language translation from the Ascendara API
+ * Downloads and registers a new language translation from the QuadDown API
  * @param {string} languageCode - The language code to download (e.g., 'fr', 'de')
  * @returns {Promise<void>}
  */

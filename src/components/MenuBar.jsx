@@ -240,7 +240,7 @@ const MenuBar = () => {
   const handleExportSvg = async () => {
     if (mainContentRef.current) {
       try {
-        await exportToSvg(mainContentRef.current, "ascendara-export");
+        await exportToSvg(mainContentRef.current, "QuadDown-export");
       } catch (error) {
         console.error("Failed to export SVG:", error);
       }
@@ -266,8 +266,8 @@ const MenuBar = () => {
       <div className="mt-2 flex h-full flex-1 items-center px-3">
         <div className="flex items-center">
           <div className="flex items-center">
-            {iconData && <img src={iconData} alt="Ascendara" className="mr-2 h-6 w-6" />}
-            <span className="text-sm font-medium">Ascendara</span>
+            {iconData && <img src={iconData} alt="QuadDown" className="mr-2 h-6 w-6" />}
+            <span className="text-sm font-medium">QuadDown</span>
           </div>
         </div>
 
@@ -675,7 +675,7 @@ const MenuBar = () => {
                   {t("server-status.need-more-details")}
                 </span>
                 <button
-                  onClick={() => window.electron.openURL("https://status.ascendara.app")}
+                  onClick={() => window.electron.openURL("https://status.QuadDown.app")}
                   className="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
                 >
                   {t("server-status.visit-status-page")}

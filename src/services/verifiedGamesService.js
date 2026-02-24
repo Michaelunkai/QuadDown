@@ -41,7 +41,7 @@ class VerifiedGamesService {
       }
 
       // Fetch from API
-      const response = await fetch("https://api.ascendara.app/v3/verifiedgames");
+      const response = await fetch("https://api.QuadDown.app/v3/verifiedgames");
 
       if (!response.ok) {
         throw new Error(`Failed to fetch verified games: ${response.status}`);

@@ -25,7 +25,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const CHANGELOG_API_URL = "https://api.ascendara.app/json/changelog/v2";
+const CHANGELOG_API_URL = "https://api.QuadDown.app/json/changelog/v2";
 
 const ChangelogDialog = ({ open, onOpenChange, currentVersion }) => {
   const { t } = useLanguage();
@@ -220,7 +220,7 @@ const ChangelogDialog = ({ open, onOpenChange, currentVersion }) => {
             variant="ghost"
             className="text-primary-foreground"
             size="sm"
-            onClick={() => window.electron.openURL("https://ascendara.app/changelog")}
+            onClick={() => window.electron.openURL("https://QuadDown.app/changelog")}
           >
             <ExternalLink className="mr-2 h-4 w-4" />
             {t("app.changelog.fullChangelog")}

@@ -66,7 +66,7 @@ function registerMiscHandlers() {
     try {
       const response = await axios.get(url, {
         headers: {
-          "User-Agent": "Ascendara Game Library (contact@ascendara.com)",
+          "User-Agent": "QuadDown Game Library (contact@QuadDown.com)",
           Accept: "application/json",
         },
         params: {
@@ -86,7 +86,7 @@ function registerMiscHandlers() {
     try {
       const response = await axios.get(url, {
         headers: {
-          "User-Agent": "Ascendara Game Library (contact@ascendara.com)",
+          "User-Agent": "QuadDown Game Library (contact@QuadDown.com)",
           Accept: "application/json",
         },
       });
@@ -103,7 +103,7 @@ function registerMiscHandlers() {
   // Helper to get current branch from settings
   const getCurrentBranch = () => {
     try {
-      const settingsPath = path.join(app.getPath("userData"), "ascendarasettings.json");
+      const settingsPath = path.join(app.getPath("userData"), "QuadDownsettings.json");
       if (fs.existsSync(settingsPath)) {
         const saved = JSON.parse(fs.readFileSync(settingsPath, "utf8"));
         return saved.appBranch || "live";
@@ -231,7 +231,7 @@ function registerMiscHandlers() {
   // Fetch API image
   ipcMain.handle("fetch-api-image", async (_, endpoint, imgID, timestamp, signature) => {
     try {
-      const url = `https://api.ascendara.app/${endpoint}/${imgID}`;
+      const url = `https://api.QuadDown.app/${endpoint}/${imgID}`;
       const response = await axios.get(url, {
         headers: {
           "X-Timestamp": timestamp.toString(),
@@ -273,13 +273,13 @@ function registerMiscHandlers() {
   ipcMain.handle("upload-support-logs", async (_, sessionToken, appToken) => {
     try {
       const appDataPath = app.getPath("appData");
-      const ascendaraPath = path.join(appDataPath, "Ascendara by tagoWorks");
+      const QuadDownPath = path.join(appDataPath, "QuadDown by tagoWorks");
 
       const logFiles = {
-        "debug.log": path.join(ascendaraPath, "debug.log"),
-        "downloadmanager.log": path.join(ascendaraPath, "downloadmanager.log"),
-        "notificationhelper.log": path.join(ascendaraPath, "notificationhelper.log"),
-        "gamehandler.log": path.join(ascendaraPath, "gamehandler.log"),
+        "debug.log": path.join(QuadDownPath, "debug.log"),
+        "downloadmanager.log": path.join(QuadDownPath, "downloadmanager.log"),
+        "notificationhelper.log": path.join(QuadDownPath, "notificationhelper.log"),
+        "gamehandler.log": path.join(QuadDownPath, "gamehandler.log"),
       };
 
       const logs = {};
@@ -297,7 +297,7 @@ function registerMiscHandlers() {
       }
 
       const response = await axios.post(
-        "https://api.ascendara.app/support/upload-logs",
+        "https://api.QuadDown.app/support/upload-logs",
         { session_token: sessionToken, logs },
         {
           headers: {
@@ -384,8 +384,8 @@ function registerMiscHandlers() {
 
       if (isWindows) {
         const notificationHelperPath = isDev
-          ? "./binaries/AscendaraNotificationHelper/dist/AscendaraNotificationHelper.exe"
-          : path.join(appDirectory, "/resources/AscendaraNotificationHelper.exe");
+          ? "./binaries/QuadDownNotificationHelper/dist/QuadDownNotificationHelper.exe"
+          : path.join(appDirectory, "/resources/QuadDownNotificationHelper.exe");
 
         const args = [
           "--theme",
@@ -393,7 +393,7 @@ function registerMiscHandlers() {
           "--title",
           "Test Notification",
           "--message",
-          "This is a test notification from Ascendara!",
+          "This is a test notification from QuadDown!",
         ];
 
         const process = spawn(notificationHelperPath, args, {
@@ -404,7 +404,7 @@ function registerMiscHandlers() {
       } else {
         const notification = new Notification({
           title: "Test Notification",
-          body: "This is a test notification from Ascendara!",
+          body: "This is a test notification from QuadDown!",
           silent: false,
           timeoutType: "default",
           urgency: "normal",
@@ -481,7 +481,7 @@ function registerMiscHandlers() {
         fs.writeFileSync(gamesFilePath, JSON.stringify(gamesData, null, 2));
       } else {
         const gameDirectory = path.join(settings.downloadDirectory, game);
-        const gameInfoPath = path.join(gameDirectory, `${game}.ascendara.json`);
+        const gameInfoPath = path.join(gameDirectory, `${game}.QuadDown.json`);
         const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
         gameInfo.hasRated = true;
         fs.writeFileSync(gameInfoPath, JSON.stringify(gameInfo, null, 2));
@@ -534,7 +534,7 @@ function registerMiscHandlers() {
         const achievementsPath = path.join(
           directory,
           game,
-          "achievements.ascendara.json"
+          "achievements.QuadDown.json"
         );
         if (fs.existsSync(achievementsPath)) {
           try {
@@ -575,7 +575,7 @@ function registerMiscHandlers() {
           if (gameInfo.executable) {
             const achievementsPath = path.join(
               path.dirname(gameInfo.executable),
-              "achievements.ascendara.json"
+              "achievements.QuadDown.json"
             );
             if (fs.existsSync(achievementsPath)) {
               return JSON.parse(fs.readFileSync(achievementsPath, "utf8"));
@@ -623,7 +623,7 @@ function registerMiscHandlers() {
             const achievementsPath = path.join(
               directory,
               gameName,
-              "achievements.ascendara.json"
+              "achievements.QuadDown.json"
             );
             if (fs.existsSync(achievementsPath)) {
               try {
@@ -670,7 +670,7 @@ function registerMiscHandlers() {
             if (gameInfo.executable) {
               const achievementsPath = path.join(
                 path.dirname(gameInfo.executable),
-                "achievements.ascendara.json"
+                "achievements.QuadDown.json"
               );
               if (fs.existsSync(achievementsPath)) {
                 return JSON.parse(fs.readFileSync(achievementsPath, "utf8"));
@@ -772,7 +772,7 @@ function registerMiscHandlers() {
           // Try sanitized name first
           let gameDir = path.join(directory, sanitizedGame);
           if (fs.existsSync(gameDir)) {
-            const achievementsPath = path.join(gameDir, "achievements.ascendara.json");
+            const achievementsPath = path.join(gameDir, "achievements.QuadDown.json");
             await fs.promises.writeFile(
               achievementsPath,
               JSON.stringify(achievements, null, 4),
@@ -784,7 +784,7 @@ function registerMiscHandlers() {
           // Try original name
           gameDir = path.join(directory, gameName);
           if (fs.existsSync(gameDir)) {
-            const achievementsPath = path.join(gameDir, "achievements.ascendara.json");
+            const achievementsPath = path.join(gameDir, "achievements.QuadDown.json");
             await fs.promises.writeFile(
               achievementsPath,
               JSON.stringify(achievements, null, 4),
@@ -833,9 +833,9 @@ function registerMiscHandlers() {
           } else {
             let imageLink;
             if (settings.gameSource === "fitgirl") {
-              imageLink = `https://api.ascendara.app/v2/fitgirl/image/${imgID}`;
+              imageLink = `https://api.QuadDown.app/v2/fitgirl/image/${imgID}`;
             } else {
-              imageLink = `https://api.ascendara.app/v2/image/${imgID}`;
+              imageLink = `https://api.QuadDown.app/v2/image/${imgID}`;
             }
 
             const response = await axios({
@@ -851,7 +851,7 @@ function registerMiscHandlers() {
 
           if (imageBuffer) {
             await fs.promises.writeFile(
-              path.join(gamesDirectory, `${game}.ascendara${extension}`),
+              path.join(gamesDirectory, `${game}.QuadDown${extension}`),
               imageBuffer
             );
           }
@@ -910,8 +910,8 @@ function registerMiscHandlers() {
         } else {
           const imageLink =
             settings.gameSource === "fitgirl"
-              ? `https://api.ascendara.app/v2/fitgirl/image/${imgID}`
-              : `https://api.ascendara.app/v2/image/${imgID}`;
+              ? `https://api.QuadDown.app/v2/fitgirl/image/${imgID}`
+              : `https://api.QuadDown.app/v2/image/${imgID}`;
 
           const response = await axios({
             url: imageLink,
@@ -936,7 +936,7 @@ function registerMiscHandlers() {
         return false;
       }
 
-      const filePath = path.join(gamesDirectory, `${game}.ascendara${extension}`);
+      const filePath = path.join(gamesDirectory, `${game}.QuadDown${extension}`);
       await fs.promises.writeFile(filePath, imageBuffer);
 
       BrowserWindow.getAllWindows().forEach(win => {
@@ -964,7 +964,7 @@ function registerMiscHandlers() {
       ];
 
       for (const directory of allDirectories) {
-        const gameInfoPath = path.join(directory, game, `${game}.ascendara.json`);
+        const gameInfoPath = path.join(directory, game, `${game}.QuadDown.json`);
 
         if (fs.existsSync(gameInfoPath)) {
           const gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
@@ -989,7 +989,7 @@ function registerMiscHandlers() {
       path.join(app.getPath("userData"), "Goldberg SteamEmu Saves"),
     ];
 
-    const filePath = path.join(app.getPath("userData"), "ascendarasettings.json");
+    const filePath = path.join(app.getPath("userData"), "QuadDownsettings.json");
     let settings;
     try {
       settings = JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -1028,7 +1028,7 @@ function registerMiscHandlers() {
   });
 
   ipcMain.handle("set-local-crack-directory", (_, directory) => {
-    const filePath = path.join(app.getPath("userData"), "ascendarasettings.json");
+    const filePath = path.join(app.getPath("userData"), "QuadDownsettings.json");
     try {
       let settings = {};
       if (fs.existsSync(filePath)) {
@@ -1043,7 +1043,7 @@ function registerMiscHandlers() {
   });
 
   ipcMain.handle("get-local-crack-username", () => {
-    const filePath = path.join(app.getPath("userData"), "ascendarasettings.json");
+    const filePath = path.join(app.getPath("userData"), "QuadDownsettings.json");
     try {
       const settings = JSON.parse(fs.readFileSync(filePath, "utf8"));
       const steamEmuPath = settings.crackDirectory;
@@ -1059,7 +1059,7 @@ function registerMiscHandlers() {
   });
 
   ipcMain.handle("set-local-crack-username", (_, username) => {
-    const filePath = path.join(app.getPath("userData"), "ascendarasettings.json");
+    const filePath = path.join(app.getPath("userData"), "QuadDownsettings.json");
     try {
       const settings = JSON.parse(fs.readFileSync(filePath, "utf8"));
       const steamEmuPath = settings.crackDirectory;
@@ -1075,21 +1075,21 @@ function registerMiscHandlers() {
     }
   });
 
-  // Uninstall Ascendara
-  ipcMain.handle("uninstall-ascendara", async () => {
+  // Uninstall QuadDown
+  ipcMain.handle("uninstall-QuadDown", async () => {
     const executablePath = process.execPath;
     const executableDir = path.dirname(executablePath);
-    const uninstallerPath = path.join(executableDir, "Uninstall Ascendara.exe");
+    const uninstallerPath = path.join(executableDir, "Uninstall QuadDown.exe");
 
     try {
-      fs.unlinkSync(path.join(process.env.USERPROFILE, "timestamp.ascendara.json"));
+      fs.unlinkSync(path.join(process.env.USERPROFILE, "timestamp.QuadDown.json"));
     } catch (error) {}
 
     try {
-      fs.unlinkSync(path.join(app.getPath("userData"), "ascendarasettings.json"));
+      fs.unlinkSync(path.join(app.getPath("userData"), "QuadDownsettings.json"));
     } catch (error) {}
 
-    shell.openExternal("https://ascendara.app/uninstall");
+    shell.openExternal("https://QuadDown.app/uninstall");
 
     spawn(
       "powershell.exe",
@@ -1283,7 +1283,7 @@ function registerMiscHandlers() {
               const extension = getExtensionFromMimeType(mimeType);
               const imagePath = path.join(
                 gamesDirectory,
-                `${folder.name}.ascendara${extension}`
+                `${folder.name}.QuadDown${extension}`
               );
               await fs.promises.writeFile(imagePath, imageBuffer);
             } catch (imageError) {
@@ -1361,7 +1361,7 @@ function registerMiscHandlers() {
           const testGameDir = path.join(directory, sanitizedGame);
           const testGameInfoPath = path.join(
             testGameDir,
-            `${sanitizedGame}.ascendara.json`
+            `${sanitizedGame}.QuadDown.json`
           );
 
           if (fs.existsSync(testGameInfoPath)) {
@@ -1375,7 +1375,7 @@ function registerMiscHandlers() {
         }
       }
 
-      const trainerPath = path.join(gameDirectory, "ascendaraFlingTrainer.exe");
+      const trainerPath = path.join(gameDirectory, "QuadDownFlingTrainer.exe");
       return fs.existsSync(trainerPath);
     } catch (error) {
       console.error("Error checking trainer existence:", error);
@@ -1424,7 +1424,7 @@ function registerMiscHandlers() {
             const testGameDir = path.join(directory, sanitizedGame);
             const testGameInfoPath = path.join(
               testGameDir,
-              `${sanitizedGame}.ascendara.json`
+              `${sanitizedGame}.QuadDown.json`
             );
 
             if (fs.existsSync(testGameInfoPath)) {
@@ -1444,7 +1444,7 @@ function registerMiscHandlers() {
         }
 
         // Download the trainer file
-        const trainerPath = path.join(gameDirectory, "ascendaraFlingTrainer.exe");
+        const trainerPath = path.join(gameDirectory, "QuadDownFlingTrainer.exe");
 
         console.log(`Downloading trainer to: ${trainerPath}`);
 

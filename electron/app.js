@@ -1,5 +1,5 @@
 /**
- * Ascendara Main Process
+ * QuadDown Main Process
  * Entry point for the Electron application
  *
  * This file has been refactored to use modular architecture.
@@ -7,7 +7,7 @@
  *
  * Start the app in development mode by running `yarn start`.
  * Build the app from source to an executable by running `yarn dist`.
- * Note: This will run the build_ascendara.py script to build the index files, then build the app.
+ * Note: This will run the build_QuadDown.py script to build the index files, then build the app.
  */
 
 require("dotenv").config();
@@ -72,13 +72,13 @@ function launchCrashReporter(errorType, errorMessage) {
   if (isDev) {
     crashReporterPath =
       process.platform === "win32"
-        ? path.join("./binaries/AscendaraCrashReporter/dist/AscendaraCrashReporter.exe")
-        : path.join("./binaries/AscendaraCrashReporter/src/AscendaraCrashReporter.py");
+        ? path.join("./binaries/QuadDownCrashReporter/dist/QuadDownCrashReporter.exe")
+        : path.join("./binaries/QuadDownCrashReporter/src/QuadDownCrashReporter.py");
   } else {
     crashReporterPath =
       process.platform === "win32"
-        ? path.join(config.appDirectory, "/resources/AscendaraCrashReporter.exe")
-        : path.join(process.resourcesPath, "AscendaraCrashReporter");
+        ? path.join(config.appDirectory, "/resources/QuadDownCrashReporter.exe")
+        : path.join(process.resourcesPath, "QuadDownCrashReporter");
   }
 
   if (!fs.existsSync(crashReporterPath)) {
@@ -103,8 +103,8 @@ function createTray() {
   let iconPath;
   if (isDev) {
     iconPath = isLinux
-      ? path.join(__dirname, "../readme/logo/png/ascendara_64x.png")
-      : path.join(__dirname, "../readme/logo/ico/ascendara_64x.ico");
+      ? path.join(__dirname, "../readme/logo/png/QuadDown_64x.png")
+      : path.join(__dirname, "../readme/logo/ico/QuadDown_64x.ico");
   } else {
     // In production, icon should be in resources
     iconPath = isLinux
@@ -122,8 +122,8 @@ function createTray() {
   if (!fs.existsSync(iconPath)) {
     console.error("Tray icon not found at:", iconPath);
     iconPath = isLinux
-      ? path.join(__dirname, "../readme/logo/png/ascendara_64x.png")
-      : path.join(__dirname, "../readme/logo/ico/ascendara_64x.ico");
+      ? path.join(__dirname, "../readme/logo/png/QuadDown_64x.png")
+      : path.join(__dirname, "../readme/logo/ico/QuadDown_64x.ico");
   }
 
   const icon = nativeImage.createFromPath(iconPath);
@@ -131,13 +131,13 @@ function createTray() {
 
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: "Show Ascendara",
+      label: "Show QuadDown",
       click: () => {
         windowModule.showWindow();
       },
     },
     {
-      label: "Hide Ascendara",
+      label: "Hide QuadDown",
       click: () => {
         windowModule.hideWindow();
       },
@@ -152,7 +152,7 @@ function createTray() {
     },
   ]);
 
-  tray.setToolTip("Ascendara");
+  tray.setToolTip("QuadDown");
   tray.setContextMenu(contextMenu);
 
   // Double-click to show/hide window
@@ -193,11 +193,11 @@ function startAchievementWatcher() {
   const isLinux = process.platform === "linux";
   const watcherExePath = isLinux
     ? isDev
-      ? "./binaries/AscendaraAchievementWatcher/dist/AscendaraAchievementWatcher"
-      : path.join(process.resourcesPath, "AscendaraAchievementWatcher")
+      ? "./binaries/QuadDownAchievementWatcher/dist/QuadDownAchievementWatcher"
+      : path.join(process.resourcesPath, "QuadDownAchievementWatcher")
     : isDev
-      ? "./binaries/AscendaraAchievementWatcher/dist/AscendaraAchievementWatcher.exe"
-      : path.join(process.resourcesPath, "AscendaraAchievementWatcher.exe");
+      ? "./binaries/QuadDownAchievementWatcher/dist/QuadDownAchievementWatcher.exe"
+      : path.join(process.resourcesPath, "QuadDownAchievementWatcher.exe");
 
   if (!fs.existsSync(watcherExePath)) {
     console.error("Achievement watcher not found at:", watcherExePath);
@@ -208,7 +208,7 @@ function startAchievementWatcher() {
     stdio: ["ignore", "pipe", "pipe"],
     env: {
       ...process.env,
-      ASCENDARA_STEAM_WEB_API_KEY: config.steamWebApiKey,
+      QuadDown_STEAM_WEB_API_KEY: config.steamWebApiKey,
     },
     windowsHide: !isLinux,
   });
@@ -460,7 +460,7 @@ async function initializeApp() {
         // Handle Analytics proxy requests
         if (req.url.startsWith("/api/analytics")) {
           const targetPath = req.url.replace(/^\/api\/analytics/, "");
-          const targetUrl = `https://analytics.ascendara.app${targetPath}`;
+          const targetUrl = `https://analytics.QuadDown.app${targetPath}`;
 
           // Collect request body for POST/PUT requests
           let body = [];
@@ -596,7 +596,7 @@ async function initializeApp() {
     }
 
     // Handle protocol URL from command line (Windows)
-    const protocolUrl = process.argv.find(arg => arg.startsWith("ascendara://"));
+    const protocolUrl = process.argv.find(arg => arg.startsWith("QuadDown://"));
     if (protocolUrl) {
       mainWindow.webContents.once("did-finish-load", () => {
         protocol.handleProtocolUrl(protocolUrl);
@@ -654,10 +654,10 @@ async function initializeApp() {
     terminateWatcher();
 
     // Final check for any remaining achievement watcher processes
-    // NOTE: Do NOT kill AscendaraDownloader.exe - downloads should continue in background
+    // NOTE: Do NOT kill QuadDownDownloader.exe - downloads should continue in background
     if (process.platform === "win32") {
       const { exec } = require("child_process");
-      exec(`taskkill /F /IM AscendaraAchievementWatcher.exe /T 2>nul`, () => {});
+      exec(`taskkill /F /IM QuadDownAchievementWatcher.exe /T 2>nul`, () => {});
     }
 
     logger.closeLogger();

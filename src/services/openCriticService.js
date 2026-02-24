@@ -15,7 +15,7 @@ export const getGameInfo = async gameName => {
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
     const response = await fetch(
-      `https://api.ascendara.app/opencritic/game?name=${encodeURIComponent(gameName)}`,
+      `https://api.QuadDown.app/opencritic/game?name=${encodeURIComponent(gameName)}`,
       {
         signal: controller.signal,
       }

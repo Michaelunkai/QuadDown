@@ -1,4 +1,4 @@
-# This script is used to easily and quickly build Ascendara from source to EXE
+# This script is used to easily and quickly build QuadDown from source to EXE
 
 import os
 import subprocess
@@ -238,7 +238,7 @@ def package_electron_app():
     return run_electron_builder()
 
 def main():
-    print("Starting Ascendara build process...")
+    print("Starting QuadDown build process...")
     
     # Step 1: Clean up existing build artifacts
     if not cleanup_build_artifacts():

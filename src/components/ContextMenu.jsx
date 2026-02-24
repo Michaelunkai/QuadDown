@@ -42,7 +42,7 @@ const ContextMenu = () => {
   };
 
   const handleFeedback = () => {
-    window.electron.openURL("https://ascendara.app/feedback");
+    window.electron.openURL("https://QuadDown.app/feedback");
     setIsVisible(false);
   };
 

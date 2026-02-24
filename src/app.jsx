@@ -1074,7 +1074,7 @@ const AppRoutes = () => {
     await window.electron.setTimestampValue("isUpdating", true);
     setTimeout(() => {
       setIsUpdating(true);
-      window.electron.updateAscendara();
+      window.electron.updateQuadDown();
     }, 1000);
   };
 
@@ -1136,7 +1136,7 @@ const AppRoutes = () => {
               label: t("app.toasts.updateNow"),
               onClick: async () => {
                 toast.dismiss("update-available");
-                await window.electron.updateAscendara();
+                await window.electron.updateQuadDown();
               },
             },
             duration: 10000,

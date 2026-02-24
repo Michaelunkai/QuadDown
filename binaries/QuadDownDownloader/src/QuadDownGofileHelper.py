@@ -1,10 +1,10 @@
 # ==============================================================================
-# Ascendara GoFile Helper
+# QuadDown GoFile Helper
 # ==============================================================================
-# Specialized downloader component for handling GoFile.io downloads in Ascendara.
+# Specialized downloader component for handling GoFile.io downloads in QuadDown.
 # Manages authentication, file downloads, and extraction.
 # support. Read more about the GoFile Helper Tool here:
-# https://ascendara.app/docs/binary-tool/gofile-helper
+# https://QuadDown.app/docs/binary-tool/gofile-helper
 
 
 
@@ -32,25 +32,25 @@ import logging
 from datetime import datetime
 import zipfile
 
-def get_ascendara_log_path():
+def get_QuadDown_log_path():
     if sys.platform == "win32":
         appdata = os.getenv("APPDATA")
     else:
         appdata = os.path.expanduser("~/.config")
-    ascendara_dir = os.path.join(appdata, "Ascendara by tagoWorks")
-    os.makedirs(ascendara_dir, exist_ok=True)
-    return os.path.join(ascendara_dir, "downloadmanager.log")
+    QuadDown_dir = os.path.join(appdata, "QuadDown by tagoWorks")
+    os.makedirs(QuadDown_dir, exist_ok=True)
+    return os.path.join(QuadDown_dir, "downloadmanager.log")
 
-LOG_PATH = get_ascendara_log_path()
+LOG_PATH = get_QuadDown_log_path()
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s %(levelname)s [AscendaraGofileHelper] %(message)s",
+    format="%(asctime)s %(levelname)s [QuadDownGofileHelper] %(message)s",
     handlers=[
         logging.FileHandler(LOG_PATH, encoding="utf-8"),
         logging.StreamHandler(sys.stdout)
     ]
 )
-logging.info("[AscendaraGofileHelper] Logging to %s", LOG_PATH)
+logging.info("[QuadDownGofileHelper] Logging to %s", LOG_PATH)
 
 def read_size(size, decimal_places=2):
     if size == 0:
@@ -77,7 +77,7 @@ def long_path(path):
 
 def _launch_crash_reporter_on_exit(error_code, error_message):
     try:
-        crash_reporter_path = os.path.join('./AscendaraCrashReporter.exe')
+        crash_reporter_path = os.path.join('./QuadDownCrashReporter.exe')
         if os.path.exists(crash_reporter_path):
             kwargs = {"creationflags": subprocess.CREATE_NO_WINDOW} if sys.platform == "win32" else {}
             subprocess.Popen(
@@ -99,7 +99,7 @@ def _launch_notification(theme, title, message):
     try:
         # Get the directory where the current executable is located
         exe_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-        notification_helper_path = os.path.join(exe_dir, 'AscendaraNotificationHelper.exe')
+        notification_helper_path = os.path.join(exe_dir, 'QuadDownNotificationHelper.exe')
         logging.debug(f"Looking for notification helper at: {notification_helper_path}")
         
         if os.path.exists(notification_helper_path):
@@ -120,7 +120,7 @@ def safe_write_json(filepath, data):
     temp_file_path = None
     try:
         # Use a unique suffix to avoid conflicts with other temp files
-        with NamedTemporaryFile('w', delete=False, dir=temp_dir, suffix='.json.tmp', prefix='ascendara_') as temp_file:
+        with NamedTemporaryFile('w', delete=False, dir=temp_dir, suffix='.json.tmp', prefix='QuadDown_') as temp_file:
             json.dump(data, temp_file, indent=4)
             temp_file_path = temp_file.name
         retry_attempts = 5
@@ -133,29 +133,29 @@ def safe_write_json(filepath, data):
                     time.sleep(0.5)
                 else:
                     # Last resort: try direct write if atomic replace keeps failing
-                    logging.warning(f"[AscendaraGofileHelper] Atomic write failed, falling back to direct write: {e}")
+                    logging.warning(f"[QuadDownGofileHelper] Atomic write failed, falling back to direct write: {e}")
                     try:
                         with open(filepath, 'w') as f:
                             json.dump(data, f, indent=4)
                         return
                     except Exception as fallback_e:
-                        logging.error(f"[AscendaraGofileHelper] Direct write also failed: {fallback_e}")
+                        logging.error(f"[QuadDownGofileHelper] Direct write also failed: {fallback_e}")
                         raise e
             except OSError as e:
                 if attempt < retry_attempts - 1:
                     time.sleep(0.5)
                 else:
                     # Last resort: try direct write
-                    logging.warning(f"[AscendaraGofileHelper] Atomic write failed with OSError, falling back to direct write: {e}")
+                    logging.warning(f"[QuadDownGofileHelper] Atomic write failed with OSError, falling back to direct write: {e}")
                     try:
                         with open(filepath, 'w') as f:
                             json.dump(data, f, indent=4)
                         return
                     except Exception as fallback_e:
-                        logging.error(f"[AscendaraGofileHelper] Direct write also failed: {fallback_e}")
+                        logging.error(f"[QuadDownGofileHelper] Direct write also failed: {fallback_e}")
                         raise e
     except Exception as e:
-        logging.error(f"[AscendaraGofileHelper] Error in safe_write_json: {e}")
+        logging.error(f"[QuadDownGofileHelper] Error in safe_write_json: {e}")
         raise
     finally:
         if temp_file_path and os.path.exists(temp_file_path):
@@ -204,7 +204,7 @@ class GofileDownloader:
         self.gameID = gameID
         self.download_dir = os.path.join(download_dir, sanitize_folder_name(game))
         os.makedirs(self.download_dir, exist_ok=True)
-        self.game_info_path = os.path.join(self.download_dir, f"{sanitize_folder_name(game)}.ascendara.json")
+        self.game_info_path = os.path.join(self.download_dir, f"{sanitize_folder_name(game)}.QuadDown.json")
         # Download speed limit (KB/s, 0 means unlimited)
         self._download_speed_limit = 0
         self._single_stream = True  # Default to single stream for stability
@@ -213,15 +213,15 @@ class GofileDownloader:
             if sys.platform == 'win32':
                 appdata = os.environ.get('APPDATA')
                 if appdata:
-                    candidate = os.path.join(appdata, 'Electron', 'ascendarasettings.json')
+                    candidate = os.path.join(appdata, 'Electron', 'QuadDownsettings.json')
                     if os.path.exists(candidate):
                         settings_path = candidate
             elif sys.platform == 'darwin':
-                candidate = os.path.join(os.path.expanduser('~/Library/Application Support/ascendara'), 'ascendarasettings.json')
+                candidate = os.path.join(os.path.expanduser('~/Library/Application Support/QuadDown'), 'QuadDownsettings.json')
                 if os.path.exists(candidate):
                     settings_path = candidate
             else:
-                candidate = os.path.join(os.path.expanduser('~/.ascendara'), 'ascendarasettings.json')
+                candidate = os.path.join(os.path.expanduser('~/.QuadDown'), 'QuadDownsettings.json')
                 if os.path.exists(candidate):
                     settings_path = candidate
             if settings_path and os.path.exists(settings_path):
@@ -229,9 +229,9 @@ class GofileDownloader:
                     settings = json.load(f)
                     self._download_speed_limit = settings.get('downloadLimit', 0)  # KB/s
                     self._single_stream = settings.get('singleStream', True)
-                logging.info(f"[AscendaraGofileHelper] Settings: speed_limit={self._download_speed_limit}, single_stream={self._single_stream}")
+                logging.info(f"[QuadDownGofileHelper] Settings: speed_limit={self._download_speed_limit}, single_stream={self._single_stream}")
         except Exception as e:
-            logging.warning(f"[AscendaraGofileHelper] Could not read settings: {e}")
+            logging.warning(f"[QuadDownGofileHelper] Could not read settings: {e}")
             self._download_speed_limit = 0
             self._single_stream = True
         # If updateFlow is True, preserve the JSON file and set updating flag
@@ -243,7 +243,7 @@ class GofileDownloader:
             self.game_info['downloadingData']['updating'] = True
             # Update version to the new version being downloaded
             if version:
-                logging.info(f"[AscendaraGofileHelper] Updating version from {self.game_info.get('version', 'unknown')} to {version}")
+                logging.info(f"[QuadDownGofileHelper] Updating version from {self.game_info.get('version', 'unknown')} to {version}")
                 self.game_info['version'] = version
         else:
             self.game_info = {
@@ -300,13 +300,13 @@ class GofileDownloader:
         files_info = self._parseLinksRecursively(content_id, _password)
         
         if not files_info:
-            logging.error(f"[AscendaraGofileHelper] No files found for download from {url}. Skipping...")
+            logging.error(f"[QuadDownGofileHelper] No files found for download from {url}. Skipping...")
             handleerror(self.game_info, self.game_info_path, "no_files_error")
             return
         
-        logging.info(f"[AscendaraGofileHelper] Successfully discovered {len(files_info)} files to download")
+        logging.info(f"[QuadDownGofileHelper] Successfully discovered {len(files_info)} files to download")
         for file_id, file_data in files_info.items():
-            logging.debug(f"[AscendaraGofileHelper] File: {file_data.get('filename', 'Unknown')} (Path: {file_data.get('path', 'root')})")
+            logging.debug(f"[QuadDownGofileHelper] File: {file_data.get('filename', 'Unknown')} (Path: {file_data.get('path', 'root')})")
 
         # Calculate total size first
         self._total_size = 0
@@ -330,19 +330,19 @@ class GofileDownloader:
             for item in files_info.values():
                 current_file += 1
                 try:
-                    logging.info(f"[AscendaraGofileHelper] Downloading file {current_file}/{total_files}: {item.get('name', 'Unknown')}")
+                    logging.info(f"[QuadDownGofileHelper] Downloading file {current_file}/{total_files}: {item.get('name', 'Unknown')}")
                     self._downloadContent(item)
                 except Exception as e:
-                    logging.error(f"[AscendaraGofileHelper] Error downloading {item.get('name', 'Unknown')}: {str(e)}")
+                    logging.error(f"[QuadDownGofileHelper] Error downloading {item.get('name', 'Unknown')}: {str(e)}")
                     # Wait a bit before trying the next file
                     time.sleep(2)
                     continue
 
-            logging.info("[AscendaraGofileHelper] All files downloaded successfully, starting extraction...")
+            logging.info("[QuadDownGofileHelper] All files downloaded successfully, starting extraction...")
             self._extract_files()
             
             # Handle post-download cleanup and updates
-            logging.info("[AscendaraGofileHelper] Download and extraction completed, finalizing...")
+            logging.info("[QuadDownGofileHelper] Download and extraction completed, finalizing...")
             self.game_info["downloadingData"]["downloading"] = False
             self.game_info["downloadingData"]["extracting"] = False
             self.game_info["downloadingData"]["verifying"] = False
@@ -353,14 +353,14 @@ class GofileDownloader:
             
             # Update version in JSON if this is an update flow
             if self.updateFlow and self.version:
-                logging.info(f"[AscendaraGofileHelper] Updating version to: {self.version}")
+                logging.info(f"[QuadDownGofileHelper] Updating version to: {self.version}")
                 self.game_info["version"] = self.version
 
             # Update the size in game_info to the actual downloaded size (human-readable)
             self.game_info["size"] = read_size(self._total_size)
 
             safe_write_json(self.game_info_path, self.game_info)
-            logging.info("[AscendaraGofileHelper] Process completed successfully")
+            logging.info("[QuadDownGofileHelper] Process completed successfully")
             
             if withNotification:
                 _launch_notification(
@@ -370,7 +370,7 @@ class GofileDownloader:
                 )
                 
         except Exception as e:
-            logging.error(f"[AscendaraGofileHelper] Error during download process: {str(e)}")
+            logging.error(f"[QuadDownGofileHelper] Error during download process: {str(e)}")
             logging.error(f"Error during download process: {str(e)}")
             handleerror(self.game_info, self.game_info_path, str(e))
             if withNotification:
@@ -399,7 +399,7 @@ class GofileDownloader:
         response = requests.get(url, headers=headers).json()
 
         if response["status"] != "ok":
-            logging.error(f"[AscendaraGofileHelper] Failed to get a link as response from {url}. Status: {response.get('status')}")
+            logging.error(f"[QuadDownGofileHelper] Failed to get a link as response from {url}. Status: {response.get('status')}")
             return {}
 
         data = response["data"]
@@ -417,9 +417,9 @@ class GofileDownloader:
                     nested_files = self._parseLinksRecursively(child["id"], password, folder_path)
                     if nested_files:
                         files_info.update(nested_files)
-                        logging.info(f"[AscendaraGofileHelper] Found {len(nested_files)} files in nested folder: {child.get('name', child_id)}")
+                        logging.info(f"[QuadDownGofileHelper] Found {len(nested_files)} files in nested folder: {child.get('name', child_id)}")
                     else:
-                        logging.warning(f"[AscendaraGofileHelper] No files found in nested folder: {child.get('name', child_id)}")
+                        logging.warning(f"[QuadDownGofileHelper] No files found in nested folder: {child.get('name', child_id)}")
                 else:
                     # Direct file in this folder
                     if "link" in child:
@@ -428,9 +428,9 @@ class GofileDownloader:
                             "filename": child["name"],
                             "link": child["link"]
                         }
-                        logging.debug(f"[AscendaraGofileHelper] Added file: {child['name']}")
+                        logging.debug(f"[QuadDownGofileHelper] Added file: {child['name']}")
                     else:
-                        logging.warning(f"[AscendaraGofileHelper] File missing download link: {child.get('name', child_id)}")
+                        logging.warning(f"[QuadDownGofileHelper] File missing download link: {child.get('name', child_id)}")
         else:
             files_info[data["id"]] = {
                 "path": current_path,
@@ -477,16 +477,16 @@ class GofileDownloader:
                     if ((response.status_code in (403, 404, 405, 500)) or
                         (part_size == 0 and response.status_code != 200) or
                         (part_size > 0 and response.status_code != 206)):
-                        logging.warning(f"[AscendaraGofileHelper] Couldn't download the file from {url}. Status code: {response.status_code}")
+                        logging.warning(f"[QuadDownGofileHelper] Couldn't download the file from {url}. Status code: {response.status_code}")
                         if retry < self._max_retries - 1:
-                            logging.info(f"[AscendaraGofileHelper] Retrying download ({retry + 2}/{self._max_retries})...")
+                            logging.info(f"[QuadDownGofileHelper] Retrying download ({retry + 2}/{self._max_retries})...")
                             time.sleep(2 ** retry)  # Exponential backoff
                             continue
                         return
 
                     total_size = int(response.headers.get("Content-Length", 0)) + part_size
                     if not total_size:
-                        logging.warning(f"[AscendaraGofileHelper] Couldn't find the file size from {url}.")
+                        logging.warning(f"[QuadDownGofileHelper] Couldn't find the file size from {url}.")
                         return
 
                     mode = 'ab' if part_size > 0 else 'wb'
@@ -609,9 +609,9 @@ class GofileDownloader:
                     self._update_progress(file_info["filename"], final_progress, 0, 0, done=True)
                     return
             except (requests.exceptions.RequestException, IOError) as e:
-                logging.error(f"[AscendaraGofileHelper] Error downloading {url}: {str(e)}")
+                logging.error(f"[QuadDownGofileHelper] Error downloading {url}: {str(e)}")
                 if retry < self._max_retries - 1:
-                    logging.info(f"[AscendaraGofileHelper] Retrying download ({retry + 2}/{self._max_retries})...")
+                    logging.info(f"[QuadDownGofileHelper] Retrying download ({retry + 2}/{self._max_retries})...")
                     time.sleep(2 ** retry)  # Exponential backoff
                     continue
                 if os.path.exists(tmp_file):
@@ -789,7 +789,7 @@ class GofileDownloader:
             raise RuntimeError(error_msg)
 
         # Create watching file for tracking extracted files
-        watching_path = os.path.join(self.download_dir, "filemap.ascendara.json")
+        watching_path = os.path.join(self.download_dir, "filemap.QuadDown.json")
         watching_data = {}
         self.archive_paths = []  # Store archive paths as instance variable
         
@@ -829,16 +829,16 @@ class GofileDownloader:
                                 if line.strip() and not line.startswith('-') and not line.startswith('RAR') and not line.startswith('Archive') and not line.startswith('Details') and not line.startswith('Attr') and not line.startswith('Total'):
                                     total_files_to_extract += 1
                     except Exception as e:
-                        logging.warning(f"[AscendaraGofileHelper] Could not count files in {archive_path}: {e}")
+                        logging.warning(f"[QuadDownGofileHelper] Could not count files in {archive_path}: {e}")
         
-        logging.info(f"[AscendaraGofileHelper] Total files to extract: {total_files_to_extract}")
+        logging.info(f"[QuadDownGofileHelper] Total files to extract: {total_files_to_extract}")
         self._files_extracted_count = 0
         self._update_extraction_progress("Preparing...", 0, total_files_to_extract, force=True)
         
         # Extract all archives with progress tracking
         for archive_path, file in archives_to_process:
             extract_dir = self.download_dir
-            logging.info(f"[AscendaraGofileHelper] Extracting {archive_path}")
+            logging.info(f"[QuadDownGofileHelper] Extracting {archive_path}")
             
             try:
                 # check os
@@ -851,14 +851,14 @@ class GofileDownloader:
                                 if not zip_info.filename.endswith('.url') and '_CommonRedist' not in zip_info.filename
                             ]
                             
-                            logging.info(f"[AscendaraGofileHelper] Extracting {len(members_to_extract)} files from ZIP")
+                            logging.info(f"[QuadDownGofileHelper] Extracting {len(members_to_extract)} files from ZIP")
                             
                             # Use extractall() for dramatically faster extraction (10-100x faster than file-by-file)
                             try:
                                 zip_ref.extractall(extract_dir, members=members_to_extract)
-                                logging.info(f"[AscendaraGofileHelper] Bulk ZIP extraction complete")
+                                logging.info(f"[QuadDownGofileHelper] Bulk ZIP extraction complete")
                             except Exception as e:
-                                logging.error(f"[AscendaraGofileHelper] Bulk ZIP extraction failed: {e}")
+                                logging.error(f"[QuadDownGofileHelper] Bulk ZIP extraction failed: {e}")
                                 raise
                             
                             # Build watching data and update progress after extraction
@@ -883,7 +883,7 @@ class GofileDownloader:
                             rar_files = [info for info in rar_ref.infolist() 
                                         if not info.filename.endswith('.url') and '_CommonRedist' not in info.filename]
                             
-                            logging.info(f"[AscendaraGofileHelper] Extracting {len(rar_files)} files from RAR (fast mode)")
+                            logging.info(f"[QuadDownGofileHelper] Extracting {len(rar_files)} files from RAR (fast mode)")
                             
                             # Count existing files before extraction to track only new files
                             initial_file_count = 0
@@ -938,19 +938,19 @@ class GofileDownloader:
                             thread.join(timeout=5)
                             
                             if extraction_error:
-                                logging.error(f"[AscendaraGofileHelper] RAR extraction failed: {extraction_error[0]}")
+                                logging.error(f"[QuadDownGofileHelper] RAR extraction failed: {extraction_error[0]}")
                                 raise extraction_error[0]
                             
-                            logging.info(f"[AscendaraGofileHelper] RAR extraction complete")
+                            logging.info(f"[QuadDownGofileHelper] RAR extraction complete")
                             
                             # Clean up unwanted files (.url and _CommonRedist)
                             for root, dirs, files_in_dir in os.walk(extract_dir):
                                 if '_CommonRedist' in root:
                                     try:
                                         shutil.rmtree(root)
-                                        logging.info(f"[AscendaraGofileHelper] Removed _CommonRedist: {root}")
+                                        logging.info(f"[QuadDownGofileHelper] Removed _CommonRedist: {root}")
                                     except Exception as e:
-                                        logging.warning(f"[AscendaraGofileHelper] Could not remove _CommonRedist: {e}")
+                                        logging.warning(f"[QuadDownGofileHelper] Could not remove _CommonRedist: {e}")
                                     continue
                                 
                                 for fname in files_in_dir:
@@ -1081,11 +1081,11 @@ class GofileDownloader:
                 # Delete archive after successful extraction
                 try:
                     os.remove(archive_path)
-                    logging.info(f"[AscendaraGofileHelper] Deleted archive: {archive_path}")
+                    logging.info(f"[QuadDownGofileHelper] Deleted archive: {archive_path}")
                 except Exception as del_e:
-                    logging.warning(f"[AscendaraGofileHelper] Could not delete archive {archive_path}: {del_e}")
+                    logging.warning(f"[QuadDownGofileHelper] Could not delete archive {archive_path}: {del_e}")
             except Exception as e:
-                logging.error(f"[AscendaraGofileHelper] Error extracting {archive_path}: {str(e)}")
+                logging.error(f"[QuadDownGofileHelper] Error extracting {archive_path}: {str(e)}")
                 raise
 
         # Flatten nested directories - but be careful not to delete the game directory itself
@@ -1094,23 +1094,23 @@ class GofileDownloader:
         
         # Only flatten if the nested dir exists AND is different from download_dir
         if os.path.isdir(nested_dir) and os.path.normpath(nested_dir) != os.path.normpath(self.download_dir):
-            logging.info(f"[AscendaraGofileHelper] Found nested directory to flatten: {nested_dir}")
+            logging.info(f"[QuadDownGofileHelper] Found nested directory to flatten: {nested_dir}")
             try:
                 # Get list of items first to avoid issues during iteration
                 items_to_move = list(os.listdir(nested_dir))
-                logging.info(f"[AscendaraGofileHelper] Items to move: {len(items_to_move)}")
+                logging.info(f"[QuadDownGofileHelper] Items to move: {len(items_to_move)}")
                 
                 for item in items_to_move:
                     src = os.path.join(nested_dir, item)
                     dst = os.path.join(self.download_dir, item)
                     
                     # Don't overwrite the game info file
-                    if item.endswith('.ascendara.json'):
+                    if item.endswith('.QuadDown.json'):
                         continue
                     
                     # Skip if source doesn't exist anymore
                     if not os.path.exists(src):
-                        logging.warning(f"[AscendaraGofileHelper] Source no longer exists: {src}")
+                        logging.warning(f"[QuadDownGofileHelper] Source no longer exists: {src}")
                         continue
                     
                     try:
@@ -1133,7 +1133,7 @@ class GofileDownloader:
                         else:
                             shutil.move(src, dst)
                     except Exception as move_error:
-                        logging.warning(f"[AscendaraGofileHelper] Could not move {item}: {move_error}")
+                        logging.warning(f"[QuadDownGofileHelper] Could not move {item}: {move_error}")
                         continue
                 
                 # Only remove nested dir if it's empty or nearly empty
@@ -1141,14 +1141,14 @@ class GofileDownloader:
                     remaining = os.listdir(nested_dir)
                     if len(remaining) == 0:
                         shutil.rmtree(nested_dir, ignore_errors=True)
-                        logging.info(f"[AscendaraGofileHelper] Removed empty nested directory: {nested_dir}")
+                        logging.info(f"[QuadDownGofileHelper] Removed empty nested directory: {nested_dir}")
                     else:
-                        logging.info(f"[AscendaraGofileHelper] Nested directory still has {len(remaining)} items, not removing")
+                        logging.info(f"[QuadDownGofileHelper] Nested directory still has {len(remaining)} items, not removing")
                 
-                logging.info(f"[AscendaraGofileHelper] Moved files from nested '{nested_dir}' to '{self.download_dir}'.")
+                logging.info(f"[QuadDownGofileHelper] Moved files from nested '{nested_dir}' to '{self.download_dir}'.")
                 moved = True
             except Exception as e:
-                logging.error(f"[AscendaraGofileHelper] Error during flattening: {e}")
+                logging.error(f"[QuadDownGofileHelper] Error during flattening: {e}")
         
         # Rebuild filemap after any changes
         watching_data = {}
@@ -1161,7 +1161,7 @@ class GofileDownloader:
                         continue
                     if os.path.splitext(fname)[1].lower() in archive_exts:
                         continue
-                    if fname.endswith('.ascendara.json'):
+                    if fname.endswith('.QuadDown.json'):
                         continue
                     full_path = os.path.join(dirpath, fname)
                     if os.path.exists(full_path):
@@ -1177,9 +1177,9 @@ class GofileDownloader:
                     file_path = os.path.join(dirpath, fname)
                     try:
                         os.remove(file_path)
-                        logging.info(f"[AscendaraGofileHelper] Deleted .url file: {file_path}")
+                        logging.info(f"[QuadDownGofileHelper] Deleted .url file: {file_path}")
                     except Exception as e:
-                        logging.warning(f"[AscendaraGofileHelper] Could not delete .url file: {file_path}: {e}")
+                        logging.warning(f"[QuadDownGofileHelper] Could not delete .url file: {file_path}: {e}")
         # If not found, try to match by first word of game name
         if not moved and os.path.exists(self.download_dir):
             first_word = self.game.strip().split()[0].lower()
@@ -1192,12 +1192,12 @@ class GofileDownloader:
                     if os.path.normpath(entry_path) == os.path.normpath(self.download_dir):
                         continue
                     if entry.lower().startswith(first_word):
-                        logging.info(f"[AscendaraGofileHelper] Found nested directory by first word match: {entry_path}")
+                        logging.info(f"[QuadDownGofileHelper] Found nested directory by first word match: {entry_path}")
                         for item in os.listdir(entry_path):
                             src = os.path.join(entry_path, item)
                             dst = os.path.join(self.download_dir, item)
                             # Don't overwrite the game info file
-                            if item.endswith('.ascendara.json'):
+                            if item.endswith('.QuadDown.json'):
                                 continue
                             if os.path.exists(dst):
                                 if os.path.isdir(dst):
@@ -1206,11 +1206,11 @@ class GofileDownloader:
                                     os.remove(dst)
                             shutil.move(src, dst)
                         shutil.rmtree(entry_path, ignore_errors=True)
-                        logging.info(f"[AscendaraGofileHelper] Moved files from nested '{entry_path}' (matched by first word) to '{self.download_dir}'.")
+                        logging.info(f"[QuadDownGofileHelper] Moved files from nested '{entry_path}' (matched by first word) to '{self.download_dir}'.")
                         moved = True
                         break
             except Exception as e:
-                logging.error(f"[AscendaraGofileHelper] Error during first-word flattening: {e}")
+                logging.error(f"[QuadDownGofileHelper] Error during first-word flattening: {e}")
         
         # Rebuild filemap after first-word flattening if files were moved
         if moved:
@@ -1224,14 +1224,14 @@ class GofileDownloader:
                             continue
                         if os.path.splitext(fname)[1].lower() in archive_exts:
                             continue
-                        if fname.endswith('.ascendara.json'):
+                        if fname.endswith('.QuadDown.json'):
                             continue
                         full_path = os.path.join(dirpath, fname)
                         if os.path.exists(full_path):
                             rel_path = os.path.normpath(os.path.join(rel_dir, fname)) if rel_dir != '.' else fname
                             rel_path = rel_path.replace('\\', '/')
                             watching_data[rel_path] = {"size": os.path.getsize(full_path)}
-                logging.info(f"[AscendaraGofileHelper] Rebuilt filemap after first-word flattening with {len(watching_data)} files")
+                logging.info(f"[QuadDownGofileHelper] Rebuilt filemap after first-word flattening with {len(watching_data)} files")
                 safe_write_json(watching_path, watching_data)
         
         # Force final progress update before finishing extraction
@@ -1256,7 +1256,7 @@ class GofileDownloader:
         try:
             # Check if watching_path exists
             if not os.path.exists(watching_path):
-                logging.warning(f"[AscendaraGofileHelper] Watching path not found: {watching_path}, skipping verification")
+                logging.warning(f"[QuadDownGofileHelper] Watching path not found: {watching_path}, skipping verification")
                 # Still mark as complete even if we can't verify
                 self.game_info["downloadingData"]["verifying"] = False
                 safe_write_json(self.game_info_path, self.game_info)
@@ -1269,13 +1269,13 @@ class GofileDownloader:
             for root, dirs, files in os.walk(self.download_dir):
                 if "_CommonRedist" in dirs:
                     common_redist_path = os.path.join(root, "_CommonRedist")
-                    logging.info(f"[AscendaraGofileHelper] Found _CommonRedist directory at {common_redist_path}, deleting...")
+                    logging.info(f"[QuadDownGofileHelper] Found _CommonRedist directory at {common_redist_path}, deleting...")
                     try:
                         import shutil
                         shutil.rmtree(common_redist_path)
-                        logging.info(f"[AscendaraGofileHelper] Successfully deleted {common_redist_path}")
+                        logging.info(f"[QuadDownGofileHelper] Successfully deleted {common_redist_path}")
                     except Exception as e:
-                        logging.error(f"[AscendaraGofileHelper] Error deleting _CommonRedist directory: {str(e)}")
+                        logging.error(f"[QuadDownGofileHelper] Error deleting _CommonRedist directory: {str(e)}")
 
             filtered_watching_data = {}
             for file_path, file_info in watching_data.items():
@@ -1307,7 +1307,7 @@ class GofileDownloader:
                     })
 
             if verify_errors:
-                logging.warning(f"[AscendaraGofileHelper] Found {len(verify_errors)} verification errors")
+                logging.warning(f"[QuadDownGofileHelper] Found {len(verify_errors)} verification errors")
                 self.game_info["downloadingData"]["verifyError"] = verify_errors
                 error_count = len(verify_errors)
                 _launch_notification(
@@ -1316,20 +1316,20 @@ class GofileDownloader:
                     f"{error_count} {'file' if error_count == 1 else 'files'} failed to verify"
                 )
             else:
-                logging.info("[AscendaraGofileHelper] All extracted files verified successfully")
+                logging.info("[QuadDownGofileHelper] All extracted files verified successfully")
                 # Try to remove all archive files that were extracted
                 for archive_path in getattr(self, 'archive_paths', []):
                     try:
                         if os.path.exists(archive_path):
                             os.remove(archive_path)
-                            logging.info(f"[AscendaraGofileHelper] Removed archive file: {archive_path}")
+                            logging.info(f"[QuadDownGofileHelper] Removed archive file: {archive_path}")
                     except Exception as e:
-                        logging.error(f"[AscendaraGofileHelper] Error removing archive file {archive_path}: {str(e)}")
+                        logging.error(f"[QuadDownGofileHelper] Error removing archive file {archive_path}: {str(e)}")
                 if "verifyError" in self.game_info["downloadingData"]:
                     del self.game_info["downloadingData"]["verifyError"]
                 
                 # Execute post-download behavior when verification is successful
-                logging.info("[AscendaraGofileHelper] Verification successful, proceeding with post-download behavior")
+                logging.info("[QuadDownGofileHelper] Verification successful, proceeding with post-download behavior")
                 self._handle_post_download_behavior()
 
         except Exception as e:
@@ -1370,15 +1370,15 @@ class GofileDownloader:
             if sys.platform == 'win32':
                 appdata = os.environ.get('APPDATA')
                 if appdata:
-                    candidate = os.path.join(appdata, 'Electron', 'ascendarasettings.json')
+                    candidate = os.path.join(appdata, 'Electron', 'QuadDownsettings.json')
                     if os.path.exists(candidate):
                         settings_path = candidate
             elif sys.platform == 'darwin':
-                candidate = os.path.join(os.path.expanduser('~/Library/Application Support/ascendara'), 'ascendarasettings.json')
+                candidate = os.path.join(os.path.expanduser('~/Library/Application Support/QuadDown'), 'QuadDownsettings.json')
                 if os.path.exists(candidate):
                     settings_path = candidate
             else:
-                candidate = os.path.join(os.path.expanduser('~/.ascendara'), 'ascendarasettings.json')
+                candidate = os.path.join(os.path.expanduser('~/.QuadDown'), 'QuadDownsettings.json')
                 if os.path.exists(candidate):
                     settings_path = candidate
 
@@ -1386,30 +1386,30 @@ class GofileDownloader:
                 with open(settings_path, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
                     behavior = settings.get('behaviorAfterDownload', 'none')
-                    logging.info(f"[AscendaraGofileHelper] Post-download behavior: {behavior}")
+                    logging.info(f"[QuadDownGofileHelper] Post-download behavior: {behavior}")
                     
                     if behavior == 'lock':
-                        logging.info("[AscendaraGofileHelper] Locking computer as requested in settings")
+                        logging.info("[QuadDownGofileHelper] Locking computer as requested in settings")
                         if sys.platform == 'win32':
                             os.system('rundll32.exe user32.dll,LockWorkStation')
                         elif sys.platform == 'darwin':
                             os.system('/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend')
                     elif behavior == 'sleep':
-                        logging.info("[AscendaraGofileHelper] Putting computer to sleep as requested in settings")
+                        logging.info("[QuadDownGofileHelper] Putting computer to sleep as requested in settings")
                         if sys.platform == 'win32':
                             os.system('rundll32.exe powrprof.dll,SetSuspendState 0,1,0')
                         elif sys.platform == 'darwin':
                             os.system('pmset sleepnow')
                     elif behavior == 'shutdown':
-                        logging.info("[AscendaraGofileHelper] Shutting down computer as requested in settings")
+                        logging.info("[QuadDownGofileHelper] Shutting down computer as requested in settings")
                         if sys.platform == 'win32':
-                            os.system('shutdown /s /t 60 /c "Ascendara download complete - shutting down in 60 seconds"')
+                            os.system('shutdown /s /t 60 /c "QuadDown download complete - shutting down in 60 seconds"')
                         elif sys.platform == 'darwin':
                             os.system('osascript -e "tell app \"System Events\" to shut down"')
                     else:  # 'none' or any other value
-                        logging.info("[AscendaraGofileHelper] No post-download action required")
+                        logging.info("[QuadDownGofileHelper] No post-download action required")
         except Exception as e:
-            logging.error(f"[AscendaraGofileHelper] Error in post-download behavior handling: {e}")
+            logging.error(f"[QuadDownGofileHelper] Error in post-download behavior handling: {e}")
 
 def open_console():
     if IS_DEV and sys.platform == "win32":

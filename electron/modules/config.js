@@ -19,7 +19,7 @@ const isMac = process.platform === "darwin";
 const isLinux = process.platform === "linux";
 
 // Linux-specific paths
-const linuxConfigDir = isLinux ? path.join(os.homedir(), ".ascendara") : null;
+const linuxConfigDir = isLinux ? path.join(os.homedir(), ".QuadDown") : null;
 const linuxCompatDataDir = isLinux ? path.join(linuxConfigDir, "compatdata") : null;
 const linuxRunnersDir = isLinux ? path.join(linuxConfigDir, "runners") : null;
 
@@ -47,12 +47,12 @@ const STEAM_INSTALL_PATHS = isLinux
 
 // File paths
 const TIMESTAMP_FILE = !isWindows
-  ? path.join(os.homedir(), "timestamp.ascendara.json")
-  : path.join(process.env.USERPROFILE, "timestamp.ascendara.json");
+  ? path.join(os.homedir(), "timestamp.QuadDown.json")
+  : path.join(process.env.USERPROFILE, "timestamp.QuadDown.json");
 
 const LANG_DIR = isWindows
-  ? path.join(process.env.LOCALAPPDATA, "Ascendara", "languages")
-  : path.join(os.homedir(), ".ascendara", "languages");
+  ? path.join(process.env.LOCALAPPDATA, "QuadDown", "languages")
+  : path.join(os.homedir(), ".QuadDown", "languages");
 
 const appDirectory = path.join(path.dirname(app.getPath("exe")));
 
@@ -66,25 +66,25 @@ try {
 
 // API Keys
 const APIKEY = process.env.REACT_APP_AUTHORIZATION || config.AUTHORIZATION;
-const analyticsAPI = process.env.REACT_APP_ASCENDARA_API_KEY || config.ASCENDARA_API_KEY;
+const analyticsAPI = process.env.REACT_APP_QuadDown_API_KEY || config.QuadDown_API_KEY;
 const steamWebApiKey =
-  process.env.REACT_APP_STEAM_WEB_API_KEY || config.ASCENDARA_STEAM_WEB_API_KEY;
+  process.env.REACT_APP_STEAM_WEB_API_KEY || config.QuadDown_STEAM_WEB_API_KEY;
 const steamGridDbApiKey =
-  process.env.REACT_APP_STEAMGRIDDB_API_KEY || config.ASCENDARA_STEAMGRIDDB_API_KEY;
+  process.env.REACT_APP_STEAMGRIDDB_API_KEY || config.QuadDown_STEAMGRIDDB_API_KEY;
 const imageKey = process.env.REACT_APP_IMAGE_KEY || config.IMAGE_KEY;
 const clientId = process.env.REACT_APP_DISCKEY || config.DISCKEY;
 
 // Returns the Python interpreter path: venv if set up, otherwise system python3
 function getPythonPath() {
   if (isWindows) return "python";
-  const venvPython = path.join(os.homedir(), ".ascendara", "venv", "bin", "python3");
+  const venvPython = path.join(os.homedir(), ".QuadDown", "venv", "bin", "python3");
   return fs.existsSync(venvPython) ? venvPython : "python3";
 }
 
 // Tool executables mapping
 const toolExecutables = {
-  torrent: "AscendaraTorrentHandler.exe",
-  translator: "AscendaraLanguageTranslation.exe",
+  torrent: "QuadDownTorrentHandler.exe",
+  translator: "QuadDownLanguageTranslation.exe",
   ludusavi: "ludusavi.exe",
 };
 

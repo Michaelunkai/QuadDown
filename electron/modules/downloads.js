@@ -72,7 +72,7 @@ function registerDownloadHandlers() {
             .map(dirent => dirent.name);
 
           for (const dir of gameDirectories) {
-            const gameInfoPath = path.join(downloadDir, dir, `${dir}.ascendara.json`);
+            const gameInfoPath = path.join(downloadDir, dir, `${dir}.QuadDown.json`);
             try {
               const gameInfoData = await fs.promises.readFile(gameInfoPath, "utf8");
               const gameData = JSON.parse(gameInfoData);
@@ -193,7 +193,7 @@ function registerDownloadHandlers() {
                 }
               }
             } catch (error) {
-              // Silently skip games without .ascendara.json files
+              // Silently skip games without .QuadDown.json files
             }
           }
         } catch (error) {
@@ -262,13 +262,13 @@ function registerDownloadHandlers() {
             gameDirectory = testPath;
             console.log(`Found existing game directory at: ${gameDirectory}`);
 
-            // Delete all contents except .ascendara.json and header.ascendara files
+            // Delete all contents except .QuadDown.json and header.QuadDown files
             const files = await fs.promises.readdir(gameDirectory);
             for (const file of files) {
-              // Preserve the game's ascendara.json file and header image
+              // Preserve the game's QuadDown.json file and header image
               if (
-                file.endsWith(".ascendara.json") ||
-                file.startsWith("header.ascendara")
+                file.endsWith(".QuadDown.json") ||
+                file.startsWith("header.QuadDown")
               ) {
                 console.log(`Update flow: preserving file: ${file}`);
                 continue;
@@ -314,7 +314,7 @@ function registerDownloadHandlers() {
         // Check if header image already exists (for update flow)
         const existingHeaders = await fs.promises.readdir(gameDirectory).catch(() => []);
         const existingHeader = existingHeaders.find(f =>
-          f.startsWith("header.ascendara")
+          f.startsWith("header.QuadDown")
         );
 
         if (updateFlow && existingHeader) {
@@ -326,7 +326,7 @@ function registerDownloadHandlers() {
             const localImagePath = path.join(settings.localIndex, "imgs", `${imgID}.jpg`);
             if (fs.existsSync(localImagePath)) {
               imageBuffer = await fs.promises.readFile(localImagePath);
-              headerImagePath = path.join(gameDirectory, `header.ascendara.jpg`);
+              headerImagePath = path.join(gameDirectory, `header.QuadDown.jpg`);
               await fs.promises.writeFile(headerImagePath, imageBuffer);
             }
           }
@@ -334,8 +334,8 @@ function registerDownloadHandlers() {
           if (!headerImagePath && imageKey) {
             const imageLink =
               settings.gameSource === "fitgirl"
-                ? `https://api.ascendara.app/v2/fitgirl/image/${imgID}`
-                : `https://api.ascendara.app/v2/image/${imgID}`;
+                ? `https://api.QuadDown.app/v2/fitgirl/image/${imgID}`
+                : `https://api.QuadDown.app/v2/image/${imgID}`;
 
             const timestamp = Math.floor(Date.now() / 1000);
             const signature = crypto
@@ -358,7 +358,7 @@ function registerDownloadHandlers() {
               imageBuffer = Buffer.from(response.data);
               const mimeType = response.headers["content-type"];
               const extension = getExtensionFromMimeType(mimeType);
-              headerImagePath = path.join(gameDirectory, `header.ascendara${extension}`);
+              headerImagePath = path.join(gameDirectory, `header.QuadDown${extension}`);
               await fs.promises.writeFile(headerImagePath, imageBuffer);
             } catch (imgError) {
               console.error(`Failed to download header image: ${imgError.message}`);
@@ -386,18 +386,18 @@ function registerDownloadHandlers() {
           executablePath = isDev
             ? path.join(
                 settings.gameSource === "fitgirl"
-                  ? "./binaries/AscendaraTorrentHandler/dist/AscendaraTorrentHandler.exe"
+                  ? "./binaries/QuadDownTorrentHandler/dist/QuadDownTorrentHandler.exe"
                   : link.includes("gofile.io")
-                    ? "./binaries/AscendaraDownloader/dist/AscendaraGofileHelper.exe"
-                    : "./binaries/AscendaraDownloader/dist/AscendaraDownloader.exe"
+                    ? "./binaries/QuadDownDownloader/dist/QuadDownGofileHelper.exe"
+                    : "./binaries/QuadDownDownloader/dist/QuadDownDownloader.exe"
               )
             : path.join(
                 appDirectory,
                 settings.gameSource === "fitgirl"
-                  ? "/resources/AscendaraTorrentHandler.exe"
+                  ? "/resources/QuadDownTorrentHandler.exe"
                   : link.includes("gofile.io")
-                    ? "/resources/AscendaraGofileHelper.exe"
-                    : "/resources/AscendaraDownloader.exe"
+                    ? "/resources/QuadDownGofileHelper.exe"
+                    : "/resources/QuadDownDownloader.exe"
               );
 
           spawnCommand =
@@ -430,10 +430,10 @@ function registerDownloadHandlers() {
             executablePath = getPythonPath();
             const scriptPath = path.join(
               settings.gameSource === "fitgirl"
-                ? "./binaries/AscendaraTorrentHandler/src/AscendaraTorrentHandler.py"
+                ? "./binaries/QuadDownTorrentHandler/src/QuadDownTorrentHandler.py"
                 : link.includes("gofile.io")
-                  ? "./binaries/AscendaraDownloader/src/AscendaraGofileHelper.py"
-                  : "./binaries/AscendaraDownloader/src/AscendaraDownloader.py"
+                  ? "./binaries/QuadDownDownloader/src/QuadDownGofileHelper.py"
+                  : "./binaries/QuadDownDownloader/src/QuadDownDownloader.py"
             );
             spawnCommand =
               settings.gameSource === "fitgirl"
@@ -466,10 +466,10 @@ function registerDownloadHandlers() {
             executablePath = path.join(
               process.resourcesPath,
               settings.gameSource === "fitgirl"
-                ? "AscendaraTorrentHandler"
+                ? "QuadDownTorrentHandler"
                 : link.includes("gofile.io")
-                  ? "AscendaraGofileHelper"
-                  : "AscendaraDownloader"
+                  ? "QuadDownGofileHelper"
+                  : "QuadDownDownloader"
             );
             spawnCommand =
               settings.gameSource === "fitgirl"
@@ -605,7 +605,7 @@ function registerDownloadHandlers() {
 
       // Step 1: Update JSON to mark as stopped FIRST (before killing processes)
       // This prevents the downloader from overwriting the stopped state
-      const jsonFile = path.join(gameDirectory, `${sanitizedGame}.ascendara.json`);
+      const jsonFile = path.join(gameDirectory, `${sanitizedGame}.QuadDown.json`);
       if (fs.existsSync(jsonFile)) {
         try {
           const gameInfo = JSON.parse(fs.readFileSync(jsonFile, "utf8"));
@@ -623,9 +623,9 @@ function registerDownloadHandlers() {
 
       if (isWindows) {
         const downloaderExes = [
-          "AscendaraDownloader.exe",
-          "AscendaraGofileHelper.exe",
-          "AscendaraTorrentHandler.exe",
+          "QuadDownDownloader.exe",
+          "QuadDownGofileHelper.exe",
+          "QuadDownTorrentHandler.exe",
         ];
 
         for (const exe of downloaderExes) {
@@ -668,9 +668,9 @@ function registerDownloadHandlers() {
         }
       } else {
         const pythonScripts = [
-          "AscendaraDownloader.py",
-          "AscendaraGofileHelper.py",
-          "AscendaraTorrentHandler.py",
+          "QuadDownDownloader.py",
+          "QuadDownGofileHelper.py",
+          "QuadDownTorrentHandler.py",
         ];
 
         for (const script of pythonScripts) {
@@ -715,7 +715,7 @@ function registerDownloadHandlers() {
 
         // Verify processes are actually gone
         if (isWindows) {
-          const verifyCommand = `Get-Process | Where-Object { $_.Name -match 'Ascendara(Downloader|GofileHelper|TorrentHandler)' -and $_.CommandLine -like '*${sanitizedGame}*' } | Measure-Object | Select-Object -ExpandProperty Count`;
+          const verifyCommand = `Get-Process | Where-Object { $_.Name -match 'QuadDown(Downloader|GofileHelper|TorrentHandler)' -and $_.CommandLine -like '*${sanitizedGame}*' } | Measure-Object | Select-Object -ExpandProperty Count`;
           const verifyProcess = spawn("powershell", [
             "-NoProfile",
             "-NonInteractive",
@@ -801,8 +801,8 @@ function registerDownloadHandlers() {
         throw new Error("Download directory not set");
       }
       const gameDirectory = path.join(settings.downloadDirectory, game);
-      const filemapPath = path.join(gameDirectory, "filemap.ascendara.json");
-      const gameInfoPath = path.join(gameDirectory, `${game}.ascendara.json`);
+      const filemapPath = path.join(gameDirectory, "filemap.QuadDown.json");
+      const gameInfoPath = path.join(gameDirectory, `${game}.QuadDown.json`);
 
       const filemap = JSON.parse(fs.readFileSync(filemapPath, "utf8"));
       let gameInfo = JSON.parse(fs.readFileSync(gameInfoPath, "utf8"));
@@ -863,7 +863,7 @@ function registerDownloadHandlers() {
 
       const gameDirectory = path.join(settings.downloadDirectory, game);
       const files = await fs.promises.readdir(gameDirectory);
-      const jsonFile = `${game}.ascendara.json`;
+      const jsonFile = `${game}.QuadDown.json`;
       if (files.length === 1 && files[0] === jsonFile) {
         return false;
       }
@@ -896,8 +896,8 @@ function registerDownloadHandlers() {
       selectedPaths.forEach(selectedPath => {
         const itemName = path.basename(selectedPath);
         const executablePath = isDev
-          ? path.join("./binaries/AscendaraDownloader/dist/AscendaraDownloader.exe")
-          : path.join(appDirectory, "/resources/AscendaraDownloader.exe");
+          ? path.join("./binaries/QuadDownDownloader/dist/QuadDownDownloader.exe")
+          : path.join(appDirectory, "/resources/QuadDownDownloader.exe");
 
         const downloadProcess = spawn(executablePath, [
           "retryfolder",
@@ -942,8 +942,8 @@ function registerDownloadHandlers() {
 
       if (link.includes("gofile.io")) {
         executablePath = isDev
-          ? path.join("./binaries/AscendaraDownloader/dist/AscendaraGofileHelper.exe")
-          : path.join(appDirectory, "/resources/AscendaraGofileHelper.exe");
+          ? path.join("./binaries/QuadDownDownloader/dist/QuadDownGofileHelper.exe")
+          : path.join(appDirectory, "/resources/QuadDownGofileHelper.exe");
         spawnCommand = [
           "https://" + link,
           game,
@@ -955,8 +955,8 @@ function registerDownloadHandlers() {
         ];
       } else {
         executablePath = isDev
-          ? path.join("./binaries/AscendaraDownloader/dist/AscendaraDownloader.exe")
-          : path.join(appDirectory, "/resources/AscendaraDownloader.exe");
+          ? path.join("./binaries/QuadDownDownloader/dist/QuadDownDownloader.exe")
+          : path.join(appDirectory, "/resources/QuadDownDownloader.exe");
         spawnCommand = [link, game, online, dlc, version, "0", gamesDirectory];
       }
 
@@ -1012,7 +1012,7 @@ function registerDownloadHandlers() {
       }
 
       // Read the game info JSON to get download details
-      const jsonFile = path.join(gameDirectory, `${sanitizedGame}.ascendara.json`);
+      const jsonFile = path.join(gameDirectory, `${sanitizedGame}.QuadDown.json`);
       if (!fs.existsSync(jsonFile)) {
         console.error(`Game info JSON not found: ${jsonFile}`);
         return { success: false, error: "Game info not found" };
@@ -1065,14 +1065,14 @@ function registerDownloadHandlers() {
         executablePath = isDev
           ? path.join(
               downloadLink.includes("gofile.io")
-                ? "./binaries/AscendaraDownloader/dist/AscendaraGofileHelper.exe"
-                : "./binaries/AscendaraDownloader/dist/AscendaraDownloader.exe"
+                ? "./binaries/QuadDownDownloader/dist/QuadDownGofileHelper.exe"
+                : "./binaries/QuadDownDownloader/dist/QuadDownDownloader.exe"
             )
           : path.join(
               appDirectory,
               downloadLink.includes("gofile.io")
-                ? "/resources/AscendaraGofileHelper.exe"
-                : "/resources/AscendaraDownloader.exe"
+                ? "/resources/QuadDownGofileHelper.exe"
+                : "/resources/QuadDownDownloader.exe"
             );
 
         spawnCommand = [
@@ -1092,8 +1092,8 @@ function registerDownloadHandlers() {
           executablePath = getPythonPath();
           const scriptPath = path.join(
             downloadLink.includes("gofile.io")
-              ? "./binaries/AscendaraDownloader/src/AscendaraGofileHelper.py"
-              : "./binaries/AscendaraDownloader/src/AscendaraDownloader.py"
+              ? "./binaries/QuadDownDownloader/src/QuadDownGofileHelper.py"
+              : "./binaries/QuadDownDownloader/src/QuadDownDownloader.py"
           );
           spawnCommand = [
             scriptPath,
@@ -1112,8 +1112,8 @@ function registerDownloadHandlers() {
           executablePath = path.join(
             process.resourcesPath,
             downloadLink.includes("gofile.io")
-              ? "AscendaraGofileHelper"
-              : "AscendaraDownloader"
+              ? "QuadDownGofileHelper"
+              : "QuadDownDownloader"
           );
           spawnCommand = [
             downloadLink.includes("gofile.io") ? "https://" + downloadLink : downloadLink,
