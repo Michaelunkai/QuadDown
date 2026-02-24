@@ -1,5 +1,5 @@
-// Download Queue Service for Ascend users
-// Manages a queue of downloads that start automatically when the previous one finishes
+// Download Queue Service
+// Manages a queue of downloads that start automatically, supporting unlimited parallel downloads
 
 const QUEUE_STORAGE_KEY = "ascendDownloadQueue";
 
@@ -72,40 +72,43 @@ export const reorderQueue = (fromIndex, toIndex) => {
   return newQueue;
 };
 
-// Check if there are active downloads (excluding completed/verifying ones)
-export const hasActiveDownloads = async () => {
+// Count active downloads (only count games actively downloading, not extracting/verifying)
+// Extraction runs in parallel and does not occupy a download slot
+export const getActiveDownloadCount = async () => {
   try {
     const games = await window.electron.getGames();
-    const activeDownloads = games.filter(game => {
+    return games.filter(game => {
       const { downloadingData } = game;
-      // Only count as active if actually downloading, extracting, or updating
-      // Don't count verifying as active since that means it's almost done
       return (
         downloadingData &&
-        (downloadingData.downloading ||
-          downloadingData.extracting ||
-          downloadingData.updating) &&
+        (downloadingData.downloading || downloadingData.updating) &&
+        !downloadingData.extracting &&
         !downloadingData.verifying
       );
-    });
-    return activeDownloads.length > 0;
+    }).length;
   } catch (error) {
-    console.error("Error checking active downloads:", error);
-    return false;
+    console.error("Error counting active downloads:", error);
+    return 0;
   }
 };
 
-// Process the next item in the queue (called when a download completes)
-export const processNextInQueue = async () => {
+// Check if there are active downloads — kept for backward compatibility
+export const hasActiveDownloads = async () => {
+  return (await getActiveDownloadCount()) > 0;
+};
+
+// Process the next item in the queue if a slot is available
+// maxConcurrent defaults to 50 (effectively unlimited)
+export const processNextInQueue = async (maxConcurrent = 50) => {
   const nextItem = getNextInQueue();
   if (!nextItem) {
     return null;
   }
 
-  // Check if there are still active downloads
-  const hasActive = await hasActiveDownloads();
-  if (hasActive) {
-    return null; // Wait for current download to finish
+  // Check if a slot is available
+  const activeCount = await getActiveDownloadCount();
+  if (activeCount >= maxConcurrent) {
+    return null; // All slots occupied
   }
 
   // Start the download
@@ -125,7 +128,6 @@ export const processNextInQueue = async () => {
     );
 
     // Wait for the download to appear in the games list before removing from queue
-    // This prevents the empty page flash
     const waitForDownloadToAppear = async (maxAttempts = 10) => {
       for (let i = 0; i < maxAttempts; i++) {
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -150,8 +152,29 @@ export const processNextInQueue = async () => {
     return nextItem;
   } catch (error) {
     console.error("Error starting queued download:", error);
-    // Still remove from queue on error to prevent infinite retry
+    // Remove from queue on error to prevent infinite retry
     removeFromQueue(nextItem.id);
     return null;
   }
+};
+
+// Fill all available download slots from the queue simultaneously
+// Starts as many queued downloads as possible up to maxConcurrent
+// maxConcurrent defaults to 50 (effectively unlimited)
+export const fillDownloadSlots = async (maxConcurrent = 50) => {
+  const activeCount = await getActiveDownloadCount();
+  const slotsAvailable = Math.max(0, maxConcurrent - activeCount);
+  const started = [];
+
+  for (let i = 0; i < slotsAvailable; i++) {
+    const queue = getDownloadQueue();
+    if (queue.length === 0) break;
+
+    // Pass maxConcurrent - started.length so each iteration sees updated count
+    const next = await processNextInQueue(maxConcurrent - i);
+    if (!next) break;
+    started.push(next);
+  }
+
+  return started;
 };

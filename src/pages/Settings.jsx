@@ -2105,6 +2105,28 @@ function Settings() {
                     t={t}
                   />
                 </div>
+                {/* Simultaneous Downloads */}
+                <div id="max-parallel-downloads" className="space-y-2 pt-8">
+                  <Label htmlFor="maxParallelDownloads">
+                    Simultaneous Downloads
+                  </Label>
+                  <p className="mb-4 text-sm font-normal text-muted-foreground">
+                    How many games can download at the same time. Set to 50 for unlimited.
+                  </p>
+                  <Input
+                    id="maxParallelDownloads"
+                    type="number"
+                    min="1"
+                    max="50"
+                    value={settings.maxParallelDownloads ?? 50}
+                    onChange={e => {
+                      const val = Math.min(50, Math.max(1, parseInt(e.target.value) || 1));
+                      handleSettingChange("maxParallelDownloads", val);
+                    }}
+                    className="w-24"
+                  />
+                </div>
+
                 <div id="download-directory" className="pt-8">
                   <div className="mb-4">
                     <Label

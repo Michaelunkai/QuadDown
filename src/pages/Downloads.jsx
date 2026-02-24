@@ -69,6 +69,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useSettings } from "@/context/SettingsContext";
 import {
+  fillDownloadSlots,
   processNextInQueue,
   getDownloadQueue,
   removeFromQueue,
@@ -179,6 +180,7 @@ const Downloads = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { isAuthenticated, user } = useAuth();
+  const { settings } = useSettings();
 
   // Track processed commands to prevent duplicates
   const processedCommandsRef = useRef(new Set());
@@ -480,14 +482,13 @@ const Downloads = () => {
             prev => new Set([...prev, ...newlyCompleted.map(g => g.game)])
           );
 
-          // Process next queued download when a game completes
-          // This triggers immediately when the "Download Complete" card shows
-          processNextInQueue().then(nextItem => {
-            if (nextItem) {
+          // Fill all available download slots when a game completes
+          fillDownloadSlots(settings?.maxParallelDownloads || 50).then(started => {
+            started.forEach(nextItem => {
               toast.success(
                 t("downloads.queuedDownloadStarted", { name: nextItem.gameName })
               );
-            }
+            });
           });
         }
 
@@ -548,15 +549,15 @@ const Downloads = () => {
           setPeakSpeed(0);
           localStorage.setItem("peakSpeed", "0");
 
-          // Process next queued download when transitioning from active to no active downloads
-          // This handles stopped downloads and other cases where games don't go through "completed" state
+          // Fill available slots when transitioning to no active downloads
+          // Handles stopped downloads and cases where games skip "completed" state
           if (prevActiveCountRef.current > 0) {
-            processNextInQueue().then(nextItem => {
-              if (nextItem) {
+            fillDownloadSlots(settings?.maxParallelDownloads || 50).then(started => {
+              started.forEach(nextItem => {
                 toast.success(
                   t("downloads.queuedDownloadStarted", { name: nextItem.gameName })
                 );
-              }
+              });
             });
           }
         }
@@ -677,20 +678,7 @@ const Downloads = () => {
   };
 
   const handleResumeDownload = async game => {
-    // Check if there's an active download OR another download is currently resuming
-    const hasActive = downloadingGames.some(
-      g => g.downloadingData?.downloading && g.game !== game.game
-    );
-    const hasResuming = resumingDownloads.size > 0 && !resumingDownloads.has(game.game);
-
-    // If there's an active download or another resuming download and user doesn't have Ascend, show warning
-    if ((hasActive || hasResuming) && !isAuthenticated) {
-      setGameToResume(game);
-      setShowAscendWarning(true);
-      return;
-    }
-
-    // Proceed with resume
+    // Resume is always allowed — no limit on parallel downloads
     await executeResumeDownload(game);
   };
 

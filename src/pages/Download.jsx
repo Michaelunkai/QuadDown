@@ -35,7 +35,10 @@ import { sanitizeText, formatLatestUpdate } from "@/lib/utils";
 import imageCacheService from "@/services/imageCacheService";
 import openCriticService from "@/services/openCriticService";
 import { cacheDownloadData } from "@/services/retryGameDownloadService";
-import { addToQueue, hasActiveDownloads } from "@/services/downloadQueueService";
+import {
+  addToQueue,
+  getActiveDownloadCount,
+} from "@/services/downloadQueueService";
 import { forceSyncDownloads, notifyDownloadStart } from "@/services/downloadSyncService";
 import {
   BadgeCheckIcon,
@@ -570,18 +573,13 @@ export default function DownloadPage() {
       return;
     }
 
-    // Check if there's an active download
-    const hasActive = await hasActiveDownloads();
-    console.log("[DL] hasActive:", hasActive, "isAuthenticated:", isAuthenticated);
+    // Check if parallel download limit is reached
+    const activeCount = await getActiveDownloadCount();
+    const maxParallel = settings?.maxParallelDownloads || 50;
+    console.log("[DL] activeCount:", activeCount, "maxParallel:", maxParallel);
 
-    if (hasActive && !forceStart) {
-      // Non-Ascend users can only have 1 download at a time - show error toast
-      if (!isAuthenticated) {
-        toast.error(t("download.toast.downloadQueueLimit"));
-        return;
-      }
-
-      // Ascend users get the queue dialog with options
+    if (activeCount >= maxParallel && !forceStart) {
+      // Limit reached — offer queue option to all users
       const isVrGame = gameData.category?.includes("Virtual Reality");
       setPendingDownloadData({
         url: directUrl || gameData.download_links?.[selectedProvider]?.[0] || "",
@@ -3511,24 +3509,22 @@ export default function DownloadPage() {
             >
               {t("download.queue.addToQueue", "Add to Queue")}
             </Button>
-            {isAuthenticated && (
-              <Button
-                className="text-secondary"
-                onClick={() => {
-                  setShowQueuePrompt(false);
-                  if (pendingDownloadData) {
-                    handleDownload(
-                      pendingDownloadData.directUrl,
-                      pendingDownloadData.dir,
-                      true
-                    );
-                  }
-                  setPendingDownloadData(null);
-                }}
-              >
-                {t("download.queue.startNow", "Start Now")}
-              </Button>
-            )}
+            <Button
+              className="text-secondary"
+              onClick={() => {
+                setShowQueuePrompt(false);
+                if (pendingDownloadData) {
+                  handleDownload(
+                    pendingDownloadData.directUrl,
+                    pendingDownloadData.dir,
+                    true
+                  );
+                }
+                setPendingDownloadData(null);
+              }}
+            >
+              {t("download.queue.startNow", "Start Now")}
+            </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
