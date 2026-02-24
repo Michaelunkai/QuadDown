@@ -38,10 +38,10 @@ exports.txt
 /binaries/*/src/debian
 
 # Specific files to ignore
-binaries/AscendaraNotificationHelper/src/debian/AscendaraNotificationHelper.py
+binaries/QuadDownNotificationHelper/src/debian/QuadDownNotificationHelper.py
 yarn.lock
 /src/pages/concept
-binaries/AscendaraDownloader/src/AscendaraDownloaderV1.py
+binaries/QuadDownDownloader/src/QuadDownDownloaderV1.py
 electron/appOrginal.js
 src/services/firestore.rules
 src/translations/en.json.20251230_222339.backup
